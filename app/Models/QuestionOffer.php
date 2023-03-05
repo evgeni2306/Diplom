@@ -103,5 +103,10 @@ class QuestionOffer extends Model
         $offer->status ="Red";
         $offer->save();
     }
+    static function adminStatusAccepted(int $offerId,string $question, string $answer):void{
+        $offer = QuestionOffer::query()->find($offerId);
+        $offer->update(['question'=>$question,'answer'=>$answer,'status'=>'Green']);
+        $offer->save();
+    }
 
 }

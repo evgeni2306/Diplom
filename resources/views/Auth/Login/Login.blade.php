@@ -17,19 +17,15 @@
     <div class="form__container">
         <h1 class="register__title">Войти в аккаунт</h1>
         <form  class="form" action="{{route("login")}}" method="post">
-            <input class="form__input" type="text" name="login" placeholder="Логин">
+            <input class="form__input" type="text" name="login" value="{{mb_http_input('login')}}" placeholder="Логин">
             <input class="form__input" type="password" name="password" placeholder="Пароль">
 
 
-            {{--            <InputError--}}
-            {{--                message={errorMessage}--}}
-            {{--                className="form__error"--}}
-            {{--            />--}}
-
-            {{--            <InputError--}}
-            {{--                message={errors.password}--}}
-            {{--                className="form__error"--}}
-            {{--            />--}}
+            @if ($errors->any())
+                <div class="form__error">
+                    <p class="">{{$errors->first()}}</p>
+                </div>
+            @endif
             <input type="submit"  class="primary-button" value="Войти">
             @csrf
         </form>

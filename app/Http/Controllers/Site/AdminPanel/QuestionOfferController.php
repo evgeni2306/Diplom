@@ -6,8 +6,8 @@ namespace App\Http\Controllers\Site\AdminPanel;
 use App\Http\Controllers\Controller;
 use App\Models\Category;
 use App\Models\QuestionOffer;
+use App\Models\Question;
 use Illuminate\Http\Request;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Validator;
 
 class QuestionOfferController extends Controller
@@ -16,13 +16,6 @@ class QuestionOfferController extends Controller
     {
         $offers = QuestionOffer::adminOffersList();
         return view('AdminPanel.QuestionOfferList.QuestionOfferList', ['offers' => $offers]);
-    }
-
-
-    public function form($questionOffer = null)
-    {
-        $categories = Category::query()->get(['name'])->all();
-        return view('ContentExpansion.QuestionOfferForm.QuestionOfferForm', ['categories' => $categories, 'questionOffer' => $questionOffer]);
     }
 
 
@@ -35,9 +28,19 @@ class QuestionOfferController extends Controller
         return view('AdminPanel.QuestionOfferView.QuestionOfferView', ['questionOffer' => $questionOffer]);
     }
 
-    public function store(Request $request, int $id)
+    public function save(Request $request)
     {
-        dd($request->all());
+        $validator = Validator::make($request->all(), [
+            'id' => 'required|int|exists:question_offers,id',
+            'category_id' => 'required|string|max:255|exists:categories,name',
+            'question' => 'required|string|max:255',
+            'answer' => 'required|string|max:255',
+        ]);
+        $fields = $request->all();
+        $fields['id'] = (int)$fields['id'];
+        QuestionOffer::adminStatusAccepted($fields['id'], $fields['question'], $fields['answer']);
+        Question::addOfferedQuestion($fields['id']);
+        return redirect(route('admin.expansion'));
     }
 
     public function refuse(Request $request)
@@ -47,7 +50,7 @@ class QuestionOfferController extends Controller
             'comment' => 'required|string|max:255',
         ]);
         $fields = $request->all();
-        QuestionOffer::adminStatusRefuse((int)$fields['id'],$fields['comment']);
+        QuestionOffer::adminStatusRefuse((int)$fields['id'], $fields['comment']);
         return redirect(route('admin.expansion'));
     }
 
