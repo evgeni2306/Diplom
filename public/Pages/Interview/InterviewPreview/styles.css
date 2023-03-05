@@ -1,0 +1,164 @@
+
+html,
+body {
+    background-color: #f3f5f9;
+}
+
+.preview__container {
+    padding: 40px 200px 60px;
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+}
+.preview-card {
+    width: 800px;
+    background: #ffffff;
+    border-radius: 8px;
+}
+.preview-card__top {
+    padding: 32px 0;
+    text-align: center;
+    background: #04113f;
+    border-radius: 8px 8px 0 0;
+}
+.preview-card__title {
+    margin-bottom: 6px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+    color: #00cfcf;
+}
+.preview-card__subtitle {
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 140%;
+    color: #ffffff;
+}
+.preview-card__main {
+    padding: 24px 40px 40px;
+}
+
+.preview-card__start {
+    padding: 20px;
+    margin-top: 24px;
+    text-align: center;
+    background: #f3f5f9;
+    border-radius: 8px;
+}
+
+.preview-card__btn {
+    margin: 0 auto;
+}
+
+.preview-recomendation {
+    padding: 20px;
+    width: 370px;
+    height: fit-content;
+    display: flex;
+    background: #e4e9ff;
+    border-radius: 3px;
+}
+
+.preview-recomentation img {
+    width: 32px;
+    height: 32px;
+}
+.preview-recomendation__text-cont {
+    margin-left: 12px;
+}
+.preview-recomendation__text {
+    margin-bottom: 12px;
+    line-height: 140%;
+}
+.preview-recomendation__textlink {
+    font-weight: 600;
+    color: #345ceb;
+}
+.preview-recomendation__textlink:hover {
+    text-decoration: underline;
+}
+
+.preview-recomendation__link {
+    display: flex;
+    align-items: center;
+    font-weight: 700;
+    color: #345ceb;
+    line-height: 120%;
+}
+.preview-recomendation__link-arrow {
+    width: 8px;
+    height: 8px;
+    border-top: 2px solid #345ceb;
+    border-right: 2px solid #345ceb;
+    margin-left: 9px;
+    transform: rotate(45deg);
+}
+.preview-recomendation__link:hover {
+    text-decoration: underline;
+}
+
+
+
+
+
+.infoblock {
+    display: flex;
+    gap: 16px;
+}
+
+.infoblock:not(:last-child) {
+    margin-bottom: 20px;
+}
+
+.infoblock__icon {
+    min-width: 64px;
+    height: 64px;
+    position: relative;
+    border-radius: 50%;
+    background: #e4e9ff;
+}
+.infoblock__icon img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.infoblock__title {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+}
+
+
+.infoblock__subtitle {
+    margin-top: 8px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: #66676c;
+}
+
+.primary-button {
+    padding: 15px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    background: #345ceb;
+    border-radius: 3px;
+    border: none;
+    transition: all 0.3s ease;
+
+}
+.primary-button:hover {
+    background: #2a51db;
+}
+.primary-button:active {
+    background: #254bd1;
+}
+.primary-button svg,img {
+    margin-right: 10px;
+    vertical-align: middle;
+}
+

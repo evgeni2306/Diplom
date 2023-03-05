@@ -1,0 +1,29 @@
+
+
+.info-card {
+    margin: 0 200px;
+    display: flex;
+    gap: 12px;
+}
+.info-card__container{
+    width: 230px;
+    padding: 30px 20px;
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
+    transition: all 0.1s ease;
+    cursor: pointer;
+
+}
+.info-card__container:hover {
+    border: 1px solid #345ceb;
+    box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
+}
+
+
+.info-card__name {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000;
+}

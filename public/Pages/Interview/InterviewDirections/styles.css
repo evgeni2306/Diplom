@@ -1,0 +1,15 @@
+html,
+body {
+    background-color: #f3f5f9;
+}
+
+.directions {
+    text-align: center;
+}
+.directions__title {
+    margin: 77px 0 40px 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+}
+
