@@ -10,7 +10,7 @@ use App\Models\Interview;
 
 class GetResultsController extends Controller
 {
-    public function create()
+    public function create():\Illuminate\Contracts\View\View
     {
         $result = Interview::getInterviewResults($_SESSION["interviewId"]);
         $interview = Interview::query()->find($_SESSION["interviewId"]);

@@ -10,7 +10,7 @@ use Illuminate\Http\Request;
 
 class InterviewInterruptController extends Controller
 {
-    public function interrupt(Request $request): \Inertia\Response|\Illuminate\Http\RedirectResponse
+    public function interrupt(Request $request): \Illuminate\Http\RedirectResponse
     {
         if (isset($_SESSION['interviewId'])) {
             $interview = Interview::interrupt($_SESSION['interviewId']);

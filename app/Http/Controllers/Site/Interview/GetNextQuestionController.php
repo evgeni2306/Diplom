@@ -11,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class GetNextQuestionController extends Controller
 {
-    public function create()
+    public function create(): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
 
         $interviewId = $_SESSION["interviewId"];

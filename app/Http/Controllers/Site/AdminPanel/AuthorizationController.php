@@ -9,12 +9,12 @@ use Illuminate\Support\Facades\Validator;
 
 class AuthorizationController extends Controller
 {
-    public function create($errorMessage = null)
+    public function create($errorMessage = null): \Illuminate\Contracts\View\View
     {
         return view('AdminPanel.Login.Login');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
         $validator = Validator::make($request->all(), [
             'login' => 'required|string|max:255|exists:admin_users,login',

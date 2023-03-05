@@ -4,7 +4,6 @@ declare(strict_types=1);
 namespace App\Http\Controllers\Site\AdminPanel;
 
 use App\Http\Controllers\Controller;
-use App\Models\Category;
 use App\Models\QuestionOffer;
 use App\Models\Question;
 use Illuminate\Http\Request;
@@ -28,7 +27,7 @@ class QuestionOfferController extends Controller
         return view('AdminPanel.QuestionOfferView.QuestionOfferView', ['questionOffer' => $questionOffer]);
     }
 
-    public function save(Request $request)
+    public function save(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|int|exists:question_offers,id',
@@ -36,6 +35,9 @@ class QuestionOfferController extends Controller
             'question' => 'required|string|max:255',
             'answer' => 'required|string|max:255',
         ]);
+        if($validator->fails()){
+            return redirect()->back();
+        }
         $fields = $request->all();
         $fields['id'] = (int)$fields['id'];
         QuestionOffer::adminStatusAccepted($fields['id'], $fields['question'], $fields['answer']);
@@ -43,16 +45,17 @@ class QuestionOfferController extends Controller
         return redirect(route('admin.expansion'));
     }
 
-    public function refuse(Request $request)
+    public function refuse(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validator = Validator::make($request->all(), [
             'id' => 'required|int|exists:question_offers,id',
             'comment' => 'required|string|max:255',
         ]);
+        if($validator->fails()){
+            return redirect()->back();
+        }
         $fields = $request->all();
         QuestionOffer::adminStatusRefuse((int)$fields['id'], $fields['comment']);
         return redirect(route('admin.expansion'));
     }
-
-
 }

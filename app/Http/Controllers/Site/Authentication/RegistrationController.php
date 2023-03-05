@@ -13,12 +13,12 @@ use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
-    public function create($errorMessage = null)
+    public function create(): \Illuminate\Contracts\View\View
     {
-        return view('Auth.Register.Register', ['errorMessage' => $errorMessage]);
+        return view('Auth.Register.Register');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validator = Validator::make($request->all(), [
             'name' => 'required|string|max:255',
@@ -28,14 +28,16 @@ class RegistrationController extends Controller
         ]);
 
         if ($validator->fails()) {
-            return $this->create($errorMessage = $validator->errors()->messages()['login'][0]);
+            return redirect(route('registration'))->withErrors([
+                'login' => 'Выбранный вами логин уже кем-то занят'
+            ])->withInput();
         }
         $fields = $request->all();
         $fields['key'] = time();
         $user = User::query()->create($fields);
         if ($user) {
             Auth::login($user);
-             return redirect(route(RouteServiceProvider::USERHOME));
+            return redirect(route(RouteServiceProvider::USERHOME));
         }
     }
 }

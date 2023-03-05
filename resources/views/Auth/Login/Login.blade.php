@@ -17,8 +17,8 @@
     <div class="form__container">
         <h1 class="register__title">Войти в аккаунт</h1>
         <form  class="form" action="{{route("login")}}" method="post">
-            <input class="form__input" type="text" name="login" value="{{mb_http_input('login')}}" placeholder="Логин">
-            <input class="form__input" type="password" name="password" placeholder="Пароль">
+            <input class="form__input" type="text" name="login" value="{{old('login')}}" placeholder="Логин">
+            <input class="form__input" type="password" name="password" value="{{old('password')}}" placeholder="Пароль">
 
 
             @if ($errors->any())

@@ -6,11 +6,10 @@ namespace App\Http\Controllers\Site\Interview;
 use App\Http\Controllers\Controller;
 use App\Models\Profession;
 use App\Models\CatQuestCount;
-use Inertia\Inertia;
 
 class PreviewPageController extends Controller
 {
-    public function create($id)
+    public function create($id):\Illuminate\Contracts\View\View
     {
         if (is_numeric($id) and $id > 0) {
 

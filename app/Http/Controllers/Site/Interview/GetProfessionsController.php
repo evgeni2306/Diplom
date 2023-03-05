@@ -6,11 +6,10 @@ namespace App\Http\Controllers\Site\Interview;
 
 use App\Http\Controllers\Controller;
 use App\Models\Profession;
-use Inertia\Inertia;
 
 class GetProfessionsController extends Controller
 {
-    public function create(int $id)
+    public function create(int $id):\Illuminate\Contracts\View\View
     {
 
         if (is_numeric($id) and $id > 0) {
@@ -19,7 +18,6 @@ class GetProfessionsController extends Controller
                 $profession->url = "interviewPreview";
             }
             return view('Interview.InterviewProfessions.InterviewProfessions',['professions' => $professions]);
-            //return Inertia::render('Interview/InterviewProfessions/interviewProfessions', ['professions' => $professions]);
         }
         return redirect()->back;
     }

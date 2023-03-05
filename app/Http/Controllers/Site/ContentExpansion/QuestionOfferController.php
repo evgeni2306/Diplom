@@ -38,7 +38,7 @@ class QuestionOfferController extends Controller
             'answer' => 'required|string|max:255',
         ]);
         if ($validator->fails()) {
-            dd($validator->errors());
+            return redirect()->back();
         }
 
         $fields = $request->all('category_id', 'question', 'answer');
@@ -82,7 +82,7 @@ class QuestionOfferController extends Controller
             'answer' => 'required|string|max:255',
         ]);
         if ($validator->fails()) {
-            dd($validator->errors());
+            return redirect()->back();
         }
         $userId = Auth::user()->getAuthIdentifier();
         $fields = $request->all('category_id', 'question', 'answer');

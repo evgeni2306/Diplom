@@ -3,7 +3,6 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Site\Authentication;
 
-use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -12,23 +11,30 @@ use App\Http\Controllers\Controller;
 
 class AuthorizationController extends Controller
 {
-    public function create($errorMessage = null)
+    public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
     {
         return view('Auth.Login.Login');
     }
 
-    public function store(Request $request)
+    public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
         $validator = Validator::make($request->all(), [
             'login' => 'required|string|max:255|exists:users,login',
             'password' => 'required|string',
         ]);
 
+        if ($validator->fails()) {
+            return redirect(route('login'))->withErrors([
+                'login' => 'Не удалось авторизоваться, проверьте правильность вводимых данных'
+            ])->withInput();
+        }
         $fields = $request->all('login', 'password');
         if (Auth::guard('web')->attempt($fields)) {
             return redirect(\route(RouteServiceProvider::USERHOME));
         }
-        return $this->create($errorMessage = 'Не удалось авторизоваться, проверьте правильность вводимых данных');
+        return redirect(route('login'))->withErrors([
+            'login' => 'Не удалось авторизоваться, проверьте правильность вводимых данных'
+        ])->withInput();
 
     }
 }

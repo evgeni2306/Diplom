@@ -24,68 +24,16 @@
         <form class="form" action="{{route("registration")}}" method="post">
 
             <div class="form__names">
-                <input class="form__input" type="text" name="name" placeholder="Имя">
-                <input class="form__input" type="text" name="surname" placeholder="Фамилия">
+                <input class="form__input" type="text" name="name" value="{{old('name')}}" placeholder="Имя">
+                <input class="form__input" type="text" name="surname" value="{{old('surname')}}" placeholder="Фамилия">
             </div>
-            <input class="form__input" type="text" name="login" placeholder="Логин">
-            <input class="form__input" type="password" name="password" placeholder="Пароль">
-            {{--                <TextInput--}}
-            {{--                    type="text"--}}
-            {{--                    name="name"--}}
-            {{--                    value={data.name}--}}
-            {{--                    placeholder="Имя"--}}
-            {{--                    className="form__input name"--}}
-            {{--                    autoComplete="name"--}}
-            {{--                    isFocused={true}--}}
-            {{--                    handleChange={onHandleChange}--}}
-            {{--                    required--}}
-            {{--                />--}}
-
-            {{--                <InputError--}}
-            {{--                    className="form__error"--}}
-            {{--                    message={errors.name}--}}
-            {{--                />--}}
-
-            {{--                <TextInput--}}
-            {{--                    type="text"--}}
-            {{--                    name="surname"--}}
-            {{--                    value={data.surname}--}}
-            {{--                    placeholder="Фамилия"--}}
-            {{--                    className="form__input surname"--}}
-            {{--                    handleChange={onHandleChange}--}}
-            {{--                    required--}}
-            {{--                />--}}
-
-            {{--                <InputError--}}
-            {{--                    className="form__error"--}}
-            {{--                    message={errors.surname}--}}
-            {{--                />--}}
-            {{--            </div>--}}
-
-            {{--            <TextInput--}}
-            {{--                type="text"--}}
-            {{--                name="login"--}}
-            {{--                value={data.login}--}}
-            {{--                placeholder="Логин"--}}
-            {{--                className="form__input"--}}
-            {{--                handleChange={onHandleChange}--}}
-            {{--                required--}}
-            {{--            />--}}
-
-            {{--            <InputError--}}
-            {{--                className="form__error"--}}
-            {{--                message={errorMessage}--}}
-            {{--            />--}}
-
-            {{--            <PasswordShowHide--}}
-            {{--                setData={setData}--}}
-            {{--                password={data.password}--}}
-            {{--            />--}}
-
-            {{--            <InputError--}}
-            {{--                className="form__error"--}}
-            {{--                message={errors.password}--}}
-            {{--            />--}}
+            <input class="form__input" type="text" name="login" value="{{old('login')}}" placeholder="Логин">
+            <input class="form__input" type="password" name="password" value="{{old('password')}}" placeholder="Пароль">
+            @if ($errors->any())
+                <div class="form__error">
+                    <p class="">{{$errors->first()}}</p>
+                </div>
+            @endif
             <input type="submit" class="primary-button" value="Зарегистрироваться">
             @csrf
         </form>
