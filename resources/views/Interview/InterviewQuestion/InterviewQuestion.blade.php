@@ -63,7 +63,7 @@
                         </div>
 
                     </div>
-                    <div class="question__body">
+                    <div class="question__body" id="questionText">
                         {{$question->question}}
                     </div>
                 </div>
@@ -173,12 +173,26 @@
 </body>
 
 <script>
+    function speak() {
+        setTimeout(function () {
+            text = document.getElementById('questionText').textContent
+            const message = new SpeechSynthesisUtterance();
+            message.lang = "ru-RU";
+            message.text = text;
+
+            window.speechSynthesis.speak(message);
+        }, 1500)
+
+    }
+
     favoriteId = {{$question->favoriteId}}
 
 
         function load() {
             changeFavorite({{$question->isFavorite}})
+            speak()
         }
+
 
     function addFavorite() {
         changeFavorite(1)

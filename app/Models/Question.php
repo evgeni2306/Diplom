@@ -30,9 +30,19 @@ class Question extends Model
         return $questions;
     }
 
-    static function addOfferedQuestion(int $offerId):void
+    static function addOfferedQuestion(int $offerId): void
     {
         $offer = QuestionOffer::query()->find($offerId, ['creator_id', 'category_id', 'question', 'answer'])->toArray();
         Question::query()->create((array)$offer);
+    }
+
+
+
+    static function adminGetListSimiliar(int $id): Model
+    {
+        return self::query()
+            ->join('categories', 'categories.id', '=', 'questions.category_id')
+            ->select('question', 'categories.name')
+            ->where('questions.id', '=', $id)->first();
     }
 }

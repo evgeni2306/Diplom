@@ -24,8 +24,10 @@ Route::name('admin.')->group(function () {
     Route::post('login', [AuthorizationController::class, 'store'])->name('login');
 
     Route::middleware(['auth:admin','logoutUserType'])->group(function () {
-        Route::get('expansion', [QuestionOfferController::class, 'list'])->name('expansion');
+        Route::get('/test', [TestController::class, 'test']);
+        Route::get('/expansion', [QuestionOfferController::class, 'list'])->name('expansion');
         Route::get('/expansion/view={idd}', [QuestionOfferController::class, 'view'])->name('QuestionOfferView');
+        Route::get('/expansion/similiar={idd}', [QuestionOfferController::class, 'searchSimiliar'])->name('QuestionOfferSimiliar');
         Route::post('/expansion/add', [QuestionOfferController::class, 'save'])->name('questionOfferForm');
         Route::post('/expansion/refuse', [QuestionOfferController::class, 'refuse'])->name('questionOfferRefuse');
     });

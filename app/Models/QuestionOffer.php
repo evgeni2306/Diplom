@@ -108,5 +108,10 @@ class QuestionOffer extends Model
         $offer->update(['question'=>$question,'answer'=>$answer,'status'=>'Green']);
         $offer->save();
     }
+    static function adminGetQuestionOfferTextById(int $id): string
+    {
+        $text = self::query()->select('question')->where('id', '=', $id)->first();
+        return $text->question;
+    }
 
 }
