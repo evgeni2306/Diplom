@@ -42,11 +42,11 @@ class Question extends Model
 
 
 
-//    static function adminGetListSimiliar(int $id): Model
-//    {
-//        return self::query()
-//            ->join('categories', 'categories.id', '=', 'questions.category_id')
-//            ->select('question', 'categories.name')
-//            ->where('questions.id', '=', $id)->first();
-//    }
+    static function adminGetListSimiliar(int $id): Model
+    {
+        return self::query()
+            ->join('categories', 'categories.id', '=', 'questions.category_id')
+            ->select('question', 'categories.name')
+            ->where('questions.id', '=', $id)->first();
+    }
 }

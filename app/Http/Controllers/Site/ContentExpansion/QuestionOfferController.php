@@ -14,7 +14,7 @@ class QuestionOfferController extends Controller
 {
     public function create(): \Illuminate\Contracts\View\View
     {
-        $offers = QuestionOffer::getUsersQuestionOffers(Auth::user()->getAuthIdentifier());
+        $offers = QuestionOffer::getUsersVisibleQuestionOffers(Auth::user()->getAuthIdentifier());
         foreach ($offers as $offer) {
             $offer = $this->getStatus($offer);
         }
@@ -50,8 +50,7 @@ class QuestionOfferController extends Controller
 
     public function view(int $id): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        $userId = Auth::user()->getAuthIdentifier();
-        $questionOffer = QuestionOffer::getQuestionOfferById($id, $userId);
+        $questionOffer = QuestionOffer::query()->find($id);
         $questionOffer = $this->getStatus($questionOffer);
         if ($questionOffer === null) {
             return redirect()->back();
@@ -69,8 +68,7 @@ class QuestionOfferController extends Controller
     public function update(Request $request, int $id): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
         if ($request->method() === "GET") {
-            $userId = Auth::user()->getAuthIdentifier();
-            $questionOffer = QuestionOffer::getQuestionOfferById($id, $userId);
+            $questionOffer = QuestionOffer::query()->find($id);
             if ($questionOffer === null) {
                 return redirect()->back();
             }

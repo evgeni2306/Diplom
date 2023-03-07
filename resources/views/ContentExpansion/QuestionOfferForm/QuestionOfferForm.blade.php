@@ -34,7 +34,7 @@
         @if($questionOffer!==null)
             Изменение вопроса
             <form class="form" action="{{route("questionOfferUpdate",$questionOffer->id)}}" method="post">
-                <input class="form__input" required="true" list="brow" value="{{$questionOffer->name}}" id="test"
+                <input class="form__input" required="true" list="brow" value="{{$questionOffer->category->name}}" id="test"
                        name="category_id"
                        placeholder="Выберите категорию">
                 <datalist id="brow">

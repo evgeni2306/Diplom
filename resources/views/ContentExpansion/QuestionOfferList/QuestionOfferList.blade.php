@@ -23,7 +23,7 @@
         </div>
         @foreach($offers as $item)
             <div class="grid">
-                <div class="gridItem">{{$item->name}}</div>
+                <div class="gridItem">{{$item->category->name}}</div>
                 <div class="gridItem">{{$item->question}}</div>
                 <div class="gridItem {{$item->status}}">{{$item->statusName}}</div>
                 <div class="gridItem">

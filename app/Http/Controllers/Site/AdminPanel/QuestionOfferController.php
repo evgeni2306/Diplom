@@ -64,14 +64,15 @@ class QuestionOfferController extends Controller
 
     public function searchSimiliar(int $id): \Illuminate\Http\JsonResponse
     {
-        $str = QuestionOffer::adminGetQuestionOfferTextById($id);
+//        $str = QuestionOffer::adminGetQuestionOfferTextById($id);
+        $str = QuestionOffer::query()->find($id,'question')->first()->question;
         $collection = Question::query()->get()->all();
         //--Алгоритм поска  похожих предложений--
         $ids = $this->search($str, $collection);
         //--
         $similiar = [];
         foreach ($ids as $item)
-            $question = Question::query()->find($item);
+            $question = Question::adminGetListSimiliar($item);
         array_push($similiar, $question);
         return response()->json($similiar, 200, ['Content-Type' => 'array']);
     }

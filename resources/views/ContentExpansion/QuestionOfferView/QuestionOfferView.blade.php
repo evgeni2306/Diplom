@@ -16,7 +16,7 @@
     <div class="form__container">
         Система расширения контента
         <div class="grid">
-            <div class="gridItem">{{$questionOffer->name}}</div>
+            <div class="gridItem">{{$questionOffer->category->name}}</div>
             <div class="gridItem">{{$questionOffer->question}}</div>
             <div class="gridItem">{{$questionOffer->answer}}</div>
             <div class="gridItem {{$questionOffer->status}}">{{$questionOffer->statusName}}</div>

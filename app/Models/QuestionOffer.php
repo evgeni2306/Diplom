@@ -30,25 +30,12 @@ class QuestionOffer extends Model
         return $this->belongsTo(Category::class);
     }
 
-    static function getUsersQuestionOffers(int $userId): array
+    static function getUsersVisibleQuestionOffers(int $userId): array
     {
         return self::query()
-            ->join('categories', 'categories.id', '=', 'category_id')
             ->where('question_offers.creator_id', '=', $userId)
             ->where('visible', '=', 1)
-            ->select('question_offers.id', 'question', 'status', 'categories.name')
             ->get()->all();
-    }
-
-    static function getQuestionOfferById(int $offerId, int $userId): Model|null
-    {
-        return self::query()
-            ->join('categories', 'categories.id', '=', 'category_id')
-            ->where('question_offers.id', '=', $offerId)
-            ->where('question_offers.creator_id', '=', $userId)
-            ->where('visible', '=', 1)
-            ->select('question_offers.id', 'question', 'answer', 'comment', 'status', 'categories.name')
-            ->first();
     }
 
     static function deleteOfferById(int $offerId, int $userId): void
@@ -84,7 +71,7 @@ class QuestionOffer extends Model
         }
         return null;
     }
-    
+
     static function adminStatusRefuse(int $offerId, string $comment): void
     {
         $offer = QuestionOffer::query()->find($offerId);
