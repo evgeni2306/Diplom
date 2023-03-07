@@ -21,8 +21,12 @@ trait searchSimiliar
                     }
                 }
             }
-            $out[$row['id']] = $similar_counter * 100 / $count;
+            $percent = $similar_counter * 100 / $count;
+            if ($percent > 0) {
+                $out[$row['id']] = $percent;
+            }
         }
+
         arsort($out);
         $out = array_slice($out, 0, 10, true);
 //        $same = array_search(100,$out);
@@ -67,7 +71,7 @@ trait searchSimiliar
             'ко', 'кроме', 'между', 'на', 'над', 'о', 'об', 'обо',
             'от', 'ото', 'перед', 'передо', 'пред', 'предо', 'по', 'под',
             'подо', 'при', 'про', 'ради', 'с', 'со', 'сквозь', 'среди',
-            'у', 'через', 'но', 'или', 'по', 'что', 'такое', 'можно', 'как', 'ли','PHP'
+            'у', 'через', 'но', 'или', 'по', 'что', 'такое', 'можно', 'как', 'ли'
         );
 
         $words = array_diff($words, $array);

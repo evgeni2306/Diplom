@@ -5,7 +5,6 @@
     <title>Login</title>
     <link rel="stylesheet" href={{"/common/css/base.css"}}>
     <link rel="stylesheet" href={{"/Pages/AdminPanel/QuestionOfferView/styles.css"}}>
-    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 </head>
 <body>
 <div class="container">
@@ -103,25 +102,20 @@
         route = "{{route('admin.QuestionOfferSimiliar',$questionOffer->id)}}"
         vars = request(route)
         arr = []
-        for (i = 0; i < vars.length; i++) {
-            elem = '<div><h1>' + vars[i].name + '</h1><div>' + vars[i].question + '</div></div>';
-            op = document.createElement('div')
-            op.innerHTML = elem
-            arr.push(op)
+        if (vars.length > 0) {
+            for (i = 0; i < vars.length; i++) {
+                elem = '<div><h1>' + vars[i].name + '</h1><div>' + vars[i].question + '</div></div>';
+                op = document.createElement('div')
+                op.innerHTML = elem
+                arr.push(op)
+            }
+            const div = document.getElementById('similiar')
+            for (i = 0; i < arr.length; i++) {
+                div.append(arr[i])
+            }
         }
-        const div = document.getElementById('similiar')
-        for (i = 0; i < arr.length; i++) {
-            div.append(arr[i])
-        }
 
 
-        // html = $.parseHTML(elem);
-
-
-        // $('#similiar').append(elem)
-
-
-        console.log(vars)
     }
 
     function request(route) {
