@@ -15,8 +15,18 @@ class Category extends Model
         'creator_id',
 
     ];
-    static function getIdByName(string $name):Model
+
+    static function getIdByName(string $name): Model
     {
-        return self::query()->where('name','=',$name)->select('id')->first();
+        return self::query()->where('name', '=', $name)->select('id')->first();
+    }
+
+    public function questionOffers()
+    {
+        return $this->hasMany(QuestionOffer::class);
+    }
+    public function questions()
+    {
+        return $this->hasMany(Question::class);
     }
 }

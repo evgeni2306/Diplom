@@ -13,16 +13,17 @@ use App\Files\Helpers\searchSimiliar;
 class QuestionOfferController extends Controller
 {
     use searchSimiliar;
+
     public function list()
     {
-        $offers = QuestionOffer::adminOffersList();
+        $offers = QuestionOffer::query()->where('status','=','Yellow')->get()->all();
         return view('AdminPanel.QuestionOfferList.QuestionOfferList', ['offers' => $offers]);
     }
 
 
     public function view(int $id)
     {
-        $questionOffer = QuestionOffer::adminGetQuestionOfferById($id);
+        $questionOffer = QuestionOffer::query()->find($id);
         if ($questionOffer === null) {
             return redirect()->back();
         }
@@ -65,13 +66,13 @@ class QuestionOfferController extends Controller
     {
         $str = QuestionOffer::adminGetQuestionOfferTextById($id);
         $collection = Question::query()->get()->all();
-         $ids = $this->search($str, $collection);
-         $similiar = [];
-         foreach($ids as $item){
-             $question = Question::adminGetListSimiliar($item);
-             array_push($similiar,$question);
-
-         }
+        //--Алгоритм поска  похожих предложений--
+        $ids = $this->search($str, $collection);
+        //--
+        $similiar = [];
+        foreach ($ids as $item)
+            $question = Question::query()->find($item);
+        array_push($similiar, $question);
         return response()->json($similiar, 200, ['Content-Type' => 'array']);
     }
 }

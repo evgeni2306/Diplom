@@ -14,7 +14,8 @@
         <h1 class="register__title">Просмотр вопроса</h1>
         <form class="form" action="{{route("admin.questionOfferForm")}}" method="post">
             <input type="text" hidden class="comment__id__edit" name='id' value="{{$questionOffer->id}}">
-            <input readonly class="form__input" required="true" value="{{$questionOffer->name}}" list="brow"
+            <input readonly class="form__input" required="true" value="{{$questionOffer->category->name}}" list="brow"
+
                    name="category_id"
                    placeholder="Выберите категорию">
             <datalist id="brow">
