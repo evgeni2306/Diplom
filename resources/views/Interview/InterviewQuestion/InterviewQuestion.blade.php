@@ -44,7 +44,7 @@
                         <div id="nonFavorite" class="hidden">
                             <div class="question__top-favourites">
                                 <div class="question__top-favourites__icon">
-                                    <img src="{{"/Pages/Interview/InterviewQuestion/svg/emptyFavourites.svg"}}" alt=""/>
+                                    <img src="{{"/common/svg/emptyFavourites.svg"}}" alt="">
                                 </div>
                                 <button class="question__top-favourites__btn" onclick="addFavorite()">
                                     Добавить в избранное
@@ -54,7 +54,7 @@
                         <div id="Favorite" class="hidden">
                             <div class="question__top-favourites">
                                 <div class="question__top-favourites__icon">
-                                    <img src="{{"/Pages/Interview/InterviewQuestion/svg/fillFavourites.svg"}}" alt=""/>
+                                    <img src="{{"/common/svg/fillFavourites.svg"}}" alt="">
                                 </div>
                                 <button class="question__top-favourites__btn" onclick="deleteFavorite()">
                                     Добавлено в избранное
@@ -107,7 +107,7 @@
                     <div id="nonFavorite2" class="hidden">
                         <div class="question__top-favourites">
                             <div class="question__top-favourites__icon">
-                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/emptyFavourites.svg"}}" alt=""/>
+                                <img src="{{"/common/svg/emptyFavourites.svg"}}" alt="">
                             </div>
                             <button class="question__top-favourites__btn" onclick="addFavorite()">
                                 Добавить в избранное
@@ -117,7 +117,7 @@
                     <div id="Favorite2" class="hidden">
                         <div class="question__top-favourites">
                             <div class="question__top-favourites__icon">
-                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/fillFavourites.svg"}}" alt=""/>
+                                <img src="{{"/common/svg/fillFavourites.svg"}}" alt="">
                             </div>
                             <button class="question__top-favourites__btn" onclick="deleteFavorite()">
                                 Добавлено в избранное

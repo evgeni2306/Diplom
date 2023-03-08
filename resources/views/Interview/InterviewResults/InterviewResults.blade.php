@@ -51,7 +51,7 @@
                         <div id="nonFavorite" class="hidden">
                             <div class="results-page__question-top-favourites">
                                 <div class="results-page__question-top-favourites__icon">
-                                    <img src="{{"/Pages/Interview/InterviewResults/svg/emptyFavourites.svg"}}"
+                                    <img src="{{"/common/svg/emptyFavourites.svg"}}"
                                          alt="favourites" width="16px" height="15px"/>
                                 </div>
                                 <button class="results-page__question-top-favourites__btn"
@@ -63,7 +63,7 @@
                         <div id="Favorite" class="hidden">
                             <div class="results-page__question-top-favourites">
                                 <div class="results-page__question-top-favourites__icon">
-                                    <img src="{{"/Pages/Interview/InterviewResults/svg/fillFavourites.svg"}}"
+                                    <img src="{{"/common/svg/fillFavourites.svg"}}"
                                          alt="favourites" width="16px" height="15px"/>
                                 </div>
                                 <button class="results-page__question-top-favourites__btn"

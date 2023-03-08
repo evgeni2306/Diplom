@@ -27,4 +27,10 @@ class Profession extends Model
         return self::query()->where('id', $profId)->select('id', 'name')->get();
     }
 
+    static function getProfIdByName(string $profName): int
+    {
+        return self::query()->where('name', '=', $profName)->first()->id;
+
+    }
+
 }

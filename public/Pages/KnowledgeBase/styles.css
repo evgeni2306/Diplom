@@ -1,0 +1,142 @@
+
+html,
+body {
+    background-color: #f3f5f9;
+}
+
+.knowledge-base {
+    text-align: center;
+}
+
+.knowledge-base__title {
+    margin: 77px 0 20px;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.knowledge-base__subtitle {
+
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: #66676c;
+}
+
+
+.knowledge-base__link {
+    margin-left: 3px;
+    font-weight: 600;
+    color: #345ceb;
+    cursor: pointer;
+
+}
+
+.knowledge-base__link:hover {
+    text-decoration: underline;
+}
+
+.knowledge-base__container {
+    margin: 0 200px 60px;
+}
+
+.knowledge-base__professions {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 48px;
+    padding-bottom: 20px;
+    border-bottom: 1px solid #dfe1e8;
+}
+
+.knowledge-base__professions-found {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #989898;
+}
+
+
+.knowledge-base__questions {
+    margin: 20px 0px 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.knowledge-base__wrapper {
+    width: 49%;
+}
+
+.knowledge-base__question {
+    max-height: 120px;
+    padding: 25px;
+    text-align: left;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.knowledge-base__question:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.knowledge-base__question-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.knowledge-base__question-top-tag {
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
+}
+
+.knowledge-base__question-top-favourites {
+    display: flex;
+}
+
+.knowledge-base__question-top-favourites__icon {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    border-radius: 50%;
+    background: #e4e9ff;
+}
+
+.knowledge-base__question-top-favourites img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.knowledge-base__question-top-favourites__btn {
+    padding: 0;
+    margin-left: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    color: #345ceb;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+
+.knowledge-base__body {
+    font-weight: 600;
+    font-size: 18px;
+    line-height: 140%;
+}
+
+
+
+

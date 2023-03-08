@@ -8,14 +8,13 @@ use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Response;
 use Illuminate\Support\Facades\Validator;
-use Inertia\Inertia;
 
 class GetProfessionsController extends Controller
 {
-    public function create(Request $request): \Inertia\Response
+    public function create(Request $request)
     {
         $professions = Profession::all('id as profId', 'name');
-        return Inertia::render('KnowledgeBase/knowledgeBase', ['professions' => $professions]);
+        return view('KnowledgeBase.KnowledgeBase', ['professions' => $professions]);
 
     }
 }

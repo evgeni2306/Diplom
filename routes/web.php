@@ -66,8 +66,8 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
         Route::get('interview/new/direction/profession={idd}', [PreviewPageController::class, 'create'])->name('interviewPreview');
         Route::get('interview/start={idd}', [InterviewStartController::class, 'start'])->name('interviewStart');
 
-        Route::get('/knowledgebase/professions', [KB_GetProfessionsController::class, 'create'])->name('getProfessionsForKnowledgeBase');
-        Route::get('/knowledgebase/professions/questions={idd}', [KB_GetQuestionsController::class, 'getQuestionsForKnowledgeBase'])->name('getQuestionsForKnowledgeBase');
+        Route::get('/knowledgebase', [KB_GetProfessionsController::class, 'create'])->name('getProfessionsForKnowledgeBase');
+        Route::post('/knowledgebase/professions', [KB_GetQuestionsController::class, 'getQuestionsForKnowledgeBase'])->name('getQuestionsForKnowledgeBase');
 
         Route::get('/logout', function () {
 
