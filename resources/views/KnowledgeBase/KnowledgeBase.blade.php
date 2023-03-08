@@ -21,7 +21,7 @@
     <div class="knowledge-base__container">
         <div class="knowledge-base__professions">
             <div class="knowledge-base__professions-found">
-                <input class="" required="true" list="brow" value="" id="category"
+                <input class="" required list="brow" value="" id="category"
                        placeholder="Выберите категорию" onchange="changeProf()">
                 <datalist class="search-box" id="brow">
                     @foreach($professions as $item)
@@ -30,7 +30,7 @@
                 </datalist>
             </div>
         </div>
-        <div class="knowledge-base__questions" id = "questionBox">
+        <div class="knowledge-base__questions" id="questionBox">
 
             {{--            <div class="knowledge-base__question">--}}
             {{--                <div class="knowledge-base__question-top">--}}
@@ -63,40 +63,106 @@
 <script>
 
     function changeProf() {
-
+        questionBox = document.getElementById('questionBox')
+        while (questionBox.hasChildNodes()) {
+            questionBox.removeChild(questionBox.lastChild)
+        }
         category = document.getElementById('category').value;
         route = "{{route('getQuestionsForKnowledgeBase')}}"
-        item = 'profName=' + category+'&_token='+"{{@csrf_token()}}"
+        item = 'profName=' + category + '&_token=' + "{{@csrf_token()}}"
         questions = request(route, category)
         viewQuestions(questions)
 
     }
-    function viewQuestions(questions){
+
+    function viewQuestions(questions) {
         questionBox = document.getElementById('questionBox')
-        for(i =0;  i < questions.length; i++){
-            elem = divBuilder(questions[i])
+        for (i = 0; i < questions.length; i++) {
+            elem = divBuilder(questions[i], i)
             op = document.createElement('div')
-            op.className="knowledge-base__wrapper"
+            op.className = "knowledge-base__wrapper"
             op.innerHTML = elem
             questionBox.append(op)
         }
+        cards = document.getElementsByName("number")
+        for (i = 0; i < questions.length; i++) {
+            nonFavorite = cards[i].querySelector("#nonFavorite")
+            Favorite = cards[i].querySelector("#Favorite")
+            if (questions[i].isFavorite === 0) {
+                nonFavorite.classList.remove('hidden')
+            }
+            if (questions[i].isFavorite === 1) {
+                Favorite.classList.remove('hidden')
+            }
+        }
     }
-    function divBuilder(question){
-        element = '<div class="knowledge-base__question">'+
-        '<div class="knowledge-base__question-top">'+
-        '<div class="knowledge-base__question-top-tag">'+
-        question.category +
-        '</div>'+
-        '</div>'+
-        '<div class="knowledge-base__question__body">'+
+
+    function divBuilder(question, i) {
+        element = '<div class="knowledge-base__question" name="number">' +
+            '<div class="knowledge-base__question-top">' +
+            '<div class="knowledge-base__question-top-tag">' +
+            question.category +
+            '</div>' +
+            '<div id="isFavorite" class="hidden">' + question.isFavorite + '</div>' +
+            '<div id="favoriteId" class="hidden">' + question.favoriteId + '</div>' +
+            '<div id="questionId" class="hidden">' + question.questionId + '</div>' +
+
+            '<div id="nonFavorite" class="knowledge-base__question-top-favourites hidden">' +
+            '<button class="knowledge-base__question-top-favourites__btn" onclick="addFavorite(' + i + ')">' +
+            '<div class="knowledge-base__question-top-favourites__icon">' +
+            '<img src="{{"/common/svg/emptyFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
+            '</div>' +
+            '</button>' +
+            '</div>' +
+
+            '<div id="Favorite" class="knowledge-base__question-top-favourites hidden">' +
+            '<button class="knowledge-base__question-top-favourites__btn" onclick="deleteFavorite(' + i + ')">' +
+            '<div class="knowledge-base__question-top-favourites__icon">' +
+            '<img src="{{"/common/svg/fillFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
+            '</div>' +
+            '</button>' +
+            '</div>' +
+
+            '</div>' +
+            '<div class="knowledge-base__question__body">' +
             question.question
-        '</div>'+
+        '</div>' +
         '</div>'
         return element
     }
 
+    function addFavorite(id) {
+        element = document.getElementsByName("number")
+        questionId = element[id].querySelector("#questionId").textContent
+        let route = "{{route('questionFavoriteAdd',0)}}";
+        route = route.substring(0, route.length - 1) + questionId;
+        element[id].querySelector("#favoriteId").textContent = requestFavorite(route)
+        element[id].querySelector("#isFavorite").textContent = 1
+        element[id].querySelector("#nonFavorite").classList.add('hidden')
+        element[id].querySelector("#Favorite").classList.remove('hidden')
+    }
+
+    function deleteFavorite(id) {
+        element = document.getElementsByName("number")
+        favoriteId = element[id].querySelector("#favoriteId").textContent
+        let route = "{{route('questionFavoriteAdd',true)}}";
+        route = route.substring(0, route.length - 5) + "delete=" + favoriteId
+        requestFavorite(route)
+        element[id].querySelector("#favoriteId").textContent = 0
+        element[id].querySelector("#isFavorite").textContent = 0
+        element[id].querySelector("#nonFavorite").classList.remove('hidden')
+        element[id].querySelector("#Favorite").classList.add('hidden')
+    }
+
+    function requestFavorite(route) {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", route, false); // false for synchronous request
+        xmlHttp.send(null);
+        return xmlHttp.responseText;
+    }
+
     function request(route, category) {
-        item = 'profName=' + category+'&_token='+"{{@csrf_token()}}"
+        item = 'profName=' + category + '&_token=' + "{{@csrf_token()}}"
         var xmlHttp = new XMLHttpRequest();
         xmlHttp.open("POST", route, false);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')

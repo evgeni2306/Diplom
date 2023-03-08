@@ -123,12 +123,12 @@
 
     function deleteFavorite(id) {
         element = document.getElementsByName("number")
-        favoriteId = x[id].querySelector("#favoriteId").textContent
+        favoriteId = element[id].querySelector("#favoriteId").textContent
         let route = "{{route('questionFavoriteAdd',true)}}";
         route = route.substring(0, route.length - 5) + "delete=" + favoriteId
         requestFavorite(route)
-        x[id].querySelector("#favoriteId").textContent=0
-        x[id].querySelector("#isFavorite").textContent=0
+        element[id].querySelector("#favoriteId").textContent=0
+        element[id].querySelector("#isFavorite").textContent=0
         element[id].querySelector("#nonFavorite").classList.remove('hidden')
         element[id].querySelector("#Favorite").classList.add('hidden')
     }
