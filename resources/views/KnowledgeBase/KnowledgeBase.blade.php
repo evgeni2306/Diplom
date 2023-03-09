@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Knowledge Base</title>
-    <link rel="stylesheet" href={{"/common/css/base.css"}}>
-    <link rel="stylesheet" href={{"/Pages/Components/Header/styles.css"}}/>
-    <link rel="stylesheet" href={{"/Pages/KnowledgeBase/styles.css"}}/>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/KnowledgeBase/styles.css"}}"/>
 </head>
 <body>
 <!--------------HEADER-------------------->

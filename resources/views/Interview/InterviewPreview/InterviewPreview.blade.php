@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Interview Preview</title>
-    <link rel="stylesheet" href="/common/css/base.css">
-    <link rel="stylesheet" href="/Pages/Components/Header/styles.css"/>
-    <link rel="stylesheet" href="/Pages/Interview/InterviewPreview/styles.css"/>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/Interview/InterviewPreview/styles.css"}}"/>
 
 </head>
 <body>

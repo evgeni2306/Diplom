@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <title>Interview Directions</title>
-    <link rel="stylesheet" href="/common/css/base.css">
-    <link rel="stylesheet" href="/Pages/Components/Header/styles.css"/>
-    <link rel="stylesheet" href="/Pages/Interview/InterviewProfessions/styles.css"/>
-    <link rel="stylesheet" href="/Pages/Interview/common/InfoCard.css"/>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/Interview/InterviewProfessions/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/Interview/common/InfoCard.css"}}"/>
 </head>
 <body>
 <!--------------HEADER-------------------->

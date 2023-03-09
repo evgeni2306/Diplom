@@ -3,10 +3,10 @@
 <head>
     <meta charset="utf-8"/>
     <title></title>
-    <link rel="stylesheet" href="/common/css/base.css">
-    <link rel="stylesheet" href="/Pages/Components/Header/styles.css"/>
-    <link rel="stylesheet" href="/Pages/ContentExpansion/QuestionOfferList/styles.css"/>
-    <link rel="stylesheet" href="/Pages/ContentExpansion/common/styles.css"/>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/ContentExpansion/QuestionOfferList/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/ContentExpansion/common/styles.css"}}"/>
 </head>
 <body>
 <!--------------HEADER-------------------->

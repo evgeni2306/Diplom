@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>Login</title>
-    <link rel="stylesheet" href={{"/common/css/base.css"}}>
-    <link rel="stylesheet" href={{"/Pages/Auth/Common/styles.css"}}>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Auth/common/styles.css"}}">
 </head>
 <body>
 <div class="container">

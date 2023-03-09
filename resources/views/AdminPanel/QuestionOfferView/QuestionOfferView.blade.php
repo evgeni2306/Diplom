@@ -3,8 +3,8 @@
 <head>
     <meta charset="utf-8"/>
     <title>Login</title>
-    <link rel="stylesheet" href={{"/common/css/base.css"}}>
-    <link rel="stylesheet" href={{"/Pages/AdminPanel/QuestionOfferView/styles.css"}}>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/AdminPanel/QuestionOfferView/styles.css"}}">
 </head>
 <body>
 <div class="container">

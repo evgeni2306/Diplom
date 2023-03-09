@@ -3,9 +3,9 @@
 <head>
     <meta charset="utf-8"/>
     <title>Interview Results</title>
-    <link rel="stylesheet" href={{"/common/css/base.css"}}>
-    <link rel="stylesheet" href={{"/Pages/Components/Header/styles.css"}}/>
-    <link rel="stylesheet" href={{"/Pages/Interview/InterviewResults/styles.css"}}/>
+    <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/Interview/InterviewResults/styles.css"}}"/>
 </head>
 <body onLoad="load()">
 <!--------------HEADER-------------------->
