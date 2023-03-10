@@ -14,6 +14,7 @@ return new class extends Migration {
             $table->foreignId('interview_id')->constrained('interviews');
             $table->foreignId('question_id')->constrained('questions');
             $table->boolean('status')->nullable(true);
+            $table->mediumText('answer')->nullable(true);;
             $table->timestamps();
         });
     }

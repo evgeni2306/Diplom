@@ -16,12 +16,16 @@ class Question extends Model
         'creator_id',
         'question',
         'answer',
+        'user_mark'
 
     ];
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+    protected $attributes = [
+        'user_mark' => false,
+    ];
 
     static function getQuestionsByProfId(int $id): Collection
     {

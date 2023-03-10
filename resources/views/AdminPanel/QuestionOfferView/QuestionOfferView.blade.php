@@ -13,16 +13,16 @@
         <h1 class="register__title">Просмотр вопроса</h1>
         <form class="form" action="{{route("admin.questionOfferForm")}}" method="post">
             <input type="text" hidden class="comment__id__edit" name='id' value="{{$questionOffer->id}}">
-            <input readonly class="form__input" required="true" value="{{$questionOffer->category->name}}" list="brow"
+            <input readonly class="form__input" required value="{{$questionOffer->category->name}}" list="brow"
 
                    name="category_id"
                    placeholder="Выберите категорию">
             <datalist id="brow">
                 <option value="{{$questionOffer->name}}">
             </datalist>
-            <input readonly id='questionInput' class="form__input" required="true" type="text"
+            <input readonly id='questionInput' class="form__input" required type="text"
                    value="{{$questionOffer->question}}" name="question" placeholder="Вопрос">
-            <input readonly id='answerInput' class="form__input" required="true" type="text"
+            <input readonly id='answerInput' class="form__input" required type="text"
                    value="{{$questionOffer->answer}}"
                    name="answer" placeholder="Ответ">
 

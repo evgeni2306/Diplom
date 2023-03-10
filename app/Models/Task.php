@@ -13,10 +13,12 @@ class Task extends Model
     protected $fillable = [
         'question_id',
         'interview_id',
-        'status'
+        'status',
+        'answer'
     ];
     protected $attributes = [
         'status' => null,
+        'answer'=>null
     ];
 
     public function interview()
@@ -28,7 +30,7 @@ class Task extends Model
     {
         $task = Task::query()->join('questions', 'question_id', '=', 'questions.id')
             ->join('categories', 'questions.category_id', '=', 'categories.id')
-            ->select('tasks.id as taskId', 'questions.question', 'tasks.id as favoriteId', 'tasks.id as isFavorite', 'answer', 'categories.name as category', 'question_id as questionId')
+            ->select('tasks.id as taskId', 'questions.question', 'tasks.id as favoriteId', 'tasks.id as isFavorite', 'questions.answer', 'categories.name as category', 'question_id as questionId')
             ->where('interview_id', '=', $interviewId)
             ->where('status', '=', null)
             ->first();

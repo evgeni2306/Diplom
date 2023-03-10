@@ -15,6 +15,7 @@ return new class extends Migration {
             $table->foreignId('category_id')->constrained('categories');
             $table->mediumText('question');
             $table->mediumText('answer');
+            $table->boolean('user_mark');
             $table->timestamps();
         });
     }
