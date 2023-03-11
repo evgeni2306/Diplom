@@ -35,9 +35,6 @@ body {
     margin-bottom: 32px;
 }
 
-.form {
-    width: 100%;
-}
 .form__container {
     width: 600px;
     margin: 45px auto 110px;
@@ -47,75 +44,6 @@ body {
     align-items: center;
     background-color: #fff;
     border-radius: 8px;
-}
-
-.form__names{
-    width: 100%;
-    display: flex;
-}
-
-.form__input {
-    height: 44px;
-    width: 100%;
-    margin-bottom: 12px;
-    padding: 12px 16px;
-    border: 1px solid #dfe1e8;
-    border-radius: 3px;
-}
-
-
-form:focus {
-    border: 1px solid #345ceb;
-}
-
-.form__error {
-    padding: 11px 15px;
-    color: #f8222f;
-    border-radius: 3px;
-    border: 1px solid #f8222f;
-}
-
-
-.name {
-    width: 100%;
-    margin-right: 12px;
-}
-
-.surname {
-    width: 100%;
-}
-
-.primary-button {
-    width: 100%;
-}
-
-.register__to-auth {
-    margin-top: 24px;
-}
-.register__to-auth_link{
-    font-weight: 700;
-    color: #345ceb;
-}
-.register__to-auth_link:hover{
-    text-decoration: underline;
-}
-
-.primary-button {
-    padding: 15px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 120%;
-    background: #345ceb;
-    border-radius: 3px;
-    border: none;
-    transition: all 0.3s ease;
-}
-.primary-button:hover{
-    background: #2a51db;
-}
-.primary-button:active{
-    background: #254bd1;
 }
 
 svg,img{
@@ -136,15 +64,6 @@ svg,img{
     color: #d4d3d3;
 }
 .viewButton:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
-.hideButton {
-    background: red;
-    text-decoration: none;
-    color: #d4d3d3;
-}
-.hideButton:hover {
     color: #ffffff;
     text-decoration: none;
 }

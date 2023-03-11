@@ -95,10 +95,10 @@
 
 
     function load() {
-        x = document.getElementsByName("number")
+         const x = document.getElementsByName("number")
         @for($i=0; $i<count($results->wrongQuestions);$i++)
-            nonFavorite = x[{{$i}}].querySelector("#nonFavorite")
-        Favorite = x[{{$i}}].querySelector("#Favorite")
+        const nonFavorite = x[{{$i}}].querySelector("#nonFavorite")
+        const Favorite = x[{{$i}}].querySelector("#Favorite")
         if ({{$results->wrongQuestions[$i]->isFavorite}}==0)
         {
             nonFavorite.classList.remove('hidden')
@@ -111,8 +111,8 @@
     }
 
     function addFavorite(id) {
-        element = document.getElementsByName("number")
-        questionId = element[id].querySelector("#questionId").textContent
+        const element = document.getElementsByName("number");
+        const questionId = element[id].querySelector("#questionId").textContent;
         let route = "{{route('questionFavoriteAdd',0)}}";
         route = route.substring(0, route.length - 1) + questionId;
         element[id].querySelector("#favoriteId").textContent = requestFavorite(route)
@@ -122,19 +122,19 @@
     }
 
     function deleteFavorite(id) {
-        element = document.getElementsByName("number")
-        favoriteId = element[id].querySelector("#favoriteId").textContent
+        const element = document.getElementsByName("number");
+        const favoriteId = element[id].querySelector("#favoriteId").textContent;
         let route = "{{route('questionFavoriteAdd',true)}}";
         route = route.substring(0, route.length - 5) + "delete=" + favoriteId
         requestFavorite(route)
-        element[id].querySelector("#favoriteId").textContent=0
-        element[id].querySelector("#isFavorite").textContent=0
+        element[id].querySelector("#favoriteId").textContent = 0
+        element[id].querySelector("#isFavorite").textContent = 0
         element[id].querySelector("#nonFavorite").classList.remove('hidden')
         element[id].querySelector("#Favorite").classList.add('hidden')
     }
 
     function requestFavorite(route) {
-        var xmlHttp = new XMLHttpRequest();
+        const xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", route, false); // false for synchronous request
         xmlHttp.send(null);
         return xmlHttp.responseText;

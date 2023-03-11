@@ -16,7 +16,7 @@
     </div>
     <div class="form__container">
         <h1 class="register__title">Админ-панель</h1>
-        <form  class="form" action="{{route("admin.login")}}" method="post">
+        <form class="form" action="{{route("admin.login")}}" method="post">
             <input class="form__input" type="text" name="login" placeholder="Логин">
             <input class="form__input" type="password" name="password" placeholder="Пароль">
 
@@ -30,7 +30,7 @@
             {{--                message={errors.password}--}}
             {{--                className="form__error"--}}
             {{--            />--}}
-            <input type="submit"  class="primary-button" value="Войти">
+            <input type="submit" class="primary-button" value="Войти">
             @csrf
         </form>
 

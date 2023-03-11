@@ -7,27 +7,6 @@ body {
     overflow-y: hidden;
 }
 
-.logo-register {
-    margin-top: 130px;
-    font-weight: 900;
-    font-size: 28px;
-    line-height: 32px;
-}
-.logo-register__wrapper {
-    display: flex;
-    justify-content: center;
-    align-items: center;
-}
-.logo-register__icon {
-    margin-right: 7px;
-}
-.logo-register__name{
-    background: linear-gradient(90.15deg, #5f82ff 0.13%, #00e6e6 99.89%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
-}
-
-
 .register__title {
     font-weight: 700;
     font-size: 28px;
@@ -38,6 +17,7 @@ body {
 .form {
     width: 100%;
 }
+
 .form__container {
     width: 600px;
     margin: 45px auto 110px;
@@ -49,10 +29,6 @@ body {
     border-radius: 8px;
 }
 
-.form__names{
-    width: 100%;
-    display: flex;
-}
 
 .form__input {
     height: 44px;
@@ -68,86 +44,12 @@ form:focus {
     border: 1px solid #345ceb;
 }
 
-.form__error {
-    padding: 11px 15px;
-    color: #f8222f;
-    border-radius: 3px;
-    border: 1px solid #f8222f;
-}
 
-
-.name {
-    width: 100%;
-    margin-right: 12px;
-}
-
-.surname {
-    width: 100%;
-}
-
-.primary-button {
-    width: 100%;
-}
-
-.register__to-auth {
-    margin-top: 24px;
-}
-.register__to-auth_link{
-    font-weight: 700;
-    color: #345ceb;
-}
-.register__to-auth_link:hover{
-    text-decoration: underline;
-}
-
-.primary-button {
-    padding: 15px;
-    color: #fff;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 120%;
-    background: #345ceb;
-    border-radius: 3px;
-    border: none;
-    transition: all 0.3s ease;
-}
-.primary-button:hover{
-    background: #2a51db;
-}
-.primary-button:active{
-    background: #254bd1;
-}
-
-svg,img{
+svg, img {
     margin-right: 10px;
     vertical-align: middle;
 }
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-}
 
-.gridItem {
-    border: 1px solid #989a9b;
-}
-.viewButton {
-    background: green;
-    text-decoration: none;
-    color: #d4d3d3;
-}
-.viewButton:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
-.hideButton {
-    background: red;
-    text-decoration: none;
-    color: #d4d3d3;
-}
-.hideButton:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
 .modal {
     position: fixed;
     z-index: 8;
@@ -163,11 +65,12 @@ svg,img{
     transform: scale(0);
     transition: all 0.2s;
 }
+
 .edit-popup {
     position: relative;
     width: 640px;
     background: #ffffff;
-    box-shadow: 0px 3px 10px rgba(0, 0, 0, 0.1);
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
     padding: 40px;
     margin: auto;
@@ -175,23 +78,28 @@ svg,img{
     transform: scale(0);
     transition: all 0.2s;
 }
+
 .is-open {
     opacity: 1;
     transform: scale(1);
 }
+
 .edit-popup__close {
     position: absolute;
     top: 2%;
     right: 2%;
 }
+
 .edit-popup__close:hover {
     cursor: pointer;
 }
+
 .edit-popup__title {
     width: 100%;
     text-align: center;
     margin-bottom: 32px;
 }
+
 .comment__text-edit {
     border: 1px solid #d3d5da;
     border-radius: 7px;
@@ -199,25 +107,14 @@ svg,img{
     height: 200px;
     color: #000;
 }
+
 .edit-buttons {
     display: flex;
     width: 50%;
     margin-left: auto;
     margin-top: 40px;
 }
-.edit__cancel {
-    border: 1px solid #27ae60;
-    color: #27ae60;
-    font-size: 16px;
-    font-weight: 500;
-}
-.edit__cancel:hover {
-    cursor: pointer;
-    background: #239452;
-    border: 1px solid #239452;
-    color: #fff;
-    font-size: 16px;
-}
+
 .edit__save {
     background: #27ae60;
     border: 1px solid #27ae60;
@@ -226,6 +123,7 @@ svg,img{
     font-weight: 500;
     margin-left: 20px;
 }
+
 .edit__save:hover {
     cursor: pointer;
     background: #239452;

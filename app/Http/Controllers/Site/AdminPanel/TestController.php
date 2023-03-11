@@ -13,7 +13,7 @@ class TestController extends Controller
     public function test()
     {
 $offer = Question::query()->find(8);
-dd($offer->category->name);
+dd($offer->user_mark);
     }
 
 

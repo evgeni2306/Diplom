@@ -30,7 +30,7 @@
                     <a class="viewButton" href="{{route('questionOfferView',$item->id)}}">См</a>
                     @if($item->status == "Green")
                         <a class="hideButton" href="{{route('questionOfferVisible',$item->id)}}">Скр</a></div>
-                    @endif
+                @endif
             </div>
         @endforeach
         <a href="{{route('questionOfferForm')}}">Добавить вопрос</a>

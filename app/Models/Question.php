@@ -19,10 +19,12 @@ class Question extends Model
         'user_mark'
 
     ];
+
     public function category()
     {
         return $this->belongsTo(Category::class);
     }
+
     protected $attributes = [
         'user_mark' => false,
     ];
@@ -41,9 +43,9 @@ class Question extends Model
     static function addOfferedQuestion(int $offerId): void
     {
         $offer = QuestionOffer::query()->find($offerId, ['creator_id', 'category_id', 'question', 'answer'])->toArray();
+        $offer['user_mark'] = 1;
         Question::query()->create((array)$offer);
     }
-
 
 
     static function adminGetListSimiliar(int $id): Model

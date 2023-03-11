@@ -16,7 +16,6 @@ body {
 }
 
 .knowledge-base__subtitle {
-
     margin-bottom: 20px;
     font-weight: 400;
     font-size: 15px;
@@ -59,15 +58,12 @@ body {
 
 
 .knowledge-base__questions {
-    margin: 20px 0px 40px;
+    margin: 20px 0 40px;
     display: flex;
     flex-wrap: wrap;
     gap: 16px;
 }
 
-.knowledge-base__wrapper {
-    width: 49%;
-}
 
 .knowledge-base__question {
     max-height: 120px;
@@ -130,13 +126,7 @@ body {
     cursor: pointer;
 }
 
-
-.knowledge-base__body {
-    font-weight: 600;
-    font-size: 18px;
-    line-height: 140%;
-}
-.hidden{
+.hidden {
     display: none;
 }
 

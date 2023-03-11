@@ -76,18 +76,8 @@ form:focus {
 }
 
 
-.name {
-    width: 100%;
-    margin-right: 12px;
-}
 
-.surname {
-    width: 100%;
-}
 
-.primary-button {
-    width: 100%;
-}
 
 .register__to-auth {
     margin-top: 24px;
@@ -101,6 +91,8 @@ form:focus {
 }
 
 .primary-button {
+    cursor:pointer;
+    width: 100%;
     padding: 15px;
     color: #fff;
     font-weight: 700;

@@ -27,9 +27,10 @@
                 <div class="gridItem">{{$item->question}}</div>
                 <div class="gridItem">
                     <a class="viewButton" href="{{route('admin.QuestionOfferView',$item->id)}}">См</a>
-            </div>
-        @endforeach
+                </div>
+                @endforeach
 
+            </div>
     </div>
 </div>
 </body>

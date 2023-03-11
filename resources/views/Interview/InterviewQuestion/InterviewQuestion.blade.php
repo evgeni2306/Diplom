@@ -69,7 +69,7 @@
                     </button>
                 </div>
                 <div class="userAnswerField__block hidden">
-                    <textarea class="userAnswerField" id="userAnswerField" value=" " readonly></textarea>
+                    <textarea class="userAnswerField" id="userAnswerField"  readonly></textarea>
                 </div>
                 <div id='showRightAnswer' class="hidden">
                     <div class="rightAnswer">
@@ -115,9 +115,14 @@
 
 <script>
     favoriteId = {{$question->favoriteId}}
+        function load() {
+            changeFavorite({{$question->isFavorite}})
+            speak()
+        }
+
         function speak() {
             setTimeout(function () {
-                text = document.getElementById('questionText').textContent
+                const text = document.getElementById('questionText').textContent;
                 const message = new SpeechSynthesisUtterance();
                 message.lang = "ru-RU";
                 message.text = text;
@@ -139,8 +144,7 @@
     recognition.onresult = (e) => {
         let i = e.results.length - 1
         if (e.results[i].isFinal) {
-            let last_text = e.results[i][0].transcript.trim()
-            document.getElementById('userAnswerField').value = last_text;
+            document.getElementById('userAnswerField').value = e.results[i][0].transcript.trim();
         }
 
     }
@@ -160,19 +164,14 @@
     }
 
     function saveAnswer() {
-        answer = document.getElementById('userAnswerField').value
-        route="{{route('recordAnswer')}}"
-        data = 'answer=' + answer + '&_token=' + "{{@csrf_token()}}"
-
-        req = requestSaveAnswer(route,data)
-        console.log(req)
+        const answer = document.getElementById('userAnswerField').value;
+        const route = "{{route('recordAnswer')}}";
+        const data = 'answer=' + answer + '&_token=' + "{{@csrf_token()}}";
+        requestSaveAnswer(route, data);
     }
 
 
-    function load() {
-        changeFavorite({{$question->isFavorite}})
-        speak()
-    }
+
 
 
     function addFavorite() {
@@ -189,22 +188,19 @@
         favoriteId = requestFavorite(route)
     }
 
-    function requestSaveAnswer(route,data)
-    {
-        var xmlHttp = new XMLHttpRequest();
+    function requestSaveAnswer(route, data) {
+        const xmlHttp = new XMLHttpRequest();
         xmlHttp.open("POST", route, false);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         xmlHttp.send(data)
-        result = JSON.parse(xmlHttp.responseText)
-        return result;
+        return JSON.parse(xmlHttp.responseText)
     }
 
     function requestFavorite(route) {
-        var xmlHttp = new XMLHttpRequest();
+        const xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", route, false); // false for synchronous request
         xmlHttp.send(null);
-        answer = JSON.parse(xmlHttp.responseText)
-        return answer;
+        return JSON.parse(xmlHttp.responseText)
     }
 
     function changeFavorite(favorite) {

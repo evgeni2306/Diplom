@@ -31,58 +31,30 @@
             </div>
         </div>
         <div class="knowledge-base__questions" id="questionBox">
-
-            {{--            <div class="knowledge-base__question">--}}
-            {{--                <div class="knowledge-base__question-top">--}}
-            {{--                    <div class="knowledge-base__question-top-tag">--}}
-            {{--                        {{$question.category}}--}}
-            {{--                    </div>--}}
-            {{--                    <div class="knowledge-base__question-top-favourites">--}}
-            {{--                        <button class="knowledge-base__question-top-favourites__btn">--}}
-            {{--                        <div class="knowledge-base__question-top-favourites__icon">--}}
-            {{--                            <img src="{{"/common/svg/emptyFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>--}}
-            {{--                        </div>--}}
-            {{--                        </button>--}}
-            {{--                    </div>--}}
-            {{--                    <div class="knowledge-base__question-top-favourites">--}}
-            {{--                        <button class="knowledge-base__question-top-favourites__btn">--}}
-            {{--                        <div class="knowledge-base__question-top-favourites__icon">--}}
-            {{--                            <img src="{{"/common/svg/fillFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>--}}
-            {{--                        </div>--}}
-            {{--                        </button>--}}
-            {{--                    </div>--}}
-            {{--                </div>--}}
-            {{--                <div class="knowledge-base__question__body">--}}
-            {{--                </div>--}}
-            {{--            </div>--}}
         </div>
     </div>
-</div>
 </div>
 </body>
 <script>
 
     function changeProf() {
-        questionBox = document.getElementById('questionBox')
+        const questionBox = document.getElementById('questionBox');
         while (questionBox.hasChildNodes()) {
             questionBox.removeChild(questionBox.lastChild)
         }
-        category = document.getElementById('category').value;
-        route = "{{route('getQuestionsForKnowledgeBase')}}"
-        item = 'profName=' + category + '&_token=' + "{{@csrf_token()}}"
-        questions = request(route, category)
+        const category = document.getElementById('category').value;
+        const route = "{{route('getQuestionsForKnowledgeBase')}}";
+        const questions = request(route, category);
         viewQuestions(questions)
 
     }
 
     function viewQuestions(questions) {
-        questionBox = document.getElementById('questionBox')
         for (i = 0; i < questions.length; i++) {
-            elem = divBuilder(questions[i], i)
             op = document.createElement('div')
             op.className = "knowledge-base__wrapper"
-            op.innerHTML = elem
-            questionBox.append(op)
+            op.innerHTML = divBuilder(questions[i], i)
+            document.getElementById('questionBox').append(op)
         }
         cards = document.getElementsByName("number")
         for (i = 0; i < questions.length; i++) {
@@ -98,7 +70,7 @@
     }
 
     function divBuilder(question, i) {
-        element = '<div class="knowledge-base__question" name="number">' +
+        const element = '<div class="knowledge-base__question" name="number">' +
             '<div class="knowledge-base__question-top">' +
             '<div class="knowledge-base__question-top-tag">' +
             question.category +
@@ -125,15 +97,15 @@
 
             '</div>' +
             '<div class="knowledge-base__question__body">' +
-            question.question
+            question.question;
         '</div>' +
         '</div>'
         return element
     }
 
     function addFavorite(id) {
-        element = document.getElementsByName("number")
-        questionId = element[id].querySelector("#questionId").textContent
+        const element = document.getElementsByName("number");
+        const questionId = element[id].querySelector("#questionId").textContent;
         let route = "{{route('questionFavoriteAdd',0)}}";
         route = route.substring(0, route.length - 1) + questionId;
         element[id].querySelector("#favoriteId").textContent = requestFavorite(route)
@@ -143,8 +115,8 @@
     }
 
     function deleteFavorite(id) {
-        element = document.getElementsByName("number")
-        favoriteId = element[id].querySelector("#favoriteId").textContent
+        const element = document.getElementsByName("number");
+        const favoriteId = element[id].querySelector("#favoriteId").textContent;
         let route = "{{route('questionFavoriteAdd',true)}}";
         route = route.substring(0, route.length - 5) + "delete=" + favoriteId
         requestFavorite(route)
@@ -155,20 +127,19 @@
     }
 
     function requestFavorite(route) {
-        var xmlHttp = new XMLHttpRequest();
+        const xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", route, false); // false for synchronous request
         xmlHttp.send(null);
         return xmlHttp.responseText;
     }
 
     function request(route, category) {
-        item = 'profName=' + category + '&_token=' + "{{@csrf_token()}}"
-        var xmlHttp = new XMLHttpRequest();
+        const item = 'profName=' + category + '&_token=' + "{{@csrf_token()}}";
+        const xmlHttp = new XMLHttpRequest();
         xmlHttp.open("POST", route, false);
         xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
         xmlHttp.send(item)
-        answer = JSON.parse(xmlHttp.responseText)
-        return answer;
+        return JSON.parse(xmlHttp.responseText)
     }
 </script>
 </html>

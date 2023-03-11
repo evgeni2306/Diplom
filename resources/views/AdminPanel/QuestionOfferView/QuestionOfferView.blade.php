@@ -12,7 +12,7 @@
     <div class="form__container">
         <h1 class="register__title">Просмотр вопроса</h1>
         <form class="form" action="{{route("admin.questionOfferForm")}}" method="post">
-            <input type="text" hidden class="comment__id__edit" name='id' value="{{$questionOffer->id}}">
+            <input type="text" hidden name='id' value="{{$questionOffer->id}}">
             <input readonly class="form__input" required value="{{$questionOffer->category->name}}" list="brow"
 
                    name="category_id"
@@ -62,21 +62,22 @@
 <script>
     let modal = document.querySelector('.modal');
     let editPopup = document.querySelector('.edit-popup');
-    function openPopup(){
-        modal.classList.toggle('is-open');
-        editPopup.classList.toggle('is-open');
-    }
-    function closePopup(){
+
+    function openPopup() {
         modal.classList.toggle('is-open');
         editPopup.classList.toggle('is-open');
     }
 
+    function closePopup() {
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
+    }
 
 
     function change() {
-        questionInput = document.getElementById('questionInput')
-        answerInput = document.getElementById('answerInput')
-        changeable = document.getElementById('changeable');
+        const questionInput = document.getElementById('questionInput');
+        const answerInput = document.getElementById('answerInput');
+        const changeable = document.getElementById('changeable');
         if (changeable.checked === true) {
             questionInput.removeAttribute('readonly')
             answerInput.removeAttribute('readonly')
@@ -87,12 +88,13 @@
     }
 
     function checkSimiliar() {
-        route = "{{route('admin.QuestionOfferSimiliar',$questionOffer->id)}}"
-        vars = request(route)
-        arr = []
+        const route = "{{route('admin.QuestionOfferSimiliar',$questionOffer->id)}}";
+        const vars = request(route);
+        const arr = [];
         if (vars.length > 0) {
+            let i;
             for (i = 0; i < vars.length; i++) {
-                elem = '<div><h1>' + vars[i].name + '</h1><div>' + vars[i].question + '</div></div>';
+                let elem = '<div><h1>' + vars[i].name + '</h1><div>' + vars[i].question + '</div></div>';
                 op = document.createElement('div')
                 op.innerHTML = elem
                 arr.push(op)
@@ -107,11 +109,10 @@
     }
 
     function request(route) {
-        var xmlHttp = new XMLHttpRequest();
+        const xmlHttp = new XMLHttpRequest();
         xmlHttp.open("GET", route, false); // false for synchronous request
         xmlHttp.send(null);
-        answer = JSON.parse(xmlHttp.responseText)
-        return answer;
+        return JSON.parse(xmlHttp.responseText)
     }
 </script>
 </html>

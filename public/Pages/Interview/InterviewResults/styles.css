@@ -29,7 +29,7 @@ body {
 .results-page__progress {
     padding: 24px 40px;
     background: #345ceb;
-    box-shadow: 0px 8px 40px rgba(4, 17, 63, 0.05);
+    box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
     border-radius: 8px;
 }
 

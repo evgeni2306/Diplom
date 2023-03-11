@@ -74,33 +74,8 @@ form:focus {
     border-radius: 3px;
     border: 1px solid #f8222f;
 }
-
-
-.name {
-    width: 100%;
-    margin-right: 12px;
-}
-
-.surname {
-    width: 100%;
-}
-
 .primary-button {
     width: 100%;
-}
-
-.register__to-auth {
-    margin-top: 24px;
-}
-.register__to-auth_link{
-    font-weight: 700;
-    color: #345ceb;
-}
-.register__to-auth_link:hover{
-    text-decoration: underline;
-}
-
-.primary-button {
     padding: 15px;
     color: #fff;
     font-weight: 700;
