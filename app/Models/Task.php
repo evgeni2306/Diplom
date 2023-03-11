@@ -18,10 +18,10 @@ class Task extends Model
     ];
     protected $attributes = [
         'status' => null,
-        'answer'=>null
+        'answer' => null
     ];
 
-    public function interview()
+    public function interview(): \Illuminate\Database\Eloquent\Relations\BelongsTo
     {
         return $this->belongsTo(Interview::class);
     }
@@ -60,7 +60,7 @@ class Task extends Model
         }
     }
 
-    static function answerTask(int $taskId, bool $answer)
+    static function answerTask(int $taskId, bool $answer): bool
     {
         $task = self::query()->find($taskId);
         if ($task->status == null) {
@@ -69,5 +69,12 @@ class Task extends Model
             return true;
         }
         return false;
+    }
+
+    static function recordAnswer(int $taskId, string $answer)
+    {
+        $task = self::query()->find($taskId);
+        $task->answer=$answer;
+        $task->save();
     }
 }

@@ -20,7 +20,8 @@ class RegistrationController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $validator = Validator::make($request->all(), [
+        $fields = $request->all();
+        $validator = Validator::make($fields, [
             'name' => 'required|string|max:255',
             'surname' => 'required|string|max:255',
             'login' => 'required|string|max:255|unique:users,login',
@@ -32,7 +33,7 @@ class RegistrationController extends Controller
                 'login' => 'Выбранный вами логин уже кем-то занят'
             ])->withInput();
         }
-        $fields = $request->all();
+
         $fields['key'] = time();
         $user = User::query()->create($fields);
         if ($user) {

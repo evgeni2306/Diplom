@@ -16,12 +16,11 @@ class AuthorizationController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
     {
-        $validator = Validator::make($request->all(), [
+        $fields = $request->all('login', 'password');
+        $validator = Validator::make($fields, [
             'login' => 'required|string|max:255|exists:admin_users,login',
             'password' => 'required|string',
         ]);
-
-        $fields = $request->all('login', 'password');
         if (Auth::guard('admin')->attempt($fields)) {
             return redirect(route('admin.expansion'));
         }

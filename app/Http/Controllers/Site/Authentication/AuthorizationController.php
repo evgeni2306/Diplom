@@ -18,7 +18,8 @@ class AuthorizationController extends Controller
 
     public function store(Request $request): \Illuminate\Http\RedirectResponse
     {
-        $validator = Validator::make($request->all(), [
+        $fields = $request->all('login', 'password');
+        $validator = Validator::make($fields, [
             'login' => 'required|string|max:255|exists:users,login',
             'password' => 'required|string',
         ]);
@@ -28,7 +29,6 @@ class AuthorizationController extends Controller
                 'login' => 'Не удалось авторизоваться, проверьте правильность вводимых данных'
             ])->withInput();
         }
-        $fields = $request->all('login', 'password');
         if (Auth::guard('web')->attempt($fields)) {
             return redirect(\route(RouteServiceProvider::USERHOME));
         }

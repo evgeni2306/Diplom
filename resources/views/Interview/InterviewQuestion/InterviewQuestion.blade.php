@@ -69,56 +69,45 @@
                     </button>
                 </div>
                 <div class="userAnswerField__block hidden">
-                    <textarea class="userAnswerField" id="userAnswerField"></textarea>
+                    <textarea class="userAnswerField" id="userAnswerField" value=" " readonly></textarea>
                 </div>
-                <div class="rightAnswer hidden" >
-                    {{$question->answer}}
+                <div id='showRightAnswer' class="hidden">
+                    <div class="rightAnswer">
+                        {{$question->answer}}
+                    </div>
+                    <div class="nextQuestionButton">
+                        <button class='primary-button' onclick="openAnswerPopup()">
+                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/arrow.svg"}}" alt=""/>
+                            Перейти далее
+                        </button>
+                    </div>
                 </div>
+
             </div>
 
 
-
-
-{{--                <div id="endQuestion" class='hidden'>--}}
-{{--                    <div class="question-page__container">--}}
-{{--                        <div class="show-answer">--}}
-{{--                            <div id="nextQuestion" class='hidden'>--}}
-{{--                                <div class="show-answer__correct-block">--}}
-{{--                                    <div class="show-answer__correct-block__title">--}}
-{{--                                        Готовы к следующему вопросу?--}}
-{{--                                    </div>--}}
-{{--                                    <div class="show-answer__correct-block__buttons">--}}
-{{--                                        <a href={{route("interviewQuestion")}}>--}}
-{{--                                            <button class='primary-button'>--}}
-{{--                                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/arrow.svg"}}" alt=""/>--}}
-{{--                                                Перейти далее--}}
-{{--                                            </button>--}}
-{{--                                        </a>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-
-{{--                            <div id="answerQuestion">--}}
-{{--                                <div class="show-answer__correct-block">--}}
-{{--                                    <div class="show-answer__correct-block__title">--}}
-{{--                                        Ваш ответ совпал?--}}
-{{--                                    </div>--}}
-{{--                                    <div class="show-answer__correct-block__buttons">--}}
-{{--                                        <button class="btn-answer" onclick="answerQuestion(false)">--}}
-{{--                                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerNo.svg"}}" alt="sad"/>--}}
-{{--                                            <span class="btn-answer__text">Нет</span>--}}
-{{--                                        </button>--}}
-{{--                                        <button class="btn-answer" onclick="answerQuestion(true)">--}}
-{{--                                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerYes.svg"}}" alt="sad"/>--}}
-{{--                                            <span class="btn-answer__text">Да</span>--}}
-{{--                                        </button>--}}
-{{--                                    </div>--}}
-{{--                                </div>--}}
-{{--                            </div>--}}
-{{--                        </div>--}}
-{{--                    </div>--}}
-{{--                </div>--}}
-
+            <div class="modal">
+                <div class="edit-popup">
+                    <div class="edit-popup__close">
+                        <button onclick="closeAnswerPopup()">Закрыть</button>
+                    </div>
+                    Совпал ли ваш ответ?
+                    <div class="show-answer__correct-block__buttons">
+                        <a href={{route("interviewAnswerTask","false")}}>
+                            <button class="btn-answer">
+                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerNo.svg"}}" alt="sad"/>
+                                <span class="btn-answer__text">Нет</span>
+                            </button>
+                        </a>
+                        <a href={{route("interviewAnswerTask","true")}}>
+                            <button class="btn-answer">
+                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerYes.svg"}}" alt="sad"/>
+                                <span class="btn-answer__text">Да</span>
+                            </button>
+                        </a>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div>
@@ -136,18 +125,6 @@
             }, 1500)
 
         }
-
-    function startRecording() {
-        document.getElementById('startRecording').classList.add('hidden')
-        document.getElementById('stopRecording').classList.remove('hidden')
-        document.querySelector('.userAnswerField__block').classList.remove('hidden')
-        recognition.start()
-    }
-
-    function stopRecording() {
-        document.querySelector('.rightAnswer').classList.remove('hidden')
-        recognition.stop()
-    }
 
     const speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
     const recognition = new speechRecognition()
@@ -168,6 +145,29 @@
 
     }
 
+    function startRecording() {
+        document.getElementById('startRecording').classList.add('hidden')
+        document.getElementById('stopRecording').classList.remove('hidden')
+        document.querySelector('.userAnswerField__block').classList.remove('hidden')
+        recognition.start()
+    }
+
+    function stopRecording() {
+        document.getElementById('showRightAnswer').classList.remove('hidden')
+        document.getElementById('stopRecording').classList.add('hidden')
+        recognition.stop()
+        saveAnswer()
+    }
+
+    function saveAnswer() {
+        answer = document.getElementById('userAnswerField').value
+        route="{{route('recordAnswer')}}"
+        data = 'answer=' + answer + '&_token=' + "{{@csrf_token()}}"
+
+        req = requestSaveAnswer(route,data)
+        console.log(req)
+    }
+
 
     function load() {
         changeFavorite({{$question->isFavorite}})
@@ -179,29 +179,32 @@
         changeFavorite(1)
         let route = "{{route('questionFavoriteAdd',true)}}";
         route = route.substring(0, route.length - 1) + "{{$question->questionId}}"
-        requestFavorite(route);
+        favoriteId = requestFavorite(route)
     }
 
     function deleteFavorite() {
         changeFavorite(0)
         let route = "{{route('questionFavoriteAdd',true)}}";
         route = route.substring(0, route.length - 5) + "delete=" + favoriteId
-        requestFavorite(route)
+        favoriteId = requestFavorite(route)
+    }
+
+    function requestSaveAnswer(route,data)
+    {
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("POST", route, false);
+        xmlHttp.setRequestHeader('Content-type', 'application/x-www-form-urlencoded')
+        xmlHttp.send(data)
+        result = JSON.parse(xmlHttp.responseText)
+        return result;
     }
 
     function requestFavorite(route) {
-        const request = new XMLHttpRequest();
-        request.open("GET", route, true);
-        request.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                if (this.status === 200) {
-                    if (this.responseText != null) {
-                        favoriteId = JSON.parse(this.responseText)
-                    } else alert("Данные не получены");
-                } else alert("Ошибка" + this.statusText)
-            }
-        }
-        request.send(null)
+        var xmlHttp = new XMLHttpRequest();
+        xmlHttp.open("GET", route, false); // false for synchronous request
+        xmlHttp.send(null);
+        answer = JSON.parse(xmlHttp.responseText)
+        return answer;
     }
 
     function changeFavorite(favorite) {
@@ -217,36 +220,51 @@
         }
     }
 
-    function watchAnswer() {
-        document.getElementById('startQuestion').classList.add('hidden');
-        document.getElementById('endQuestion').classList.remove('hidden');
+
+    let modal = document.querySelector('.modal');
+    let editPopup = document.querySelector('.edit-popup');
+
+    function closeAnswerPopup() {
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
     }
 
-    function answerQuestion(answer) {
-        let route = "{{route('interviewQuestion')}}" + "/answer=" + answer;
-        requestAnswer(route)
-        nextQuestion()
+    function openAnswerPopup() {
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
     }
 
-    function nextQuestion() {
-        document.getElementById('answerQuestion').classList.add('hidden')
-        document.getElementById("nextQuestion").classList.remove('hidden')
-    }
 
-    function requestAnswer(route) {
-        const request = new XMLHttpRequest();
-        request.open("GET", route, true);
-        request.onreadystatechange = function () {
-            if (this.readyState === 4) {
-                if (this.status === 200) {
-                    if (this.responseText != null) {
-                        // favoriteId = JSON.parse(this.responseText)
-                    } else alert("Данные не получены");
-                } else alert("Ошибка" + this.statusText)
-            }
-        }
-        request.send(null)
-    }
+    // function watchAnswer() {
+    //     document.getElementById('startQuestion').classList.add('hidden');
+    //     document.getElementById('endQuestion').classList.remove('hidden');
+    // }
+
+    {{--function answerQuestion(answer) {--}}
+    {{--    let route = "{{route('interviewQuestion')}}" + "/answer=" + answer;--}}
+    {{--    requestAnswer(route)--}}
+    {{--    nextQuestion()--}}
+    {{--}--}}
+
+    // function nextQuestion() {
+    //     document.getElementById('answerQuestion').classList.add('hidden')
+    //     document.getElementById("nextQuestion").classList.remove('hidden')
+    // }
+
+    // function requestAnswer(route) {
+    //     const request = new XMLHttpRequest();
+    //     request.open("GET", route, true);
+    //     request.onreadystatechange = function () {
+    //         if (this.readyState === 4) {
+    //             if (this.status === 200) {
+    //                 if (this.responseText != null) {
+    //                     // favoriteId = JSON.parse(this.responseText)
+    //                 } else alert("Данные не получены");
+    //             } else alert("Ошибка" + this.statusText)
+    //         }
+    //     }
+    //     request.send(null)
+    // }
 
 
 </script>

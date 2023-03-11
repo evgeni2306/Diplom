@@ -55,6 +55,7 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
 
     Route::middleware('simulationInActive')->group(function () {
         Route::get('interview/question', [GetNextQuestionController::class, 'create'])->name('interviewQuestion');
+        Route::post('interview/question/record', [AnswerTaskController::class, 'recordAnswer'])->name('recordAnswer');
         Route::get('interview/question/answer={answer}', [AnswerTaskController::class, 'answerTask'])->name('interviewAnswerTask');
         Route::get('/interview/results', [GetResultsController::class, 'create'])->name('interviewResults');
         Route::get('/interview/interrupt', [InterviewInterruptController::class, 'interrupt'])->name('interviewInterrupt');

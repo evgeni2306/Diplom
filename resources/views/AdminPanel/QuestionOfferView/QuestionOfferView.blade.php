@@ -32,7 +32,7 @@
         </form>
 
         Редактировать <input id="changeable" type="checkbox" onchange="change()">
-        <button class="comment-edit">Отклонить</button>
+        <button class="comment-edit" onclick="openPopup()">Отклонить</button>
         <button class="" onclick="checkSimiliar()">Проверить на дубликаты</button>
         <div id="similiar">
 
@@ -40,7 +40,7 @@
         <div class="modal">
             <div class="edit-popup">
                 <div class="edit-popup__close">
-                    <button>Закрыть</button>
+                    <button onclick="closePopup()">Закрыть</button>
                 </div>
                 <div class="edit-popup__title title">Опишите причину, по которой вы решили отказать в добавлении
                     вопроса
@@ -62,28 +62,16 @@
 <script>
     let modal = document.querySelector('.modal');
     let editPopup = document.querySelector('.edit-popup');
-    let popupCloseButton = document.querySelector('.edit-popup__close');
-    let editButton = document.querySelector('.comment-edit');
-    let commentText = document.querySelector('.comment__text');
-    let commentTextEdit = document.querySelector('.comment__text-edit');
-    let commentId = document.querySelector('.comment__id');
-    let commentIdEdit = document.querySelector('.comment__id__edit');
-    let commentRating = document.querySelector('.comment__rating1');
-
-
-    //передача данных коммента в инпут
-    editButton.addEventListener('click', function () {
+    function openPopup(){
         modal.classList.toggle('is-open');
         editPopup.classList.toggle('is-open');
-        commentTextEdit.value = commentText.textContent;
-        commentIdEdit.value = commentId.value;
-
-
-    });
-    popupCloseButton.addEventListener('click', function () {
+    }
+    function closePopup(){
         modal.classList.toggle('is-open');
         editPopup.classList.toggle('is-open');
-    });
+    }
+
+
 
     function change() {
         questionInput = document.getElementById('questionInput')
