@@ -49,9 +49,13 @@ class Task extends Model
 
     static function createTasksForInterview(int $id, int $interviewId): void
     {
-        $catQuestCount = CatQuestCount::query()->select('category_id', 'count')->inRandomOrder()->where('profession_id', $id)->get();
+        $catQuestCount = CatQuestCount::query()
+            ->select('category_id', 'count')->inRandomOrder()
+            ->where('profession_id', $id)->get();
         foreach ($catQuestCount as $var) {
-            $question = Question::query()->select('id as question_id')->inRandomOrder()->where('category_id', $var->category_id)->get();
+            $question = Question::query()
+                ->select('id as question_id')
+                ->inRandomOrder()->where('category_id', $var->category_id)->get();
             for ($i = 0; $i < $var->count; $i++) {
                 $question[$i]->interview_id = $interviewId;
                 $var1 = json_decode(json_encode($question[$i]), true);

@@ -11,7 +11,7 @@ use App\Http\Controllers\Controller;
 
 class AuthorizationController extends Controller
 {
-    public function create(): \Illuminate\Contracts\Foundation\Application|\Illuminate\Contracts\View\Factory|\Illuminate\Contracts\View\View
+    public function create(): \Illuminate\Contracts\View\View
     {
         return view('Auth.Login.Login');
     }

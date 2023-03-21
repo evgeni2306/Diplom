@@ -25,13 +25,6 @@
                         </div>
                     </a>
                 </li>
-                <li class="menu__item">
-                    <a href={{route('expansionContent')}}>
-                        <div class="linkItem">
-                            СРК
-                        </div>
-                    </a>
-                </li>
 
             </ul>
         </nav>
@@ -42,19 +35,17 @@
                     <a href="#" class="user-menu__link" tabindex="1"></a><span class="menu__arrow"></span>
                     <ul class="sub-menu__list">
 
-                        <li><a href="" class="sub-menu__link">Мой профиль</a>
+                        <li><a href="{{route('expansionContent')}}" class="sub-menu__link">СРК</a>
                         </li>
-                        <li><a href="" class="sub-menu__link">Поиск</a>
+
                         </li>
-                        <li><a href="" class="sub-menu__link">Настройки</a>
-                        </li>
-                        <li><a href="" class="sub-menu__link">Выйти</a></li>
+                        <li><a href="{{route('logout')}}" class="sub-menu__link">Выйти</a></li>
 
 
-                        {{--                        <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/01.svg" alt="">Мой профиль</a></li>--}}
-                        {{--                        <li><a href="" class="sub-menu__link"><img src="/PageMap/img/icons/search-icon.svg" alt="">Поиск</a></li>--}}
-                        {{--                        <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/02.svg" alt="">Настройки</a></li>--}}
-                        {{--                        <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/03.svg" alt="">Выйти</a></li>--}}
+{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/01.svg" alt="">Мой профиль</a></li>--}}
+{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/icons/search-icon.svg" alt="">Поиск</a></li>--}}
+{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/02.svg" alt="">Настройки</a></li>--}}
+{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/03.svg" alt="">Выйти</a></li>--}}
 
                     </ul>
                 </li>

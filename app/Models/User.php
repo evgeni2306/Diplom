@@ -5,7 +5,7 @@ namespace App\Models;
 
 use Illuminate\Support\Facades\Hash;
 use Illuminate\Database\Eloquent\Factories\HasFactory;
-use Illuminate\Database\Eloquent\Model;
+
 use Illuminate\Foundation\Auth\User as Authenticatable;
 class User extends Authenticatable
 {
@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function setKeyAttribute($key)
     {
-        $this->attributes['key'] = Hash::make($key . self::SALT);
+        $this->attributes['key'] = hash("sha256",$key . self::KEY);
     }
 
     static function getIdByKey($key)

@@ -82,6 +82,7 @@
             @endfor
 
         </div>
+        {{--                <div id ="wrongQuestions" hidden>{{$results->wrongQuestions}}</div>--}}
         <a href={{route("interviewPreview", $results->professionId)}}>
             <button class="primary-button">
                 Попробовать еще раз
@@ -93,21 +94,19 @@
 </body>
 <script>
 
-
     function load() {
-         const x = document.getElementsByName("number")
-        @for($i=0; $i<count($results->wrongQuestions);$i++)
-        const nonFavorite = x[{{$i}}].querySelector("#nonFavorite")
-        const Favorite = x[{{$i}}].querySelector("#Favorite")
-        if ({{$results->wrongQuestions[$i]->isFavorite}}==0)
-        {
-            nonFavorite.classList.remove('hidden')
+        questions = <? echo $results->wrongQuestions ?>;
+        const x = document.getElementsByName("number")
+        for (i = 0; i < questions.length; i++) {
+            const nonFavorite = x[i].querySelector("#nonFavorite")
+            const Favorite = x[i].querySelector("#Favorite")
+            if (questions[i].isFavorite === 0) {
+                nonFavorite.classList.remove('hidden')
+            }
+            if (questions[i].isFavorite === 1) {
+                Favorite.classList.remove('hidden')
+            }
         }
-        if ({{$results->wrongQuestions[$i]->isFavorite}}==1)
-        {
-            Favorite.classList.remove('hidden')
-        }
-        @endfor
     }
 
     function addFavorite(id) {

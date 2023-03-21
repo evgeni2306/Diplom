@@ -15,7 +15,6 @@ return new class extends Migration {
             $table->string('name', 255)->nullable(false);
             $table->string('surname', 255)->nullable(false);
             $table->string('login', 255)->nullable(false)->unique();
-            $table->string('key', 255)->nullable(false)->unique();
             $table->string('password', 255)->nullable(false);
             $table->timestamps();
         });

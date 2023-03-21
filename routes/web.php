@@ -75,7 +75,7 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
             session_destroy();
             \Illuminate\Support\Facades\Auth::guard('web')->logout();
             return redirect(route('login'));
-        });
+        })->name('logout');
     });
 
     Route::get('/favorite/add={idd}', [FavoriteQuestionController::class, 'add'])->name('questionFavoriteAdd');

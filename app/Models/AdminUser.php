@@ -14,6 +14,5 @@ class AdminUser extends Authenticatable
         'surname',
         'login',
         'password',
-        'key',
     ];
 }

@@ -31,7 +31,7 @@ class Interview extends Model
         $countWrong = Task::query()->where('interview_id', $interviewId)->where('status', '=', 0)->count();
         $wrongQuestions = Task::query()->join('questions', 'question_id', '=', 'questions.id')
             ->join('categories', 'questions.category_id', '=', 'categories.id')
-            ->select('questions.id as questionId', 'questions.question', 'answer', 'categories.name as category')
+            ->select('questions.id as questionId', 'questions.question',  'categories.name as category')
             ->where('interview_id', '=', $interviewId)
             ->where('status', '=', 0)
             ->get();

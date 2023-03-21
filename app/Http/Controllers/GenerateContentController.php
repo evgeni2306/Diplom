@@ -26,7 +26,6 @@ class GenerateContentController extends Controller
             'surname' => 'admin',
             'login' => 'a',
             'password' => Hash::make('a'),];
-        $userFields['key'] = time();
         $admin = AdminUser::query()->create($userFields);
 
         $user = User::create($userFields);
