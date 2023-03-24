@@ -35,10 +35,8 @@
                     <a href="#" class="user-menu__link" tabindex="1"></a><span class="menu__arrow"></span>
                     <ul class="sub-menu__list">
 
-                        <li><a href="{{route('expansionContent')}}" class="sub-menu__link">СРК</a>
-                        </li>
-
-                        </li>
+                        <li><a href="{{route('expansionContent')}}" class="sub-menu__link">СРК</a></li>
+                        <li><a href="{{route('StatisticList')}}" class="sub-menu__link">Статистика</a></li>
                         <li><a href="{{route('logout')}}" class="sub-menu__link">Выйти</a></li>
 
 

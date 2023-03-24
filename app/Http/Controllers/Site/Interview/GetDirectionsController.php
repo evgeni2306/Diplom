@@ -9,7 +9,7 @@ use App\Models\Direction;
 
 class GetDirectionsController extends Controller
 {
-    public function create(): \Illuminate\Contracts\View\View
+    public function index(): \Illuminate\Contracts\View\View
     {
         $directions = Direction::all('name', 'id');
         foreach ($directions as $direction) {

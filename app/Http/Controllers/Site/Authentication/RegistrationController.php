@@ -13,7 +13,7 @@ use Illuminate\Support\Facades\Validator;
 
 class RegistrationController extends Controller
 {
-    public function create(): \Illuminate\Contracts\View\View
+    public function index(): \Illuminate\Contracts\View\View
     {
         return view('Auth.Register.Register');
     }

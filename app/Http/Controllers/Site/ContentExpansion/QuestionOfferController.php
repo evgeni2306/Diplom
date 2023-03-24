@@ -12,7 +12,7 @@ use Illuminate\Support\Facades\Validator;
 
 class QuestionOfferController extends Controller
 {
-    public function create(): \Illuminate\Contracts\View\View
+    public function index(): \Illuminate\Contracts\View\View
     {
         $offers = QuestionOffer::getUsersVisibleQuestionOffers(Auth::user()->getAuthIdentifier());
         foreach ($offers as $offer) {

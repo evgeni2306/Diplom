@@ -31,19 +31,20 @@ class Interview extends Model
         $countWrong = Task::query()->where('interview_id', $interviewId)->where('status', '=', 0)->count();
         $wrongQuestions = Task::query()->join('questions', 'question_id', '=', 'questions.id')
             ->join('categories', 'questions.category_id', '=', 'categories.id')
-            ->select('questions.id as questionId', 'questions.question',  'categories.name as category')
+            ->select('questions.id as questionId', 'questions.question', 'categories.name as category')
             ->where('interview_id', '=', $interviewId)
             ->where('status', '=', 0)
             ->get();
         return (object)array('countRight' => $countRight, 'countWrong' => $countWrong, 'wrongQuestions' => $wrongQuestions);
 
     }
-    static function interrupt(int $interviewId):int
+
+    static function interrupt(int $interviewId): int
     {
         $interview = self::query()->find($interviewId);
-        if ($interview->status === null){
+        if ($interview->status === null) {
             $tasks = $interview->tasks;
-            foreach ($tasks as $task){
+            foreach ($tasks as $task) {
                 Task::destroy($task->id);
             }
             Interview::destroy($interview->id);
@@ -57,4 +58,18 @@ class Interview extends Model
         self::query()->where('id', '=', $interviewId)
             ->update(['status' => 1]);
     }
+
+    static function getStatisticList(int $userId): array
+    {
+        $interviews = self::query()->join('professions', 'professions.id', '=', 'profession_id')
+            ->select('name', 'profession_id as profId')->where('user_id', '=', $userId)->distinct()->get()->all();
+        foreach ($interviews as $item) {
+            $item->count = self::query()
+                ->where('user_id', '=', $userId)
+                ->where('profession_id', '=', $item->profId)
+                ->count();
+        }
+        return $interviews;
+    }
+
 }

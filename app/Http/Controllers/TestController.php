@@ -12,6 +12,6 @@ class TestController extends Controller
 {
     public function test()
     {
-        dd('prjvet');
+        return view('statistics.main');
     }
 }

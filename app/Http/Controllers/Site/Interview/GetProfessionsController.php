@@ -9,7 +9,7 @@ use App\Models\Profession;
 
 class GetProfessionsController extends Controller
 {
-    public function create(int $id):\Illuminate\Contracts\View\View
+    public function index(int $id):\Illuminate\Contracts\View\View
     {
 
         if (is_numeric($id) and $id > 0) {

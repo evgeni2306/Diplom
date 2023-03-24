@@ -9,7 +9,7 @@ use App\Models\CatQuestCount;
 
 class PreviewPageController extends Controller
 {
-    public function create($id):\Illuminate\Contracts\View\View
+    public function index($id):\Illuminate\Contracts\View\View
     {
         if (is_numeric($id) and $id > 0) {
 
