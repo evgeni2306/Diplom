@@ -1,5 +1,6 @@
 <?php
 declare(strict_types=1);
+
 namespace App\Http\Controllers\Site\Statistic;
 
 use App\Http\Controllers\Controller;
@@ -10,7 +11,7 @@ use Illuminate\Support\Facades\Auth;
 
 class StatisticGeneralController extends Controller
 {
-    public function index(int $id):\Illuminate\Contracts\View\View
+    public function index(int $id): \Illuminate\Contracts\View\View
     {
         $userId = Auth::user()->getAuthIdentifier();
         $diagramData = Interview::getStatisticDiagram($id, $userId);

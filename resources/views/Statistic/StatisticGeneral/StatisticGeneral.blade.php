@@ -13,14 +13,17 @@
 <!--------------/HEADER-------------------->
 <div class="diagram">
     @foreach($diagramData as $item)
-            <button class="button " name="interviewColumn" id="button" onclick="test('{{route('login')}}')">
+        <div class="interviewColumn" name="interviewColumn">
+            <button class="button " id="button" onclick="test('{{route('StatisticConcrete',$item->id)}}')">
                 <div hidden id="points">{{$item->count}}</div>
                 <div class="rating__nextlevel__progress">
-                    <div class="progress-bar">
+                    <div class="progress-bar ">
                         <div class="percent-count"></div>
                     </div>
                 </div>
             </button>
+            <div class="dateField">{{$item->created_at->format('d.m.y')}}</div>
+        </div>
     @endforeach
 </div>
 </body>
@@ -32,26 +35,28 @@
     function load() {
         const x = document.getElementsByName("interviewColumn")
         for (i = 0; i < x.length; i++) {
-            const nextLevel = x[i].querySelector('.rating__nextlevel__progress');
+            const button = x[i].querySelector('#button');
+            const result = button.querySelector('#points').textContent
+            const nextLevel = button.querySelector('.rating__nextlevel__progress');
             const progress = nextLevel.querySelector('.progress-bar');
             const percent = progress.querySelector('.percent-count');
-            const result = x[i].querySelector('#points').textContent
-            setTimeout(() => {
-                progress.style.opacity = 1;
-                progress.style.height = result + '%';
-                percent.textContent = Math.round(result) + '%';
-            })
+            progress.style.opacity = 1;
+            if (result !== "0") {
+                setTimeout(() => {
+                    progress.classList.add('orange')
+
+                    progress.style.height = result + '%';
+                    percent.textContent = Math.round(result) + '%';
+                })
+            } else {
+                progress.classList.add('gray')
+                progress.style.height = '100%';
+                percent.textContent =  '0%';
+            }
+
 
         }
     }
 
-    // const progress = document.querySelector('.progress-bar');
-    // let percent = document.querySelector('.percent-count');
-    // let result = document.getElementById('points').textContent
-    // setTimeout(() => {
-    //     progress.style.opacity = 1;
-    //     progress.style.height = result + '%';
-    //     percent.textContent = Math.round(result) + '%';
-    // })
 </script>
 </html>

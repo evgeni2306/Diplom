@@ -78,8 +78,9 @@ class Interview extends Model
             ->select('id', 'created_at', 'profession_id as profId')->latest()
             ->where('user_id', '=', $userId)
             ->where('profession_id', '=', $profId)
-            ->get()->take(10);
+            ->get()->take(10)->reverse();
         foreach ($diagramData as $item) {
+            $item->created_at = $item->created_at->toFormattedDateString();
             $count = CatQuestCount::getSumCountQuestsForProf($item->profId);
             $countRight = Task::query()->where('interview_id', $item->id)->where('status', '=', 1)->count();
             $item->count = $countRight * 100 / $count;
