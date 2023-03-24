@@ -5,7 +5,7 @@
     <title></title>
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
-    <link rel="stylesheet" href="{{"/Pages/Statistics/StatisticsList/styles.css"}}"/>
+    <link rel="stylesheet" href="{{"/Pages/Statistic/StatisticList/styles.css"}}"/>
 </head>
 <body>
 <!--------------HEADER-------------------->

@@ -19,9 +19,9 @@ use App\Http\Controllers\Site\FavoriteSection\FavoriteQuestionController;
 
 use App\Http\Controllers\Site\ContentExpansion\QuestionOfferController;
 
-use App\Http\Controllers\Site\Statistics\StatisticsListController;
-use App\Http\Controllers\Site\Statistics\StatisticsGeneralController;
-use App\Http\Controllers\Site\Statistics\StatisticsConcreteController;
+use App\Http\Controllers\Site\Statistic\StatisticListController;
+use App\Http\Controllers\Site\Statistic\StatisticGeneralController;
+use App\Http\Controllers\Site\Statistic\StatisticConcreteController;
 
 use App\Http\Controllers\TestController;
 use App\Http\Controllers\GenerateContentController;
@@ -94,9 +94,9 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
     Route::post('/expansion/update={idd}', [QuestionOfferController::class, 'update'])->name('questionOfferUpdate');;
     Route::get('/expansion/visible={idd}', [QuestionOfferController::class, 'visible'])->name('questionOfferVisible');
 
-    Route::get('/statistics/list', [StatisticsListController::class, 'index'])->name('StatisticList');
-    Route::get('/statistics/general={idd}', [StatisticsGeneralController::class, 'index'])->name('StatisticGeneral');
-    Route::get('/statistics/concrete={idd}', [StatisticsConcreteController::class, 'index'])->name('StatisticConcrete');
+    Route::get('/statistic/list', [StatisticListController::class, 'index'])->name('StatisticList');
+    Route::get('/statistic/general={idd}', [StatisticGeneralController::class, 'index'])->name('StatisticGeneral');
+    Route::get('/statistic/concrete={idd}', [StatisticConcreteController::class, 'index'])->name('StatisticConcrete');
 });
 Route::get('test', [TestController::class, 'test']);
 

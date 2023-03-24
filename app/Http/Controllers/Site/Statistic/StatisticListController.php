@@ -1,17 +1,17 @@
 <?php
-
-namespace App\Http\Controllers\Site\Statistics;
+declare(strict_types=1);
+namespace App\Http\Controllers\Site\Statistic;
 
 use App\Http\Controllers\Controller;
 use App\Models\Interview;
 use Illuminate\Support\Facades\Auth;
 
-class StatisticsListController extends Controller
+class StatisticListController extends Controller
 {
     public function index(): \Illuminate\Contracts\View\View
     {
         $userId = Auth::user()->getAuthIdentifier();
         $interviews = Interview::getStatisticList($userId);
-        return view('Statistics.StatisticsList.StatisticsList', ['interviews' => $interviews]);
+        return view('Statistic.StatisticList.StatisticList', ['interviews' => $interviews]);
     }
 }

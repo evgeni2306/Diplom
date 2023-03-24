@@ -72,4 +72,19 @@ class Interview extends Model
         return $interviews;
     }
 
+    static function getStatisticDiagram(int $profId, int $userId): \Illuminate\Database\Eloquent\Collection
+    {
+        $diagramData = Interview::query()
+            ->select('id', 'created_at', 'profession_id as profId')->latest()
+            ->where('user_id', '=', $userId)
+            ->where('profession_id', '=', $profId)
+            ->get()->take(10);
+        foreach ($diagramData as $item) {
+            $count = CatQuestCount::getSumCountQuestsForProf($item->profId);
+            $countRight = Task::query()->where('interview_id', $item->id)->where('status', '=', 1)->count();
+            $item->count = $countRight * 100 / $count;
+        }
+        return $diagramData;
+    }
+
 }
