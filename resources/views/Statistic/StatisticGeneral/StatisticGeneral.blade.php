@@ -11,21 +11,67 @@
 <!--------------HEADER-------------------->
 @include('Components.Header.Header')
 <!--------------/HEADER-------------------->
-<div class="diagram">
-    @foreach($diagramData as $item)
-        <div class="interviewColumn" name="interviewColumn">
-            <button class="button " id="button" onclick="test('{{route('StatisticConcrete',$item->id)}}')">
-                <div hidden id="points">{{$item->count}}</div>
-                <div class="rating__nextlevel__progress">
-                    <div class="progress-bar ">
-                        <div class="percent-count"></div>
+<div class="generalProgressSector">
+    <div>Верно пройденных от общего количества вопросов</div>
+    <div class="generalProgressBlock">
+        <span class="generalPoints">{{$generalData}}</span>
+        <div class="generalProgress">
+            <div class="generalProgressBar">
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+<div class="interviewDiagramSector">
+    <div>Прогресс по прохождению</div>
+    <div>Нажмите на определенную колонку и посмотрите результаты за эту симуляцию</div>
+    <div class="interviewDiagramBlock">
+        <div class="simulationCount">10 последних симуляций</div>
+        <div class="interviewDiagramZone">
+            @foreach($diagramData as $item)
+                <div class="interviewColumn" name="interviewColumn">
+                    <button class="button" id="button" onclick="test('{{route('StatisticConcrete',$item->id)}}')">
+                        <div hidden id="interviewPoints">{{$item->count}}</div>
+                        <div class="interviewProgress">
+                            <div class="interviewProgressBar">
+                                <div class="interviewPercentCount"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <div class="dateField">{{$item->created_at->format('d.m.y')}}</div>
+                </div>
+            @endforeach
+        </div>
+    </div>
+</div>
+
+<div class="interviewDiagramSector">
+    <div>Прогресс по темам</div>
+    <div class="categoryDiagramZone">
+        @foreach($categoryData as $item)
+            <div class="categoryBlock" onclick="test()">
+                <div class="categoryName">{{$item->name}}</div>
+                <div class="categoryDiagramBlock">
+                    <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
+                        <div class="piece left"></div>
+                        <div class="piece right"></div>
+                        <div class="text">
+                            <div>
+                                <b>{{$item->count}}</b>
+                                <span>Вопросов</span>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </button>
-            <div class="dateField">{{$item->created_at->format('d.m.y')}}</div>
-        </div>
-    @endforeach
+            </div>
+        @endforeach
+
+    </div>
+
 </div>
+
 </body>
 <script>
     function test(route) {
@@ -33,13 +79,28 @@
     }
 
     function load() {
+        generalDiagram()
+        interviewDiagram()
+        categoryProgressView();
+    }
+
+    function generalDiagram() {
+        let points = document.querySelector('.generalPoints').textContent;
+        const progress = document.querySelector('.generalProgressBar');
+        setTimeout(() => {
+            progress.style.opacity = 1;
+            progress.style.width = points + '%';
+        })
+    }
+
+    function interviewDiagram() {
         const x = document.getElementsByName("interviewColumn")
         for (i = 0; i < x.length; i++) {
             const button = x[i].querySelector('#button');
-            const result = button.querySelector('#points').textContent
-            const nextLevel = button.querySelector('.rating__nextlevel__progress');
-            const progress = nextLevel.querySelector('.progress-bar');
-            const percent = progress.querySelector('.percent-count');
+            const result = button.querySelector('#interviewPoints').textContent
+            const nextLevel = button.querySelector('.interviewProgress');
+            const progress = nextLevel.querySelector('.interviewProgressBar');
+            const percent = progress.querySelector('.interviewPercentCount');
             progress.style.opacity = 1;
             if (result !== "0") {
                 setTimeout(() => {
@@ -51,12 +112,26 @@
             } else {
                 progress.classList.add('gray')
                 progress.style.height = '100%';
-                percent.textContent =  '0%';
+                percent.textContent = '0%';
             }
 
 
         }
     }
+
+    function categoryProgressView() {
+        let diagramBox = document.querySelectorAll('.categoryDiagram.progress');
+        diagramBox.forEach((box) => {
+            let deg = (360 * box.dataset.percent / 100) + 180;
+            if (box.dataset.percent >= 50) {
+                box.classList.add('over_50');
+            } else {
+                box.classList.remove('over_50');
+            }
+            box.querySelector('.piece.right').style.transform = 'rotate(' + deg + 'deg)';
+        });
+    }
+
 
 </script>
 </html>

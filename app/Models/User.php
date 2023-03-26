@@ -33,7 +33,7 @@ class User extends Authenticatable
 
     public function setKeyAttribute($key)
     {
-        $this->attributes['key'] = hash("sha256",$key . self::KEY);
+        $this->attributes['key'] = hash("sha256",$key . self::SALT);
     }
 
     static function getIdByKey($key)
