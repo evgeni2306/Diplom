@@ -14,7 +14,7 @@ class AuthorizationController extends Controller
     public function login(Request $request): JsonResponse
     {
         $validator = Validator::make($request->all(), [
-            'login' => 'required|string|max:255',
+            'login' => 'required|string|email|max:255',
             'password' => 'required|string',
         ]);
         if ($validator->fails()) {

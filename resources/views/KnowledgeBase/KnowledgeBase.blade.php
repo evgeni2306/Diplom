@@ -21,8 +21,8 @@
     <div class="knowledge-base__container">
         <div class="knowledge-base__professions">
             <div class="knowledge-base__professions-found">
-                <input class="" required list="brow" value="" id="category"
-                       placeholder="Выберите категорию" onchange="changeProf()">
+                <input class="" required list="brow" value="" id="profession"
+                       placeholder="Выберите профессию" onchange="changeProf()">
                 <datalist class="search-box" id="brow">
                     @foreach($professions as $item)
                         <option value="{{$item->name}}">
@@ -42,11 +42,10 @@
         while (questionBox.hasChildNodes()) {
             questionBox.removeChild(questionBox.lastChild)
         }
-        const category = document.getElementById('category').value;
+        const category = document.getElementById('profession').value;
         const route = "{{route('getQuestionsForKnowledgeBase')}}";
         const questions = request(route, category);
         viewQuestions(questions)
-
     }
 
     function viewQuestions(questions) {

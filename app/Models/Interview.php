@@ -88,4 +88,47 @@ class Interview extends Model
         return $diagramData;
     }
 
+    static function getInterviewProgress(int $userId, int $interviewId): \stdClass
+    {
+        $tasks = Task::query()
+            ->join('interviews', 'interviews.id', '=', 'interview_id')
+            ->where('interview_id', '=', $interviewId)
+            ->where('user_id', '=', $userId);
+        $progressData = new \stdClass();
+        $progressData->count = $tasks->get()->count();
+        $progressData->countRight = $tasks->where('tasks.status', '=', '1')->get()->count();
+        return $progressData;
+    }
+
+    static function getInterviewCategoryData(int $userId, $interviewId)
+    {
+        $categories = Category::query()
+            ->join('questions', 'categories.id', '=', 'category_id')
+            ->join('tasks', 'questions.id', '=', 'question_id')
+            ->select('categories.id','categories.name')
+            ->where('interview_id', '=', $interviewId)
+            ->distinct()->get()->all();
+        foreach ($categories as $item) {
+            $correctCount = 0;
+            $tasks = Task::query()
+                ->join('interviews', 'interviews.id', 'interview_id')
+                ->join('questions', 'questions.id', '=', 'question_id')
+                ->join('categories', 'categories.id', '=', 'category_id')
+                ->select('tasks.status', 'categories.name')
+                ->where('interview_id', '=', $interviewId)
+                ->where('user_id', '=', $userId)
+                ->where('category_id', '=', $item->id)
+                ->get()->all();
+
+            foreach ($tasks as $task) {
+                if ($task->status === 1) {
+                    $correctCount++;
+                }
+            }
+            $item->correctCount = (integer)($correctCount / count($tasks) * 100);
+            $item->count = count($tasks);
+        }
+        return $categories;
+    }
+
 }

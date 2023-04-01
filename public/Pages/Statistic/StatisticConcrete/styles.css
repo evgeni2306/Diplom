@@ -1,0 +1,281 @@
+
+.progress {
+    width: 90%;
+    height: 5px;
+    position: relative;
+    background: #126180;
+    border-radius: 7px;
+    margin-bottom: 12px;
+    overflow: hidden;
+}
+
+.progressBar {
+    height: 100%;
+    background: #23bfff;
+    border-radius: 7px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    width: 0;
+    transition: 1s ease;
+}
+
+.progressSector {
+    width: 100%;
+
+}
+
+.progressBlock {
+    margin: 0 auto;
+    width: 50%;
+    border: 3px solid #53c0ee;
+    border-radius: 10px;
+}
+
+.interviewProgress {
+    width: 100%;
+    height: 300px;
+    position: center;
+    border-radius: 7px;
+    background-color: #ababab;
+    overflow: hidden;
+    transform: rotate(180deg);
+
+}
+
+.interviewProgressBar {
+    height: 0;
+    border-radius: 7px;
+    color: #fff;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    opacity: 0;
+    width: 100%;
+    transition: 1s ease;
+
+}
+
+
+/*------КРУГОВАЯ ДИАГРАММА----*/
+.categoryDiagram {
+    width: 150px;
+    height: 150px;
+    border-radius: 50%;
+    background: green;
+    position: relative;
+    overflow: hidden;
+    transform: rotate(180deg);
+}
+
+.categoryDiagram::before {
+    content: '';
+    display: block;
+    position: absolute;
+    top: 20px;
+    left: 20px;
+    right: 20px;
+    bottom: 20px;
+    border-radius: 50%;
+    background: #ccc;
+    z-index: 3;
+    opacity: 1;
+}
+
+.categoryDiagram .piece {
+    width: 100%;
+    height: 100%;
+    left: 0;
+    right: 0;
+    overflow: hidden;
+    position: absolute;
+}
+
+.categoryDiagram .piece::before {
+    content: '';
+    display: block;
+    position: absolute;
+    width: 50%;
+    height: 100%;
+}
+
+.categoryDiagram .piece.left {
+    transform: rotate(0deg);
+    z-index: 2;
+    border-radius: 50%; /* only FireFox < 75.0v (fix bug)*/
+}
+
+.categoryDiagram.over_50 .piece.left {
+    transform: rotate(180deg);
+}
+
+.categoryDiagram .piece.right {
+    transform: rotate(180deg);
+    z-index: 1;
+    border-radius: 50%; /* only FireFox < 75.0v (fix bug)*/
+}
+
+.categoryDiagram.over_50 .piece.right {
+    transform: rotate(360deg);
+}
+
+.categoryDiagram .left::before {
+    background: red;
+}
+
+.categoryDiagram.over_50 .left::before {
+    background: green;
+}
+
+.categoryDiagram .right::before {
+    background: red;
+}
+
+.categoryDiagram .text {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.categoryDiagram .text b {
+    font-size: 30px;
+}
+
+.categoryDiagram .text span {
+    font-size: 20px;
+    display: block;
+}
+
+.piece.right {
+    transition: 1s ease;
+}
+
+.piece.left {
+    transition: 2s ease;
+}
+
+.categoryBlock {
+    width: 250px;
+    height: 250px;
+    border: 5px solid #2b5b6d;
+    border-radius: 10px;
+    background-color: white;
+    margin: 10px;
+}
+.categoryBlock:hover{
+    border: 5px solid #479cbc;
+}
+.categoryDiagramBlock {
+    width: 150px;
+    height: 150px;
+    margin: 0 auto;
+}
+
+.text {
+    transform: rotate(180deg);
+}
+
+.category {
+    margin-bottom: 10%;
+    font-size: 20px;
+}
+
+/*---------------------------*/
+.categoryDiagramZone {
+    display: flex;
+    justify-content: center;
+    flex: 500px;
+}
+.categoryDiagramSector{
+
+}
+.categoryName {
+    text-align: center;
+    margin: 10%;
+}
+
+.questionSector{
+    margin: 20px 0 40px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 16px;
+}
+
+.question {
+    max-height: 120px;
+    padding: 25px;
+    text-align: left;
+    background: #ffffff;
+    border-radius: 8px;
+    cursor: pointer;
+}
+
+.question:not(:last-child) {
+    margin-bottom: 16px;
+}
+
+.question-top {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-bottom: 15px;
+}
+
+.question-top-tag {
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
+}
+
+.question-top-favourites {
+    display: flex;
+}
+
+.question-top-favourites__icon {
+    height: 32px;
+    width: 32px;
+    position: relative;
+    border-radius: 50%;
+    background: #e4e9ff;
+}
+
+.question-top-favourites img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.question-top-favourites__btn {
+    padding: 0;
+    margin-left: 8px;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    color: #345ceb;
+    background: none;
+    border: none;
+    cursor: pointer;
+}
+
+.hidden {
+    display: none;
+}
+
+
+
+
+

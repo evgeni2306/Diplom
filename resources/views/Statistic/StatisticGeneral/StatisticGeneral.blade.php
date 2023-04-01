@@ -47,7 +47,7 @@
     </div>
 </div>
 
-<div class="interviewDiagramSector">
+<div class="categoryDiagramSector">
     <div>Прогресс по темам</div>
     <div class="categoryDiagramZone">
         @foreach($categoryData as $item)

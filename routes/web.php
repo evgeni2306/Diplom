@@ -97,6 +97,7 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
     Route::get('/statistic/list', [StatisticListController::class, 'index'])->name('StatisticList');
     Route::get('/statistic/general={idd}', [StatisticGeneralController::class, 'index'])->name('StatisticGeneral');
     Route::get('/statistic/concrete={idd}', [StatisticConcreteController::class, 'index'])->name('StatisticConcrete');
+    Route::post('/statistic/concrete/questions', [StatisticConcreteController::class, 'getQuestions'])->name('StatisticConcreteQuestions');
 });
 Route::get('test', [TestController::class, 'test']);
 

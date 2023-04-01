@@ -81,4 +81,14 @@ class Task extends Model
         $task->answer=$answer;
         $task->save();
     }
+    static function getTasksForStatisticConcrete(int $interviewId, int $categoryId){
+        $tasks = self::query()
+            ->join('questions','question_id','=','questions.id')
+            ->join('categories','category_id','=','categories.id')
+            ->select('questions.id as questionId','question','questions.answer as correctAnswer','tasks.answer','categories.name as category','tasks.status')
+            ->where('interview_id','=',$interviewId)
+            ->where('category_id','=',$categoryId)
+            ->get()->all();
+        return $tasks;
+    }
 }
