@@ -1,23 +1,16 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8"/>
-    <title>Register</title>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
-    <link rel="stylesheet" href="{{"/Pages/Auth/common/styles.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Auth/common/css/styles.css"}}">
+
+    <title>Регистрация</title>
 </head>
 <body>
 <div class="container">
-    <div class="logo-register">
-        <div class="logo-register__wrapper">
-            <img
-                class="logo-register__icon"
-                src="/common/svg/logo.svg"
-                alt="logo"
-            />
-            <span class="logo-register__name">JobInterview</span>
-        </div>
-    </div>
     <div class="form__container">
 
         <h1 class="register__title">Регистрация</h1>
@@ -42,10 +35,10 @@
             <a class="register__to-auth_link"
                href={{route("login")}}> Войти</a>
         </div>
+        <div class="divider">или</div>
         <a href={{route("vkontakte")}}>
-            <div class="register__to-auth_link">
-                Войти через VK
-            </div>
+            <a href="" class="form-button__vk"><img src="{{"/Pages/Auth/common/svg/VKLogo.svg"}}" alt="vk">Войти с
+                помощью ВКонтакте</a>
         </a>
     </div>
 </div>
