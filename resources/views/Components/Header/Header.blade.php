@@ -45,27 +45,33 @@
 
         <nav class="user-menu">
             <ul class="user-menu__list">
+
                 <li class="user-name">
                     <img class="avatar" src="{{"/Pages/Components/Header/svg/avatar.svg"}}" alt="user">
                     <a href="#" class="user-menu__link" tabindex="1">UserName</a><span class="menu__arrow"></span>
                     <div class="sub-menu__list">
 
                         <div class="sub-menu__link">
-                            <a class="test" href="{{route('expansionContent')}}"><img src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}">Система расширения контента</a>
+                            <a class="menuHref" href="{{route('expansionContent')}}"><img
+                                    src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}">Система расширения
+                                контента</a>
                         </div>
                         <div class="sub-menu__link">
-                            <a class="test" href="{{route('StatisticList')}}"><img src="{{"/Pages/Components/Header/svg/statistic.svg"}}">Статистика</a>
+                            <a class="menuHref" href="{{route('StatisticList')}}"><img
+                                    src="{{"/Pages/Components/Header/svg/statistic.svg"}}">Статистика</a>
                         </div>
                         <div class="sub-menu__link">
-                            <a class="test" href="{{route('logout')}}"><img src="{{"/Pages/Components/Header/svg/logout.svg"}}">Выйти</a>
+                            <a class="menuHref" href="{{route('logout')}}"><img
+                                    src="{{"/Pages/Components/Header/svg/logout.svg"}}">Выйти</a>
                         </div>
 
                     </div>
                 </li>
             </ul>
+                <button class="user-menu-mobile-button" onclick="test()"><img
+                        src="{{"/Pages/Components/Header/svg/threeBars.svg"}}"></img></button>
         </nav>
 
-        <button class="user-menu-mobile-button" onclick="test()"></button>
         <div class="user-menu-mobile">
             <div class="user-menu-mobile-popup">
                 <div class="user-menu-mobile-close">
