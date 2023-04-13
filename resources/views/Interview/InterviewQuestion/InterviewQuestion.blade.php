@@ -114,7 +114,7 @@
 </body>
 
 <script>
-    favoriteId = {{$question->favoriteId}}
+    favoriteId = {{$question->favoriteId}};
         function load() {
             changeFavorite({{$question->isFavorite}})
             speak()
@@ -229,39 +229,6 @@
         modal.classList.toggle('is-open');
         editPopup.classList.toggle('is-open');
     }
-
-
-    // function watchAnswer() {
-    //     document.getElementById('startQuestion').classList.add('hidden');
-    //     document.getElementById('endQuestion').classList.remove('hidden');
-    // }
-
-    {{--function answerQuestion(answer) {--}}
-    {{--    let route = "{{route('interviewQuestion')}}" + "/answer=" + answer;--}}
-    {{--    requestAnswer(route)--}}
-    {{--    nextQuestion()--}}
-    {{--}--}}
-
-    // function nextQuestion() {
-    //     document.getElementById('answerQuestion').classList.add('hidden')
-    //     document.getElementById("nextQuestion").classList.remove('hidden')
-    // }
-
-    // function requestAnswer(route) {
-    //     const request = new XMLHttpRequest();
-    //     request.open("GET", route, true);
-    //     request.onreadystatechange = function () {
-    //         if (this.readyState === 4) {
-    //             if (this.status === 200) {
-    //                 if (this.responseText != null) {
-    //                     // favoriteId = JSON.parse(this.responseText)
-    //                 } else alert("Данные не получены");
-    //             } else alert("Ошибка" + this.statusText)
-    //         }
-    //     }
-    //     request.send(null)
-    // }
-
 
 </script>
 </html>

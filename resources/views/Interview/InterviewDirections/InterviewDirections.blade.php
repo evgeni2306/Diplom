@@ -7,7 +7,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
-    <link rel="stylesheet" href="{{"/Pages/Components/Header/userMenu.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/Interview/InterviewDirections/styles.css"}}"/>
     <title>Interview Directions</title>
 
@@ -27,43 +26,6 @@
                     </div>
                 </a>
             </div>
-            <div class="info-card">
-                <a href={{route($item->url, $item->id)}} >
-                    <div class="info-card__container">
-                        <div class="info-card__name">{{$item->name}}</div>
-                    </div>
-                </a>
-            </div>
-            <div class="info-card">
-                <a href={{route($item->url, $item->id)}} >
-                    <div class="info-card__container">
-                        <div class="info-card__name">Junior C# Разработчик</div>
-                    </div>
-                </a>
-            </div>
-            <div class="info-card">
-                <a href={{route($item->url, $item->id)}} >
-                    <div class="info-card__container">
-                        <div class="info-card__name">Junior C# Разработчик</div>
-                    </div>
-                </a>
-            </div>
-            <div class="info-card">
-                <a href={{route($item->url, $item->id)}} >
-                    <div class="info-card__container">
-                        <div class="info-card__name">Junior C# Разработчик</div>
-                    </div>
-                </a>
-            </div>
-            <div class="info-card">
-                <a href={{route($item->url, $item->id)}} >
-                    <div class="info-card__container">
-                        <div class="info-card__name">Junior C# Разработчик</div>
-                    </div>
-                </a>
-            </div>
-
-
         @endforeach
     </div>
 </div>
