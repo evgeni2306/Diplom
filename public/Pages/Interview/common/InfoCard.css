@@ -1,12 +1,13 @@
 
 
 .info-card {
-    margin: 0 200px;
-    display: flex;
-    gap: 12px;
+    /*margin: 0 200px;*/
+    /*display: flex;*/
+    /*gap: 12px;*/
+    width:13%;
 }
 .info-card__container{
-    width: 230px;
+    width: 100%;
     padding: 30px 20px;
     background: #ffffff;
     border-radius: 3px;

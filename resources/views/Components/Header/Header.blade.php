@@ -1,16 +1,7 @@
 <div class="header">
     <div class="header__container">
-        <div class="logo">
-            <img
-                className="logo__icon"
-                src="/common/svg/logo.svg"
-                alt="logo"
-            />
-            <span class="logo__name">JobInterview</span>
-        </div>
-        <nav class="header__menu menu">
+        <nav class="header__menu">
             <ul class="menu__list">
-
                 <li class="menu__item">
                     <a href={{route('interviewDirection')}}>
                         <div class="linkItem">
@@ -25,7 +16,30 @@
                         </div>
                     </a>
                 </li>
+                <li class="menu__item">
+                    <a href={{route('getProfessionsForKnowledgeBase')}}>
+                        <div class="linkItem">
+                            Избранное
+                        </div>
+                    </a>
+                </li>
 
+                <li class="menu__item_mobile">
+                    <a href={{route('interviewDirection')}}>
+                        <img class="sectionIcon" src="{{"/Pages/Components/Header/svg/simulation.svg"}}" alt="prjevt">
+                    </a>
+                </li>
+                <li class="menu__item_mobile">
+                    <a href={{route('getProfessionsForKnowledgeBase')}}>
+                        <img class="sectionIcon" src="{{"/Pages/Components/Header/svg/knowledgeBase.svg"}}"
+                             alt="prjevt">
+                    </a>
+                </li>
+                <li class="menu__item_mobile">
+                    <a href={{route('getProfessionsForKnowledgeBase')}}>
+                        <img class="sectionIcon" src="{{"/Pages/Components/Header/svg/favourite.svg"}}" alt="prjevt">
+                    </a>
+                </li>
             </ul>
         </nav>
         <nav class="user-menu">
@@ -38,12 +52,6 @@
                         <li><a href="{{route('expansionContent')}}" class="sub-menu__link">СРК</a></li>
                         <li><a href="{{route('StatisticList')}}" class="sub-menu__link">Статистика</a></li>
                         <li><a href="{{route('logout')}}" class="sub-menu__link">Выйти</a></li>
-
-
-{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/01.svg" alt="">Мой профиль</a></li>--}}
-{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/icons/search-icon.svg" alt="">Поиск</a></li>--}}
-{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/02.svg" alt="">Настройки</a></li>--}}
-{{--                                                <li><a href="" class="sub-menu__link"><img src="/PageMap/img/user/03.svg" alt="">Выйти</a></li>--}}
 
                     </ul>
                 </li>
