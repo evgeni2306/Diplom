@@ -45,12 +45,10 @@
 
         <nav class="user-menu">
             <ul class="user-menu__list">
-
                 <li class="user-name">
-                    <img class="avatar" src="{{"/Pages/Components/Header/svg/avatar.svg"}}" alt="user">
+                    <img class="avatar" src="{{"/Pages/Components/Header/svg/avatarWhite.svg"}}" alt="user">
                     <a href="#" class="user-menu__link" tabindex="1">UserName</a><span class="menu__arrow"></span>
                     <div class="sub-menu__list">
-
                         <div class="sub-menu__link">
                             <a class="menuHref" href="{{route('expansionContent')}}"><img
                                     src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}">Система расширения
@@ -68,21 +66,43 @@
                     </div>
                 </li>
             </ul>
-                <button class="user-menu-mobile-button" onclick="test()"><img
-                        src="{{"/Pages/Components/Header/svg/threeBars.svg"}}"></img></button>
+            <button class="user-menu-mobile-button" onclick="test()"><img
+                    src="{{"/Pages/Components/Header/svg/threeBars.svg"}}"></img></button>
         </nav>
 
         <div class="user-menu-mobile">
             <div class="user-menu-mobile-popup">
-                <div class="user-menu-mobile-close">
-                    <button onclick="closeAnswerPopup()">Закрыть</button>
+                <div class="mobile-high-menu">
+                    <div class="mobile-close-sector">
+                        <button class="mobile-close-button" onclick="closeAnswerPopup()"><img
+                                src="{{"/Pages/Components/Header/svg/cross.svg"}}"></button>
+                    </div>
+                    <div class="mobile-name-sector">
+                        <div class="mobile-avatar">
+                            <img class="avatar" src="{{"/Pages/Components/Header/svg/avatarBlack.svg"}}" alt="user">
+                        </div>
+                        <div class="mobile-name">userName</div>
+                    </div>
                 </div>
-                prjvet
-                <ul class="sub-menu__list">
-                    <li><a href="{{route('expansionContent')}}" class="sub-menu__link">СРК</a></li>
-                    <li><a href="{{route('StatisticList')}}" class="sub-menu__link">Статистика</a></li>
-                    <li><a href="{{route('logout')}}" class="sub-menu__link">Выйти</a></li>
-                </ul>
+                <div class="mobile-low-menu">
+                    <div class="mobile-sub-menu-list">
+                        <div class="mobile-sub-menu-link">
+                            <a class="menuHref" href="{{route('expansionContent')}}"><img
+                                    src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}">Система расширения
+                                контента</a>
+                        </div>
+                        <div class="mobile-sub-menu-link">
+                            <a class="menuHref" href="{{route('StatisticList')}}"><img
+                                    src="{{"/Pages/Components/Header/svg/statistic.svg"}}">Статистика</a>
+                        </div>
+                        <div class="mobile-sub-menu-link">
+                            <a class="menuHref" href="{{route('logout')}}"><img
+                                    src="{{"/Pages/Components/Header/svg/logout.svg"}}">Выйти</a>
+                        </div>
+
+                    </div>
+                </div>
+
             </div>
         </div>
     </div>
