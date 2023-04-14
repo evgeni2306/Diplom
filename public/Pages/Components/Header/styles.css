@@ -120,9 +120,9 @@
 }
 
 .sub-menu__list {
-    /*display: flex;*/
-    flex-direction: column;
     opacity: 0;
+    visibility: hidden;
+    flex-direction: column;
     position: absolute;
     right: 0;
     top: 45px;
