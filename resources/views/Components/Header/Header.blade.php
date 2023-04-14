@@ -51,23 +51,24 @@
                     <div class="sub-menu__list">
                         <div class="sub-menu__link">
                             <a class="menuHref" href="{{route('expansionContent')}}"><img
-                                    src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}">Система расширения
+                                    src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}" alt="">Система
+                                расширения
                                 контента</a>
                         </div>
                         <div class="sub-menu__link">
                             <a class="menuHref" href="{{route('StatisticList')}}"><img
-                                    src="{{"/Pages/Components/Header/svg/statistic.svg"}}">Статистика</a>
+                                    src="{{"/Pages/Components/Header/svg/statistic.svg"}}" alt="">Статистика</a>
                         </div>
                         <div class="sub-menu__link">
                             <a class="menuHref" href="{{route('logout')}}"><img
-                                    src="{{"/Pages/Components/Header/svg/logout.svg"}}">Выйти</a>
+                                    src="{{"/Pages/Components/Header/svg/logout.svg"}}" alt="">Выйти</a>
                         </div>
 
                     </div>
                 </li>
             </ul>
             <button class="user-menu-mobile-button" onclick="test()"><img
-                    src="{{"/Pages/Components/Header/svg/threeBars.svg"}}"></img></button>
+                    src="{{"/Pages/Components/Header/svg/threeBars.svg"}}" alt=""></button>
         </nav>
 
         <div class="user-menu-mobile">
@@ -75,7 +76,7 @@
                 <div class="mobile-high-menu">
                     <div class="mobile-close-sector">
                         <button class="mobile-close-button" onclick="closeAnswerPopup()"><img
-                                src="{{"/Pages/Components/Header/svg/cross.svg"}}"></button>
+                                src="{{"/Pages/Components/Header/svg/cross.svg"}}" alt=""></button>
                     </div>
                     <div class="mobile-name-sector">
                         <div class="mobile-avatar">
@@ -88,16 +89,17 @@
                     <div class="mobile-sub-menu-list">
                         <div class="mobile-sub-menu-link">
                             <a class="menuHref" href="{{route('expansionContent')}}"><img
-                                    src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}">Система расширения
+                                    src="{{"/Pages/Components/Header/svg/contentExpansion.svg"}}" alt="">Система
+                                расширения
                                 контента</a>
                         </div>
                         <div class="mobile-sub-menu-link">
                             <a class="menuHref" href="{{route('StatisticList')}}"><img
-                                    src="{{"/Pages/Components/Header/svg/statistic.svg"}}">Статистика</a>
+                                    src="{{"/Pages/Components/Header/svg/statistic.svg"}}" alt="">Статистика</a>
                         </div>
                         <div class="mobile-sub-menu-link">
                             <a class="menuHref" href="{{route('logout')}}"><img
-                                    src="{{"/Pages/Components/Header/svg/logout.svg"}}">Выйти</a>
+                                    src="{{"/Pages/Components/Header/svg/logout.svg"}}" alt="">Выйти</a>
                         </div>
 
                     </div>

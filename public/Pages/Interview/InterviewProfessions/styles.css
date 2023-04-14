@@ -1,17 +1,83 @@
-
 html,
 body {
     background-color: #f3f5f9;
 }
 
-.professions {
+.container {
     text-align: center;
 }
 
-.professions__title {
+.container__title {
     margin: 77px 0 40px 0;
     font-weight: 700;
     font-size: 28px;
     line-height: 32px;
+}
+
+.professions{
+    padding-left: 20%;
+    padding-right: 20%;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(5, 1fr);
+    gap: 20px;
+}
+
+.info-card {
+    width: 100%;
+}
+
+.info-card__container {
+    width: 100%;
+    height: 100%;
+    padding: 5% 5%;
+    background: #ffffff;
+    border-radius: 3px;
+    box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
+    transition: all 0.1s ease;
+    cursor: pointer;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border: 1px solid #ffffff;
+}
+
+.info-card__container:hover {
+    border: 1px solid #345ceb;
+    box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
+}
+
+.info-card__name {
+    margin: 0 auto;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 19px;
+    color: #000;
+}
+
+@media (max-width: 767px) {
+    .container__title{
+        margin: 37px 0 10px 0;
+    }
+    .professions {
+        padding:10%;
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .info-card__container {
+        width: 100%;
+        height: 70px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border: 1px solid #ffffff;
+    }
+}
+
+@media (max-width: 567px) {
+
+}
+
+@media (max-width: 479px) {
+
 }
 
