@@ -68,7 +68,7 @@ body {
     height: 60px;
     position: relative;
     border-radius: 50%;
-    background: #e4e9ff;
+    background: #04113f;
 }
 
 .infoblock-icon img {
@@ -117,10 +117,11 @@ body {
     margin-right: 10px;
     vertical-align: middle;
 }
-.infoblock{
+
+.infoblock {
     display: flex;
     flex-direction: column;
-    gap:10px;
+    gap: 10px;
 }
 
 @media (max-width: 767px) {
@@ -137,25 +138,10 @@ body {
     .preview-body {
         padding: 14px;
     }
-    .infoblock{
-        gap:20px;
-    }
 
-    /*.container__title{*/
-    /*    margin: 37px 0 10px 0;*/
-    /*}*/
-    /*.directions {*/
-    /*    padding:10%;*/
-    /*    grid-template-columns: repeat(2, 1fr);*/
-    /*}*/
-    /*.info-card__container {*/
-    /*    width: 100%;*/
-    /*    height: 70px;*/
-    /*    display: flex;*/
-    /*    justify-content: center;*/
-    /*    align-items: center;*/
-    /*    border: 1px solid #ffffff;*/
-    /*}*/
+    .infoblock {
+        gap: 20px;
+    }
 }
 
 @media (max-width: 567px) {

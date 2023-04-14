@@ -41,7 +41,7 @@
                     </div>
                     <div class="infoblock-item">
                         <div class="infoblock-icon">
-                            <img src="{{"/Pages/Interview/InterviewPreview/svg/cloud.svg"}}" alt="cloud"/>
+                            <img src="{{"/Pages/Interview/InterviewPreview/svg/brain.svg"}}" alt="cloud"/>
                         </div>
                         <div class="infoblock-text">
                                 <span class="infoblock-title">
@@ -54,7 +54,7 @@
                     </div>
                     <div class="infoblock-item">
                         <div class="infoblock-icon">
-                            <img src="{{"/Pages/Interview/InterviewPreview/svg/check.svg"}}" alt="check"/>
+                            <img src="{{"/Pages/Interview/InterviewPreview/svg/checkbox.svg"}}" alt="check"/>
                         </div>
                         <div class="infoblock-text">
                                 <span class="infoblock-title">
@@ -68,7 +68,7 @@
                     </div>
                     <div class="infoblock-item">
                         <div class="infoblock-icon">
-                            <img src="{{"/Pages/Interview/InterviewPreview/svg/favourites.svg"}}" alt="favourites"/>
+                            <img src="{{"/Pages/Interview/InterviewPreview/svg/favourite.svg"}}" alt="favourites"/>
                         </div>
                         <div class="infoblock-text">
                                 <span class="infoblock-title">
