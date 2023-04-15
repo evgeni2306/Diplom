@@ -19,6 +19,8 @@
         Знаете вопрос, который могут задать на собеседовании, но его нет в базе?
         <a href="{{route('expansionContent')}}" class="container-link">Пополнить базу знаний</a>
     </p>
+
+
     <div class="knowledge-base">
         <div class="choose-profession-block">
             <input class="choose-profession" required list="brow" value="" id="profession"
@@ -35,7 +37,7 @@
     <div class="modal">
         <div class="edit-popup">
             <div class="edit-popup-close">
-                <button class="mobile-close-button" onclick="closeAnswerPopup()"><img
+                <button class="modal-close-button" onclick="closeAnswerPopup()"><img
                         src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
             </div>
             <div class="modal-question">
@@ -49,8 +51,6 @@
                 </div>
                 <div class="modal-question-answer">
                     <div id="modalQuestionAnswer" class="modal-question-answer-text">
-                        Длинный текст ну просто прям очень длинный текст который вылазит из дива потому что он длинный, длиннее, чем див, который не приспособле под текст такой длины, потому что он ну очень длинный
-                        Длинный текст ну просто прям очень длинный текст который вылазит из дива потому что он длинный, длиннее, чем див, который не приспособле под текст такой длины, потому что он ну очень длинный
                     </div>
                 </div>
             </div>
@@ -73,7 +73,7 @@
         const questionAnswer = element[elementId].querySelector("#questionAnswer").textContent;
         const questionText = element[elementId].querySelector("#questionText").textContent;
         const questionCategory = element[elementId].querySelector("#questionCategory").textContent;
-        // document.querySelector("#modalQuestionAnswer").textContent = questionAnswer
+        document.querySelector("#modalQuestionAnswer").textContent = questionAnswer
         document.querySelector("#modalQuestionText").textContent = questionText
         document.querySelector("#modalQuestionCategory").textContent = questionCategory
         modal.classList.toggle('is-open');
@@ -92,16 +92,17 @@
     }
 
     function viewQuestions(questions) {
-        for (i = 0; i < questions.length; i++) {
+        for (var i = 0; i < questions.length; i++) {
             op = document.createElement('div')
-            op.className = "knowledge-base__wrapper"
+            op.className = "question-wrapper"
             op.innerHTML = divBuilder(questions[i], i)
             document.getElementById('questionBox').append(op)
         }
         cards = document.getElementsByName("number")
         for (i = 0; i < questions.length; i++) {
-            nonFavorite = cards[i].querySelector("#nonFavorite")
-            Favorite = cards[i].querySelector("#Favorite")
+            nonFavorite = cards[i].querySelector("#question-favorite").querySelector("#nonFavorite")
+            Favorite = cards[i].querySelector("#question-favorite").querySelector("#Favorite")
+
             if (questions[i].isFavorite === 0) {
                 nonFavorite.classList.remove('hidden')
             }
@@ -112,38 +113,45 @@
     }
 
     function divBuilder(question, i) {
-        const element = '<div class="knowledge-base-question" name="number" ' +
-            'onclick="openAnswerPopup(' + i + ')">' +
-            '<div class="knowledge-base-question-top">' +
-            '<div id="questionCategory" class="knowledge-base-question-top-tag">' +
-            question.category +
-            '</div>' +
+        return '<div class="question-container" name="number" onclick="openAnswerPopup"(' + i + ')>' +
+
             '<div id="isFavorite" class="hidden">' + question.isFavorite + '</div>' +
             '<div id="favoriteId" class="hidden">' + question.favoriteId + '</div>' +
             '<div id="questionId" class="hidden">' + question.questionId + '</div>' +
-            '<div  id="questionAnswer" class="hidden">' + question.answer + '</div>' +
-            '<div id="nonFavorite" class="knowledge-base-question-top-favourites hidden">' +
-            '<button class="knowledge-base-question-top-favourites-btn" onclick="addFavorite(' + i + ')">' +
-            '<div class="knowledge-base-question-top-favourites-icon">' +
-            '<img src="{{"/common/svg/emptyFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
+            '<div id="questionAnswer" class="hidden">' + question.answer + '</div>' +
+
+            '<div class="question-container-top">' +
+            '<div class="question-category">' +
+            '<div id="questionCategory" class="question-category-text">' +
+            question.category +
             '</div>' +
-            '</button>' +
             '</div>' +
 
-            '<div id="Favorite" class="knowledge-base-question-top-favourites hidden">' +
-            '<button class="knowledge-base-question-top-favourites-btn" onclick="deleteFavorite(' + i + ')">' +
-            '<div class="knowledge-base-question-top-favourites-icon">' +
+            '<div class="question-favorite" id = "question-favorite">' +
+            '<div id="Favorite" class="question-favourites hidden">' +
+            '<button class="question-favourites-button" onclick="deleteFavorite(' + i + ')">' +
+            '<div class="question-favourites-icon">' +
             '<img src="{{"/common/svg/fillFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
             '</div>' +
             '</button>' +
             '</div>' +
 
+            '<div id="nonFavorite" class="question-favourites hidden">' +
+            '<button class="question-favourites-button" onclick="addFavorite(' + i + ')">' +
+            '<div class="question-favourites-icon">' +
+            '<img src="{{"/common/svg/emptyFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
             '</div>' +
-            '<div id="questionText" class="knowledge-base-question-body">' +
-            question.question;
-        '</div>' +
-        '</div>'
-        return element
+            '</button>' +
+            '</div>' +
+
+            ' </div>' +
+            '</div>' +
+            '<div class="question-container-bottom">' +
+            '<div class="question-text">' +
+            question.question +
+            '</div>' +
+            '</div>' +
+            '</div>'
     }
 
     function addFavorite(id) {
