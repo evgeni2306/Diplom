@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="ru">
 <head>
-    <meta charset="utf-8"/>
+    <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
@@ -14,28 +14,71 @@
 @include('Components.Header.Header')
 <!--------------/HEADER-------------------->
 <div class="container">
-
     <h1 class="container-title">База знаний</h1>
     <p class="container-subtitle">
         Знаете вопрос, который могут задать на собеседовании, но его нет в базе?
-        <span class="container-link">Пополнить базу знаний</span>
+        <a href="{{route('expansionContent')}}" class="container-link">Пополнить базу знаний</a>
     </p>
     <div class="knowledge-base">
         <div class="choose-profession-block">
-                <input class="choose-profession" required list="brow" value="" id="profession"
-                       placeholder="Выберите профессию" onchange="changeProf()">
-                <datalist class="search-box" id="brow">
-                    @foreach($professions as $item)
-                        <option value="{{$item->name}}">
-                    @endforeach
-                </datalist>
+            <input class="choose-profession" required list="brow" value="" id="profession"
+                   placeholder="Выберите профессию" onchange="changeProf()">
+            <datalist class="search-box" id="brow">
+                @foreach($professions as $item)
+                    <option value="{{$item->name}}">
+                @endforeach
+            </datalist>
         </div>
         <div class="knowledge-base-questions" id="questionBox">
+        </div>
+    </div>
+    <div class="modal">
+        <div class="edit-popup">
+            <div class="edit-popup-close">
+                <button class="mobile-close-button" onclick="closeAnswerPopup()"><img
+                        src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
+            </div>
+            <div class="modal-question">
+                <div class="modal-question-category">
+                    <div id="modalQuestionCategory" class="modal-question-category-text modal-question-text ">
+                    </div>
+                </div>
+                <div class="modal-question-question">
+                    <div id="modalQuestionText" class="modal-question-question-text modal-question-text">
+                    </div>
+                </div>
+                <div class="modal-question-answer">
+                    <div id="modalQuestionAnswer" class="modal-question-answer-text">
+                        Длинный текст ну просто прям очень длинный текст который вылазит из дива потому что он длинный, длиннее, чем див, который не приспособле под текст такой длины, потому что он ну очень длинный
+                        Длинный текст ну просто прям очень длинный текст который вылазит из дива потому что он длинный, длиннее, чем див, который не приспособле под текст такой длины, потому что он ну очень длинный
+                    </div>
+                </div>
+            </div>
+
         </div>
     </div>
 </div>
 </body>
 <script>
+    let modal = document.querySelector('.modal');
+    let editPopup = document.querySelector('.edit-popup');
+
+    function closeAnswerPopup() {
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
+    }
+
+    function openAnswerPopup(elementId) {
+        const element = document.getElementsByName("number");
+        const questionAnswer = element[elementId].querySelector("#questionAnswer").textContent;
+        const questionText = element[elementId].querySelector("#questionText").textContent;
+        const questionCategory = element[elementId].querySelector("#questionCategory").textContent;
+        // document.querySelector("#modalQuestionAnswer").textContent = questionAnswer
+        document.querySelector("#modalQuestionText").textContent = questionText
+        document.querySelector("#modalQuestionCategory").textContent = questionCategory
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
+    }
 
     function changeProf() {
         const questionBox = document.getElementById('questionBox');
@@ -69,15 +112,16 @@
     }
 
     function divBuilder(question, i) {
-        const element = '<div class="knowledge-base-question" name="number">' +
+        const element = '<div class="knowledge-base-question" name="number" ' +
+            'onclick="openAnswerPopup(' + i + ')">' +
             '<div class="knowledge-base-question-top">' +
-            '<div class="knowledge-base-question-top-tag">' +
+            '<div id="questionCategory" class="knowledge-base-question-top-tag">' +
             question.category +
             '</div>' +
             '<div id="isFavorite" class="hidden">' + question.isFavorite + '</div>' +
             '<div id="favoriteId" class="hidden">' + question.favoriteId + '</div>' +
             '<div id="questionId" class="hidden">' + question.questionId + '</div>' +
-
+            '<div  id="questionAnswer" class="hidden">' + question.answer + '</div>' +
             '<div id="nonFavorite" class="knowledge-base-question-top-favourites hidden">' +
             '<button class="knowledge-base-question-top-favourites-btn" onclick="addFavorite(' + i + ')">' +
             '<div class="knowledge-base-question-top-favourites-icon">' +
@@ -95,7 +139,7 @@
             '</div>' +
 
             '</div>' +
-            '<div class="knowledge-base-question-body">' +
+            '<div id="questionText" class="knowledge-base-question-body">' +
             question.question;
         '</div>' +
         '</div>'
