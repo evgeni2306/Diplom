@@ -24,18 +24,18 @@
 
             @foreach($favorites as $item)
                 <div class="question-wrapper" id="{{$item->favoriteId}}">
-                    <div class="question-container"  onclick="openAnswerPopup()">
-                        <div id="questionAnswer" class="hidden">{{$item->answer}}</div>
+                    <div class="question-container"  onclick="openAnswerPopup({{$item->favoriteId}})">
+                        <div id="question-answer" class="hidden">{{$item->answer}}</div>
                         <div class="question-container-top">
                             <div class="question-category">
-                                <div id="questionCategory" class="question-category-text">
+                                <div id="question-category" class="question-category-text">
                                     {{$item->category }}
                                 </div>
                             </div>
                             <div class="question-favorite" id="question-favorite">
                                 <div id="Favorite" class="question-favourites ">
                                     <button class="question-favourites-button"
-                                            onclick="deleteFavorite({{$item->favoriteId}})">
+                                            onclick="deleteFavorite({{$item->favoriteId}});event.stopPropagation()">
                                         <div class="question-favourites-icon">
                                             <img src="{{"/common/svg/fillFavourites.svg"}}" alt="favourites"
                                                  width="16px"
@@ -46,7 +46,7 @@
                             </div>
                         </div>
                         <div class="question-container-bottom">
-                            <div class="question-text">
+                            <div class="question-text" id="question-text">
                                 {{$item->question}}
                             </div>
                         </div>
@@ -97,10 +97,11 @@
     }
 
     function openAnswerPopup(elementId) {
-        const element = document.getElementsByName("number");
-        const questionAnswer = element[elementId].querySelector("#questionAnswer").textContent;
-        const questionText = element[elementId].querySelector("#questionText").textContent;
-        const questionCategory = element[elementId].querySelector("#questionCategory").textContent;
+        const element = document.getElementById(elementId);
+
+        const questionAnswer = element.querySelector("#question-answer").textContent;
+        const questionText = element.querySelector("#question-text").textContent;
+        const questionCategory = element.querySelector("#question-category").textContent;
         document.querySelector("#modalQuestionAnswer").textContent = questionAnswer
         document.querySelector("#modalQuestionText").textContent = questionText
         document.querySelector("#modalQuestionCategory").textContent = questionCategory
