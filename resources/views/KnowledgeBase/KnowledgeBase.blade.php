@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/KnowledgeBase/styles.css"}}"/>
-    <title>Knowledge Base</title>
+    <title>База знаний</title>
 </head>
 <body>
 <!--------------HEADER-------------------->
@@ -113,7 +113,7 @@
     }
 
     function divBuilder(question, i) {
-        return '<div class="question-container" name="number" onclick="openAnswerPopup"(' + i + ')>' +
+        return '<div class="question-container" name="number" onclick="openAnswerPopup(' + i + ') ">' +
 
             '<div id="isFavorite" class="hidden">' + question.isFavorite + '</div>' +
             '<div id="favoriteId" class="hidden">' + question.favoriteId + '</div>' +
@@ -129,7 +129,7 @@
 
             '<div class="question-favorite" id = "question-favorite">' +
             '<div id="Favorite" class="question-favourites hidden">' +
-            '<button class="question-favourites-button" onclick="deleteFavorite(' + i + ')">' +
+            '<button class="question-favourites-button" onclick="deleteFavorite(' + i + ');event.stopPropagation()">' +
             '<div class="question-favourites-icon">' +
             '<img src="{{"/common/svg/fillFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
             '</div>' +
@@ -137,7 +137,7 @@
             '</div>' +
 
             '<div id="nonFavorite" class="question-favourites hidden">' +
-            '<button class="question-favourites-button" onclick="addFavorite(' + i + ')">' +
+            '<button class="question-favourites-button" onclick="addFavorite(' + i + ');event.stopPropagation()">' +
             '<div class="question-favourites-icon">' +
             '<img src="{{"/common/svg/emptyFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
             '</div>' +
@@ -147,7 +147,7 @@
             ' </div>' +
             '</div>' +
             '<div class="question-container-bottom">' +
-            '<div class="question-text">' +
+            '<div id="questionText" class="question-text">' +
             question.question +
             '</div>' +
             '</div>' +

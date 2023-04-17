@@ -35,7 +35,7 @@ body {
     text-decoration: underline;
 }
 
-.knowledge-base {
+.favorite-section {
     margin: 0 auto;
     width: 75%;
     height: 100%;
@@ -56,7 +56,7 @@ body {
     height: 100%;
 }
 
-.knowledge-base-questions {
+.favorite-section-questions {
     padding: 1%;
     margin: 20px 0 40px;
     display: grid;
@@ -76,7 +76,6 @@ body {
 }
 
 .question-container-top {
-
     margin-top: 3%;
     width: 100%;
     height: 45%;
@@ -96,7 +95,6 @@ body {
 }
 
 .question-favorite {
-    z-index: 5;
     display: flex;
     justify-content: flex-end;
     margin-right: 25px;
@@ -217,12 +215,6 @@ body {
     height: 100%;
 }
 
-.modal-close-button {
-    border: none;
-    background: none;
-    margin-top: 5px;
-    margin-right: 5px;
-}
 
 .modal-question-category {
     width: 100%;
@@ -232,6 +224,16 @@ body {
     justify-content: flex-start;
     align-items: center;
 }
+
+.modal-question-question {
+    width: 100%;
+    height: 40px;
+    margin-left: 20px;
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+}
+
 
 .modal-question-text {
     font-weight: 600;
@@ -246,20 +248,14 @@ body {
     border-radius: 3px;
 }
 
-.modal-question-question {
-    width: 100%;
-    height: 40px;
-    margin-left: 20px;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-}
-
 .modal-question-question-text {
     font-size: 20px;
-    word-wrap: break-word;
 }
 
+.modal-close-button {
+    margin-top: 5px;
+    margin-right: 5px;
+}
 
 .modal-question-answer-text {
     font-weight: 600;
@@ -272,6 +268,7 @@ body {
     width: 100%;
     height: 40px;
     display: flex;
+
     justify-content: flex-start;
 }
 
@@ -286,10 +283,6 @@ body {
         width: 40%;
 
     }
-
-    .edit-popup {
-        height: 100%;
-    }
 }
 
 @media (max-width: 567px) {
@@ -300,19 +293,14 @@ body {
     }
 
 
-    .edit-popup {
-        width: 100%;
-        height: 100%;
-    }
-
     .knowledge-base-questions {
         grid-template-columns: repeat(1, 1fr);
     }
-    .modal-question-question{
-        margin:0 auto;
-    }
 }
 
+@media (max-width: 479px) {
+
+}
 
 
 

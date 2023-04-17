@@ -16,6 +16,7 @@ use App\Http\Controllers\Site\KnowledgeBase\GetProfessionsController as KB_GetPr
 use App\Http\Controllers\Site\KnowledgeBase\GetQuestionsController as KB_GetQuestionsController;
 
 use App\Http\Controllers\Site\FavoriteSection\FavoriteQuestionController;
+use App\Http\Controllers\Site\FavoriteSection\FavoriteSectionController;
 
 use App\Http\Controllers\Site\ContentExpansion\QuestionOfferController;
 
@@ -55,7 +56,7 @@ Route::middleware('guest')->group(function () {
     Route::get('auth/vkontakte/callback', [VkAuthController::class, 'login']);
 });
 
-Route::middleware(['auth:web','logoutUserType'])->group(function () {
+Route::middleware(['auth:web', 'logoutUserType'])->group(function () {
 
     Route::middleware('simulationInActive')->group(function () {
         Route::get('interview/question', [GetNextQuestionController::class, 'index'])->name('interviewQuestion');
@@ -74,6 +75,7 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
         Route::get('/knowledgebase', [KB_GetProfessionsController::class, 'index'])->name('getProfessionsForKnowledgeBase');
         Route::post('/knowledgebase/professions', [KB_GetQuestionsController::class, 'getQuestionsForKnowledgeBase'])->name('getQuestionsForKnowledgeBase');
 
+
         Route::get('/logout', function () {
 
             session_destroy();
@@ -84,6 +86,7 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
 
     Route::get('/favorite/add={idd}', [FavoriteQuestionController::class, 'add'])->name('questionFavoriteAdd');
     Route::get('/favorite/delete={idd}', [FavoriteQuestionController::class, 'delete'])->name('questionFavoriteDel');
+    Route::get('/favorite/list', [FavoriteSectionController::class, 'index'])->name('favoriteList');
 
     Route::get('/expansion/', [QuestionOfferController::class, 'index'])->name('expansionContent');
     Route::get('/expansion/store', [QuestionOfferController::class, 'store']);
@@ -100,8 +103,6 @@ Route::middleware(['auth:web','logoutUserType'])->group(function () {
     Route::post('/statistic/concrete/questions', [StatisticConcreteController::class, 'getQuestions'])->name('StatisticConcreteQuestions');
 });
 Route::get('test', [TestController::class, 'test']);
-
-
 
 
 Route::get('/generate={admin}', [GenerateContentController::class, 'createContent']);

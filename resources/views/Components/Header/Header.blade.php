@@ -17,7 +17,7 @@
                     </a>
                 </li>
                 <li class="menu__item">
-                    <a href={{route('getProfessionsForKnowledgeBase')}}>
+                    <a href={{route('favoriteList')}}>
                         <div class="linkItem">
                             Избранное
                         </div>
@@ -36,7 +36,7 @@
                     </a>
                 </li>
                 <li class="menu__item_mobile">
-                    <a href={{route('getProfessionsForKnowledgeBase')}}>
+                    <a href={{route('favoriteList')}}>
                         <img class="sectionIcon" src="{{"/Pages/Components/Header/svg/favourite.svg"}}" alt="prjevt">
                     </a>
                 </li>
