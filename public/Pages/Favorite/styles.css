@@ -295,8 +295,15 @@ body {
         width: 100%;
         height: 100%;
     }
+.favorite-section{
+    width:100%;
+    padding: 1%;
+}
     .favorite-section-questions {
         grid-template-columns: repeat(1, 1fr);
+    }
+    .modal-question{
+        gap:10px;
     }
     .modal-question-question{
         margin:0 auto;
