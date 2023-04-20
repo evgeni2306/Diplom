@@ -67,7 +67,7 @@
                     </div>
                 </li>
             </ul>
-            <button class="user-menu-mobile-button" onclick="test()"><img
+            <button class="user-menu-mobile-button" onclick="openMobilePopup()"><img
                     src="{{"/Pages/Components/Header/svg/threeBars.svg"}}" alt=""></button>
         </nav>
 
@@ -75,7 +75,7 @@
             <div class="user-menu-mobile-popup">
                 <div class="mobile-high-menu">
                     <div class="mobile-close-sector">
-                        <button class="mobile-close-button" onclick="closeAnswerPopup()"><img
+                        <button class="mobile-close-button" onclick="closeMobilePopup()"><img
                                 src="{{"/Pages/Components/Header/svg/cross.svg"}}" alt=""></button>
                     </div>
                     <div class="mobile-name-sector">

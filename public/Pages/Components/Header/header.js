@@ -11,16 +11,12 @@ if (menuArrows.length > 0) {
 let userMenuMobile = document.querySelector('.user-menu-mobile');
 let userMenuMobilePopup = document.querySelector('.user-menu-mobile-popup');
 
-function closeAnswerPopup() {
+function closeMobilePopup() {
     userMenuMobile.classList.toggle('user-menu-mobile-open');
     userMenuMobilePopup.classList.toggle('user-menu-mobile-open');
 }
 
-function openAnswerPopup() {
+function openMobilePopup() {
     userMenuMobile.classList.toggle('user-menu-mobile-open');
     userMenuMobilePopup.classList.toggle('user-menu-mobile-open');
-}
-
-function test() {
-    openAnswerPopup()
 }
