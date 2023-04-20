@@ -19,7 +19,7 @@
 }
 
 .generalSector {
-    gap:10px;
+    gap: 10px;
     width: 100%;
     height: 100%;
     display: flex;
@@ -35,7 +35,7 @@
 }
 
 .progressBlock {
-    color:white;
+    color: white;
     background-color: #345ceb;
     margin: 0 auto;
     height: 100px;
@@ -44,17 +44,18 @@
     display: flex;
     flex-direction: column;
     justify-content: center;
-    gap:10%;
+    gap: 10%;
     font-weight: 600;
     font-size: 22px;
     line-height: 140%;
 }
-.progressBlock-string{
+
+.progressBlock-string {
     margin: 0 auto;
     display: flex;
     flex-direction: row;
-    justify-content: space-between;
-    width:90%;
+    justify-content: center;
+    width: 90%;
 
 }
 
@@ -92,13 +93,15 @@
     margin: 0 auto;
     border-radius: 3;
 }
-.diagramSector-text{
+
+.diagramSector-text {
     font-weight: 700;
     font-size: 22px;
     line-height: 32px;
     display: flex;
     flex-direction: column;
 }
+
 .simulationCount {
     margin: 10px;
     font-weight: 700;
@@ -113,15 +116,16 @@
 }
 
 .diagramZone {
-    display: flex;
-    justify-content: center;
+    display: grid;
     width: 100%;
+    grid-template-columns: repeat(10, 1fr);
+    margin: 0 auto;
 
 }
 
 .interviewColumn {
     margin: 5px;
-    width: 7%;
+    width: 80%;
 }
 
 .button {
@@ -172,9 +176,9 @@
 /*------КРУГОВАЯ ДИАГРАММА----*/
 .categoryDiagramSector {
     border-radius: 3px;
-    width:60%;
+    width: 60%;
     margin: 0 auto;
-    background-color: #345ceb;
+    background-color: white;
     margin-top: 1%;
     padding: 1%;
     display: flex;
@@ -185,15 +189,17 @@
     display: grid;
     grid-template-columns: repeat(4, 1fr);
     margin: 0 auto;
-    gap:20px;
+    gap: 20px;
 
 }
-.categoryTitle{
+
+.categoryTitle {
     font-weight: 700;
     font-size: 22px;
     line-height: 32px;
     color: white;
 }
+
 .interviewDiagramBlock {
     border: 3px solid #53c0ee;
     border-radius: 15px;
@@ -204,6 +210,8 @@
 .categoryName {
     text-align: center;
     margin: 10%;
+    font-weight: 700;
+    color:white
 
 }
 
@@ -227,7 +235,7 @@
     right: 20px;
     bottom: 20px;
     border-radius: 50%;
-    background: #ccc;
+    background: #53c0ee;
     z-index: 3;
     opacity: 1;
 }
@@ -292,6 +300,7 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color:white;
 }
 
 .categoryDiagram .text b {
@@ -299,7 +308,7 @@
 }
 
 .categoryDiagram .text span {
-    font-size: 15px;
+    font-size: 14px;
     display: block;
 }
 
@@ -314,9 +323,9 @@
 .categoryBlock {
     width: 200px;
     height: 200px;
-    border: 5px solid #53c0ee;
+    /*border: 5px solid #53c0ee;*/
     border-radius: 10px;
-    background-color: white;
+    background-color: #53c0ee;
     /*margin: 10px;*/
 }
 
@@ -336,6 +345,46 @@
 }
 
 /*---------------------------*/
+@media (max-width: 767px) {
+    .container__title {
+        font-size: 18px;
+    }
+
+    .progressBlock {
+        border-radius: 0;
+        width: 100%;
+        font-size: 16px;
+    }
+
+    .diagramSector {
+        width: 100%;
+    }
+
+    .diagramSector-text {
+        font-size: 16px;
+
+    }
+    .categoryDiagramSector{
+        width:100%;
+    }
+    .categoryDiagramZone{
+        grid-template-columns: repeat(1,1fr);
+    }
+    .interviewColumn{
+        width:60%;
+        margin: 0 auto;
+    }
+    .interviewProgress{
+        height:70%;
+    }
+    .dateField{
+        transform:rotate(270deg);
+        margin-bottom: 30px;
+    }
+    .diagramZone{
+        grid-template-columns: repeat(5, 1fr);
+    }
+}
 
 
 

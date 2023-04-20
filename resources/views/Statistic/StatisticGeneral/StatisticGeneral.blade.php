@@ -20,10 +20,11 @@
             <div class="progressBlock">
                 <div class="progressBlock-string">
                 <div>Верно пройденных от общего количества вопросов</div>
-                <div class="points">{{$generalData}}%</div>
+                <div hidden class="points">{{$generalData}}%</div>
                 </div>
                 <div class="progress">
                     <div class="progressBar">
+                        {{$generalData}}%
                     </div>
                 </div>
             </div>
@@ -35,7 +36,6 @@
                 <div>Прогресс по прохождению</div>
                 <div>Нажмите на определенную колонку и посмотрите результаты за эту симуляцию</div>
             </div>
-
             <div class="diagramBlock">
                 <div class="simulationCount">10 последних симуляций</div>
                 <div class="diagramZone">

@@ -21,7 +21,7 @@
                 <a href="{{route('StatisticGeneral',$interview->profId)}}">
                     <div class="info-card__container">
                         <div class="info-card__name">{{$interview->name}}</div>
-                        <div>Пройдено: {{$interview->count}} симуляций</div>
+                        <div>Пройдено: {{$interview->count}} {{trans_choice('симуляция|симуляции|симуляций',$interview->count)}}</div>
                     </div>
                 </a>
             </div>
