@@ -2,76 +2,87 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/Statistic/StatisticGeneral/styles.css"}}"/>
+    <title>Статистика  {{$professionName}}</title>
 </head>
 <body onLoad="load()">
 <!--------------HEADER-------------------->
 @include('Components.Header.Header')
 <!--------------/HEADER-------------------->
-<div class="generalProgressSector">
-    <div>Верно пройденных от общего количества вопросов</div>
-    <div class="generalProgressBlock">
-        <span class="generalPoints">{{$generalData}}</span>
-        <div class="generalProgress">
-            <div class="generalProgressBar">
-            </div>
-        </div>
-
-    </div>
-</div>
-
-
-<div class="interviewDiagramSector">
-    <div>Прогресс по прохождению</div>
-    <div>Нажмите на определенную колонку и посмотрите результаты за эту симуляцию</div>
-    <div class="interviewDiagramBlock">
-        <div class="simulationCount">10 последних симуляций</div>
-        <div class="interviewDiagramZone">
-            @foreach($diagramData as $item)
-                <div class="interviewColumn" name="interviewColumn">
-                    <button class="button" id="button" onclick="test('{{route('StatisticConcrete',$item->id)}}')">
-                        <div hidden id="interviewPoints">{{$item->count}}</div>
-                        <div class="interviewProgress">
-                            <div class="interviewProgressBar">
-                                <div class="interviewPercentCount"></div>
-                            </div>
-                        </div>
-                    </button>
-                    <div class="dateField">{{$item->created_at->format('d.m.y')}}</div>
+<div class="container">
+    <h1 class="container__title">Ваша статистика по профессии : {{$professionName}}</h1>
+    <div class="generalSector">
+        <div class="progressSector">
+            <div class="progressBlock">
+                <div class="progressBlock-string">
+                <div>Верно пройденных от общего количества вопросов</div>
+                <div class="points">{{$generalData}}%</div>
                 </div>
-            @endforeach
-        </div>
-    </div>
-</div>
-
-<div class="categoryDiagramSector">
-    <div>Прогресс по темам</div>
-    <div class="categoryDiagramZone">
-        @foreach($categoryData as $item)
-            <div class="categoryBlock" onclick="test()">
-                <div class="categoryName">{{$item->name}}</div>
-                <div class="categoryDiagramBlock">
-                    <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
-                        <div class="piece left"></div>
-                        <div class="piece right"></div>
-                        <div class="text">
-                            <div>
-                                <b>{{$item->count}}</b>
-                                <span>Вопросов</span>
-                            </div>
-                        </div>
+                <div class="progress">
+                    <div class="progressBar">
                     </div>
                 </div>
             </div>
-        @endforeach
+        </div>
 
+
+        <div class="diagramSector">
+            <div class="diagramSector-text">
+                <div>Прогресс по прохождению</div>
+                <div>Нажмите на определенную колонку и посмотрите результаты за эту симуляцию</div>
+            </div>
+
+            <div class="diagramBlock">
+                <div class="simulationCount">10 последних симуляций</div>
+                <div class="diagramZone">
+                    @foreach($diagramData as $item)
+                        <div class="interviewColumn" name="interviewColumn">
+                            <button class="button" id="button"
+                                    onclick="test('{{route('StatisticConcrete',$item->id)}}')">
+                                <div hidden id="interviewPoints">{{$item->count}}</div>
+                                <div class="interviewProgress">
+                                    <div class="interviewProgressBar">
+                                        <div class="interviewPercentCount"></div>
+                                    </div>
+                                </div>
+                            </button>
+                            <div class="dateField">{{$item->created_at->format('d.m.y')}}</div>
+                        </div>
+                    @endforeach
+                </div>
+            </div>
+        </div>
+
+        <div class="categoryDiagramSector">
+            <div class="categoryTitle">Прогресс по темам</div>
+            <div class="categoryDiagramZone">
+                @foreach($categoryData as $item)
+                    <div class="categoryBlock" onclick="test()">
+                        <div class="categoryName">{{$item->name}}</div>
+                        <div class="categoryDiagramBlock">
+                            <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
+                                <div class="piece left"></div>
+                                <div class="piece right"></div>
+                                <div class="text">
+                                    <div>
+                                        <b>{{$item->count}}</b>
+                                        <span>{{trans_choice('Вопрос|Вопроса|Вопросов',$item->count)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                @endforeach
+
+
+            </div>
+        </div>
     </div>
-
 </div>
-
 </body>
 <script>
     function test(route) {
@@ -85,8 +96,8 @@
     }
 
     function generalDiagram() {
-        let points = document.querySelector('.generalPoints').textContent;
-        const progress = document.querySelector('.generalProgressBar');
+        let points = {{$generalData}};
+        const progress = document.querySelector('.progressBar');
         setTimeout(() => {
             progress.style.opacity = 1;
             progress.style.width = points + '%';

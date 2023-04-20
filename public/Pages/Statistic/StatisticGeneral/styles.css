@@ -1,13 +1,74 @@
-.generalProgress{
+.orange {
+    background: #ffa235;
+}
+
+.gray {
+    background: #ababab;
+}
+
+.container {
+
+    text-align: center;
+}
+
+.container__title {
+    margin: 77px 0 20px 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+}
+
+.generalSector {
+    gap:10px;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+}
+
+.progressSector {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+
+}
+
+.progressBlock {
+    color:white;
+    background-color: #345ceb;
+    margin: 0 auto;
+    height: 100px;
+    width: 60%;
+    border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap:10%;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 140%;
+}
+.progressBlock-string{
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    width:90%;
+
+}
+
+.progress {
+    margin: 0 auto;
     width: 90%;
-    height: 5px;
+    height: 30%;
     position: relative;
-    background: #126180;
-    border-radius: 7px;
-    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
     overflow: hidden;
 }
-.generalProgressBar {
+
+.progressBar {
     height: 100%;
     background: #23bfff;
     border-radius: 7px;
@@ -19,22 +80,60 @@
     width: 0;
     transition: 1s ease;
 }
-.generalPercentCount {
-    width: 80%;
-    font-size: 14px;
-    line-height: 121%;
-    color: #126180;;
+
+
+/*///10 последних/////*/
+
+.diagramSector {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 60%;
+    margin: 0 auto;
+    border-radius: 3;
 }
-.generalProgressSector{
+.diagramSector-text{
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+    display: flex;
+    flex-direction: column;
+}
+.simulationCount {
+    margin: 10px;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 32px;
+}
+
+.diagramBlock {
+    display: flex;
+    flex-direction: column;
+
+}
+
+.diagramZone {
+    display: flex;
+    justify-content: center;
     width: 100%;
 
 }
-.generalProgressBlock{
-    margin:0 auto;
-    width:50%;
-    border: 3px solid #53c0ee;
-    border-radius: 10px
-;
+
+.interviewColumn {
+    margin: 5px;
+    width: 7%;
+}
+
+.button {
+    position: relative;
+    border: none;
+    width: 100%;
+    height: 305px;
+    background-color: white;
+}
+
+.button:hover {
+    filter: brightness(96%)
 }
 
 .interviewProgress {
@@ -45,19 +144,6 @@
     background-color: #ababab;
     overflow: hidden;
     transform: rotate(180deg);
-
-}
-.interviewColumn {
-    margin: 5px;
-    width: 5%;
-}
-
-.button {
-    position: relative;
-    border: none;
-    width: 100%;
-    height: 305px;
-    background-color: white;
 
 }
 
@@ -71,29 +157,10 @@
     opacity: 0;
     width: 100%;
     transition: 1s ease;
-
-}
-
-.orange {
-    background: #ffa235;
-}
-
-.gray {
-    background: #ababab;
-}
-
-.button:hover {
-    filter: brightness(96%)
 }
 
 .interviewPercentCount {
     transform: rotate(180deg);
-}
-
-.interviewDiagramZone {
-    display: flex;
-    justify-content: center;
-    flex: 500px;
 }
 
 .dateField {
@@ -103,10 +170,47 @@
 
 
 /*------КРУГОВАЯ ДИАГРАММА----*/
-/*---------------------------*/
+.categoryDiagramSector {
+    border-radius: 3px;
+    width:60%;
+    margin: 0 auto;
+    background-color: #345ceb;
+    margin-top: 1%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+
+.categoryDiagramZone {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+    gap:20px;
+
+}
+.categoryTitle{
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+    color: white;
+}
+.interviewDiagramBlock {
+    border: 3px solid #53c0ee;
+    border-radius: 15px;
+    width: 80%;
+    margin: 0 auto;
+}
+
+.categoryName {
+    text-align: center;
+    margin: 10%;
+
+}
+
+/*////сложные скрипты///*/
 .categoryDiagram {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     background: green;
     position: relative;
@@ -191,11 +295,11 @@
 }
 
 .categoryDiagram .text b {
-    font-size: 30px;
+    font-size: 36px;
 }
 
 .categoryDiagram .text span {
-    font-size: 20px;
+    font-size: 15px;
     display: block;
 }
 
@@ -208,12 +312,12 @@
 }
 
 .categoryBlock {
-    width: 250px;
-    height: 250px;
-    border: 5px solid #2b5b6d;
+    width: 200px;
+    height: 200px;
+    border: 5px solid #53c0ee;
     border-radius: 10px;
     background-color: white;
-    margin: 10px;
+    /*margin: 10px;*/
 }
 
 .categoryDiagramBlock {
@@ -232,25 +336,7 @@
 }
 
 /*---------------------------*/
-.categoryDiagramZone {
-    display: flex;
-    justify-content: center;
-    flex: 500px;
-}
 
-.categoryName {
-    text-align: center;
-    margin: 10%;
-}
-.interviewDiagramBlock{
-    border: 3px solid #53c0ee;
-    border-radius: 15px;
-    width:80%;
-    margin: 0 auto;
-}
-.simulationCount{
-    margin:10px;
-}
 
 
 
