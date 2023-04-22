@@ -1,11 +1,39 @@
 
-.progress {
+.container {
+    text-align: center;
+}
+
+.container__title {
+    margin: 77px 0 20px 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
+}
+.generalSector{
+    display: flex;
+    flex-direction: column;
+    align-items: center; ;
+}
+.progressSector {
+    margin: 0 auto;
+    display: flex;
+    width: 100%;
+    height: 100%;
+}
+.progressBlock-string {
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
     width: 90%;
-    height: 5px;
+}
+.progress {
+    margin: 0 auto;
+    width: 90%;
+    height: 30%;
     position: relative;
-    background: #126180;
-    border-radius: 7px;
-    margin-bottom: 12px;
+    background: rgba(255, 255, 255, 0.2);
+    border-radius: 3px;
     overflow: hidden;
 }
 
@@ -23,15 +51,24 @@
 }
 
 .progressSector {
-    width: 100%;
-
+    margin: 0 auto;
+    display: flex;
 }
 
 .progressBlock {
+    color: white;
+    background-color: #345ceb;
     margin: 0 auto;
-    width: 50%;
-    border: 3px solid #53c0ee;
+    height: 100px;
+    width: 60%;
     border-radius: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 10%;
+    font-weight: 600;
+    font-size: 22px;
+    line-height: 140%;
 }
 
 .interviewProgress {
@@ -60,9 +97,26 @@
 
 
 /*------КРУГОВАЯ ДИАГРАММА----*/
+.categoryDiagramSector {
+    border-radius: 3px;
+    width: 60%;
+    margin: 0 auto;
+    background-color: white;
+    margin-top: 1%;
+    padding: 1%;
+    display: flex;
+    flex-direction: column;
+}
+.categoryTitle {
+    font-weight: 700;
+    font-size: 22px;
+    line-height: 32px;
+    color: black;
+    margin-bottom: 10px;
+}
 .categoryDiagram {
-    width: 150px;
-    height: 150px;
+    width: 125px;
+    height: 125px;
     border-radius: 50%;
     background: green;
     position: relative;
@@ -79,7 +133,7 @@
     right: 20px;
     bottom: 20px;
     border-radius: 50%;
-    background: #ccc;
+    background: #53c0ee;
     z-index: 3;
     opacity: 1;
 }
@@ -144,14 +198,15 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    color:white;
 }
 
 .categoryDiagram .text b {
-    font-size: 30px;
+    font-size: 36px;
 }
 
 .categoryDiagram .text span {
-    font-size: 20px;
+    font-size: 14px;
     display: block;
 }
 
@@ -164,15 +219,14 @@
 }
 
 .categoryBlock {
-    width: 250px;
-    height: 250px;
-    border: 5px solid #2b5b6d;
+    width: 200px;
+    height: 200px;
     border-radius: 10px;
-    background-color: white;
-    margin: 10px;
+    background-color: #53c0ee;
+    border: none;
 }
 .categoryBlock:hover{
-    border: 5px solid #479cbc;
+    filter: brightness(95%);
 }
 .categoryDiagramBlock {
     width: 150px;
@@ -191,9 +245,10 @@
 
 /*---------------------------*/
 .categoryDiagramZone {
-    display: flex;
-    justify-content: center;
-    flex: 500px;
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    margin: 0 auto;
+    gap: 20px;
 }
 .categoryDiagramSector{
 
@@ -201,13 +256,19 @@
 .categoryName {
     text-align: center;
     margin: 10%;
+    font-weight: 700;
+    color:white
+
 }
 
 .questionSector{
-    margin: 20px 0 40px;
-    display: flex;
+margin: 0 auto;
+    display: grid;
     flex-wrap: wrap;
     gap: 16px;
+    margin-top:1%;
+    grid-template-columns: repeat(2,1fr);
+    width: 60%;
 }
 
 .question {
@@ -270,11 +331,29 @@
     border: none;
     cursor: pointer;
 }
-
-.hidden {
-    display: none;
+.questionStatusPositive{
+    width:30%;
+    height:5%;
+    background-color: #7cc77c;
+    border: 2px solid green;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 20px;
+}
+.questionStatusNegative{
+    width:30%;
+    height:5%;
+    background-color: #ec7171;
+    border: 2px solid red;
+    border-radius: 3px;
+    text-align: center;
+    line-height: 20px;
 }
 
+
+.hidden{
+    display: none;
+}
 
 
 

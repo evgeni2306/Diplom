@@ -7,7 +7,6 @@
 }
 
 .container {
-
     text-align: center;
 }
 
@@ -31,7 +30,6 @@
     display: flex;
     width: 100%;
     height: 100%;
-
 }
 
 .progressBlock {
@@ -56,7 +54,6 @@
     flex-direction: row;
     justify-content: center;
     width: 90%;
-
 }
 
 .progress {
@@ -190,14 +187,14 @@
     grid-template-columns: repeat(4, 1fr);
     margin: 0 auto;
     gap: 20px;
-
 }
 
 .categoryTitle {
     font-weight: 700;
     font-size: 22px;
     line-height: 32px;
-    color: white;
+    color: black;
+    margin-bottom: 10px;
 }
 
 .interviewDiagramBlock {
@@ -323,10 +320,8 @@
 .categoryBlock {
     width: 200px;
     height: 200px;
-    /*border: 5px solid #53c0ee;*/
     border-radius: 10px;
     background-color: #53c0ee;
-    /*margin: 10px;*/
 }
 
 .categoryDiagramBlock {

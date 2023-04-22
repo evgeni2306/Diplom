@@ -2,55 +2,63 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title></title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/Statistic/StatisticConcrete/styles.css"}}"/>
+    <title>Статистика</title>
 </head>
 <body onLoad="load()">
 <!--------------HEADER-------------------->
 @include('Components.Header.Header')
 <!--------------/HEADER-------------------->
-<div class="progressSector">
-    <div>Верно пройденных от общего количества вопросов</div>
-    <div class="progressBlock">
-        <span class="points">{{$progressData->countRight / $progressData->count * 100}}</span>
-        <div class="progress">
-            <div class="progressBar">
+<div class="container">
+    <h1 class="container__title">Ваша статистика по профессии : </h1>
+    <div class="generalSector">
+        <div class="progressSector">
+            <div class="progressBlock">
+                <div class="progressBlock-string">
+                    <div>Верно пройденных от общего количества вопросов</div>
+                    <div hidden class="points">{{$progressData->countRight / $progressData->count * 100}}</div>
+                </div>
+                <div class="progress">
+                    <div class="progressBar">
+                        {{$progressData->countRight / $progressData->count * 100}}%
+                    </div>
+                </div>
             </div>
+        </div>
+
+        <div class="categoryDiagramSector">
+            <div class="categoryTitle">Прогресс по темам</div>
+            <div class="categoryDiagramZone">
+                @foreach($categoryData as $item)
+                    <button class="categoryBlock" onclick="test('{{$item->id}}')">
+                        <div class="categoryName">{{$item->name}}</div>
+                        <div class="categoryDiagramBlock">
+                            <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
+                                <div class="piece left"></div>
+                                <div class="piece right"></div>
+                                <div class="text">
+                                    <div>
+                                        <b>{{$item->count}}</b>
+                                        <span>{{trans_choice('Вопрос|Вопроса|Вопросов',$item->count)}}</span>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </button>
+                @endforeach
+            </div>
+        </div>
+
+        <div class="questionSector" id="questionSector">
+
+
         </div>
     </div>
 </div>
-
-
-<div class="categoryDiagramSector">
-    <div>Прогресс по темам</div>
-    <div class="categoryDiagramZone">
-        @foreach($categoryData as $item)
-            <button class="categoryBlock" onclick="test('{{$item->id}}')">
-                <div class="categoryName">{{$item->name}}</div>
-                <div class="categoryDiagramBlock">
-                    <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
-                        <div class="piece left"></div>
-                        <div class="piece right"></div>
-                        <div class="text">
-                            <div>
-                                <b>{{$item->count}}</b>
-                                <span>Вопросов</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-            </button>
-        @endforeach
-    </div>
-</div>
-
-<div class="questionSector" id="questionSector">
-
-
-</div>
-
 </body>
 <script>
     function test(categoryId) {
@@ -74,6 +82,9 @@
         }
         cards = document.getElementsByName("number")
         for (i = 0; i < questions.length; i++) {
+            questionStatus = cards[i].querySelector("#questionStatus")
+            statusPositive=cards[i].querySelector("#statusPositive")
+            statusNegative=cards[i].querySelector("#statusNegative")
             nonFavorite = cards[i].querySelector("#nonFavorite")
             Favorite = cards[i].querySelector("#Favorite")
             if (questions[i].isFavorite === 0) {
@@ -81,6 +92,12 @@
             }
             if (questions[i].isFavorite === 1) {
                 Favorite.classList.remove('hidden')
+            }
+            if (questionStatus.textContent === '0') {
+                statusNegative.classList.remove('hidden')
+            }
+            if (questionStatus.textContent === '1') {
+                statusPositive.classList.remove('hidden')
             }
         }
     }
@@ -130,7 +147,15 @@
             '<div id="isFavorite" class="hidden">' + question.isFavorite + '</div>' +
             '<div id="favoriteId" class="hidden">' + question.favoriteId + '</div>' +
             '<div id="questionId" class="hidden">' + question.questionId + '</div>' +
-            '<div> статус</div>' +
+            '<div id="correctAnswer" class="hidden">' + question.correctAnswer + '</div>' +
+            '<div id="questionAnswer" class="hidden">' + question.answer + '</div>' +
+            '<div id="questionStatus" class="hidden">' + question.status + '</div>' +
+
+            '<div class="questionStatusPositive hidden" id="statusPositive">Правильно</div>' +
+            '<div class="questionStatusNegative hidden" id="statusNegative">Не правильно</div>' +
+
+            '<div class="question-favorite" id = "question-favorite">' +
+
             '<div id="nonFavorite" class="question-top-favourites hidden">' +
             '<button class="question-top-favourites__btn" onclick="addFavorite(' + i + ')">' +
             '<div class="question-top-favourites__icon">' +
@@ -148,18 +173,14 @@
             '</div>' +
 
             '</div>' +
+            '</div>' +
             '<div class="question__body">' +
             question.question +
-            '</div>' +
-            '<div class="correctAnswer">' +
-            question.correctAnswer +
-            '</div>' +
-            '<div class="answer">' +
-            question.answer +
             '</div>' +
             '</div>'
         return element
     }
+
     function addFavorite(id) {
         const element = document.getElementsByName("number");
         const questionId = element[id].querySelector("#questionId").textContent;
