@@ -34,7 +34,7 @@
             <div class="categoryTitle">Прогресс по темам</div>
             <div class="categoryDiagramZone">
                 @foreach($categoryData as $item)
-                    <button class="categoryBlock" onclick="test('{{$item->id}}')">
+                    <button class="categoryBlock" onclick="getQuestions('{{$item->id}}')">
                         <div class="categoryName">{{$item->name}}</div>
                         <div class="categoryDiagramBlock">
                             <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
@@ -58,10 +58,64 @@
 
         </div>
     </div>
+
+    <div class="modal">
+        <div class="edit-popup">
+            <div class="edit-popup-close">
+                <button class="modal-close-button" onclick="closeAnswerPopup()"><img
+                        src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
+            </div>
+            <div class="modal-question">
+                <div class="modal-question-top">
+                    <div class="modal-question-category">
+                        <div id="modalQuestionCategory" class="modal-question-category-text modal-question-text ">
+                        </div>
+                    </div>
+                    <div class="modal-question-status" id="modalQuestionStatus">
+                    </div>
+                </div>
+                <div class="modal-question-body">
+                    
+                </div>
+            </div>
+
+        </div>
+    </div>
+
 </div>
 </body>
 <script>
-    function test(categoryId) {
+    let modal = document.querySelector('.modal');
+    let editPopup = document.querySelector('.edit-popup');
+
+    function closeAnswerPopup() {
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
+    }
+
+    function openAnswerPopup(elementId) {
+        const element = document.getElementsByName("number");
+        const questionStatus = element[elementId].querySelector("#questionStatus").textContent;
+        const modalQuestionStatus = document.querySelector("#modalQuestionStatus")
+        if (questionStatus === '0') {
+            modalQuestionStatus.classList.add('statusNegative')
+            modalQuestionStatus.textContent="Не правильно"
+        }
+        if (questionStatus === '1') {
+            modalQuestionStatus.classList.add('statusPositive')
+            modalQuestionStatus.textContent="Правильно"
+        }
+        // const questionAnswer = element[elementId].querySelector("#questionAnswer").textContent;
+        // const questionText = element[elementId].querySelector("#questionText").textContent;
+        const questionCategory = element[elementId].querySelector("#questionCategory").textContent;
+        // document.querySelector("#modalQuestionAnswer").textContent = questionAnswer
+        // document.querySelector("#modalQuestionText").textContent = questionText
+        document.querySelector("#modalQuestionCategory").textContent = questionCategory
+        modal.classList.toggle('is-open');
+        editPopup.classList.toggle('is-open');
+    }
+
+    function getQuestions(categoryId) {
         const questionSector = document.getElementById('questionSector');
         while (questionSector.hasChildNodes()) {
             questionSector.removeChild(questionSector.lastChild)
@@ -82,9 +136,8 @@
         }
         cards = document.getElementsByName("number")
         for (i = 0; i < questions.length; i++) {
-            questionStatus = cards[i].querySelector("#questionStatus")
-            statusPositive=cards[i].querySelector("#statusPositive")
-            statusNegative=cards[i].querySelector("#statusNegative")
+            questionStatus = cards[i].querySelector("#questionStatus").textContent
+            questionStatusBlock = cards[i].querySelector("#questionStatusBlock")
             nonFavorite = cards[i].querySelector("#nonFavorite")
             Favorite = cards[i].querySelector("#Favorite")
             if (questions[i].isFavorite === 0) {
@@ -93,11 +146,13 @@
             if (questions[i].isFavorite === 1) {
                 Favorite.classList.remove('hidden')
             }
-            if (questionStatus.textContent === '0') {
-                statusNegative.classList.remove('hidden')
+            if (questionStatus === '0') {
+                questionStatusBlock.classList.add('statusNegative')
+                questionStatusBlock.textContent = 'Не правильно'
             }
-            if (questionStatus.textContent === '1') {
-                statusPositive.classList.remove('hidden')
+            if (questionStatus === '1') {
+                questionStatusBlock.classList.add('statusPositive')
+                questionStatusBlock.textContent = 'Правильно'
             }
         }
     }
@@ -139,9 +194,9 @@
     }
 
     function divBuilder(question, i) {
-        const element = '<div class="question" name="number">' +
+        const element = '<div class="question" name="number" onclick="openAnswerPopup(' + i + ')">' +
             '<div class="question-top">' +
-            '<div class="question-top-tag">' +
+            '<div class="question-top-tag" id = "questionCategory">' +
             question.category +
             '</div>' +
             '<div id="isFavorite" class="hidden">' + question.isFavorite + '</div>' +
@@ -151,8 +206,7 @@
             '<div id="questionAnswer" class="hidden">' + question.answer + '</div>' +
             '<div id="questionStatus" class="hidden">' + question.status + '</div>' +
 
-            '<div class="questionStatusPositive hidden" id="statusPositive">Правильно</div>' +
-            '<div class="questionStatusNegative hidden" id="statusNegative">Не правильно</div>' +
+            '<div class="questionStatusBlock" id="questionStatusBlock"></div>' +
 
             '<div class="question-favorite" id = "question-favorite">' +
 
