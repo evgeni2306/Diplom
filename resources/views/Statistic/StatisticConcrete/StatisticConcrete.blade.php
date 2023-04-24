@@ -68,14 +68,24 @@
             <div class="modal-question">
                 <div class="modal-question-top">
                     <div class="modal-question-category">
-                        <div id="modalQuestionCategory" class="modal-question-category-text modal-question-text ">
+                        <div id="modalQuestionCategory" class="modal-question-category-text ">
                         </div>
                     </div>
                     <div class="modal-question-status" id="modalQuestionStatus">
                     </div>
                 </div>
                 <div class="modal-question-body">
-                    
+                    <div class="modal-question-text" id = "modalQuestion">
+
+                    </div>
+                    <div class="modal-answer" id="modalAnswer">
+
+                    </div>
+                    <span>Ваш ответ:
+                    <div class="modal-user-answer" id="modalUserAnswer">
+
+                    </div>
+                        </span>
                 </div>
             </div>
 
@@ -99,18 +109,20 @@
         const modalQuestionStatus = document.querySelector("#modalQuestionStatus")
         if (questionStatus === '0') {
             modalQuestionStatus.classList.add('statusNegative')
-            modalQuestionStatus.textContent="Не правильно"
+            modalQuestionStatus.textContent = "Не правильно"
         }
         if (questionStatus === '1') {
             modalQuestionStatus.classList.add('statusPositive')
-            modalQuestionStatus.textContent="Правильно"
+            modalQuestionStatus.textContent = "Правильно"
         }
-        // const questionAnswer = element[elementId].querySelector("#questionAnswer").textContent;
-        // const questionText = element[elementId].querySelector("#questionText").textContent;
         const questionCategory = element[elementId].querySelector("#questionCategory").textContent;
-        // document.querySelector("#modalQuestionAnswer").textContent = questionAnswer
-        // document.querySelector("#modalQuestionText").textContent = questionText
+        const questionText = element[elementId].querySelector("#questionText").textContent;
+        const questionAnswer = element[elementId].querySelector("#correctAnswer").textContent;
+        const userAnswer = element[elementId].querySelector("#questionAnswer").textContent;
+        document.querySelector("#modalAnswer").textContent = questionAnswer
+        document.querySelector("#modalQuestion").textContent = questionText
         document.querySelector("#modalQuestionCategory").textContent = questionCategory
+        document.querySelector("#modalUserAnswer").textContent = userAnswer
         modal.classList.toggle('is-open');
         editPopup.classList.toggle('is-open');
     }
@@ -228,7 +240,7 @@
 
             '</div>' +
             '</div>' +
-            '<div class="question__body">' +
+            '<div class="question__body" id="questionText">' +
             question.question +
             '</div>' +
             '</div>'
