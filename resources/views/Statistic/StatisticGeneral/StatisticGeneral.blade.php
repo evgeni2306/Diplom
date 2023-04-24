@@ -61,7 +61,7 @@
             <div class="categoryTitle">Прогресс по темам</div>
             <div class="categoryDiagramZone">
                 @foreach($categoryData as $item)
-                    <div class="categoryBlock" onclick="test()">
+                    <div class="categoryBlock" >
                         <div class="categoryName">{{$item->name}}</div>
                         <div class="categoryDiagramBlock">
                             <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
@@ -85,9 +85,7 @@
 </div>
 </body>
 <script>
-    function test(route) {
-        window.location = route
-    }
+
 
     function load() {
         generalDiagram()
