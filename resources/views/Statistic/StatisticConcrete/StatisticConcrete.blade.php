@@ -81,7 +81,7 @@
                     <div class="modal-answer" id="modalAnswer">
 
                     </div>
-                    <span>Ваш ответ:
+                    <span style="font-weight: 600">Ваш ответ:
                     <div class="modal-user-answer" id="modalUserAnswer">
 
                     </div>
@@ -108,11 +108,13 @@
         const questionStatus = element[elementId].querySelector("#questionStatus").textContent;
         const modalQuestionStatus = document.querySelector("#modalQuestionStatus")
         if (questionStatus === '0') {
+            modalQuestionStatus.classList.add('statusPositive')
             modalQuestionStatus.classList.add('statusNegative')
             modalQuestionStatus.textContent = "Не правильно"
         }
         if (questionStatus === '1') {
             modalQuestionStatus.classList.add('statusPositive')
+            modalQuestionStatus.classList.remove('statusNegative')
             modalQuestionStatus.textContent = "Правильно"
         }
         const questionCategory = element[elementId].querySelector("#questionCategory").textContent;
@@ -223,7 +225,7 @@
             '<div class="question-favorite" id = "question-favorite">' +
 
             '<div id="nonFavorite" class="question-top-favourites hidden">' +
-            '<button class="question-top-favourites__btn" onclick="addFavorite(' + i + ')">' +
+            '<button class="question-top-favourites__btn" onclick="addFavorite(' + i + ');event.stopPropagation()">' +
             '<div class="question-top-favourites__icon">' +
             '<img src="{{"/common/svg/emptyFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
             '</div>' +
@@ -231,7 +233,7 @@
             '</div>' +
 
             '<div id="Favorite" class="question-top-favourites hidden">' +
-            '<button class="question-top-favourites__btn" onclick="deleteFavorite(' + i + ')">' +
+            '<button class="question-top-favourites__btn" onclick="deleteFavorite(' + i + ');event.stopPropagation()">' +
             '<div class="question-top-favourites__icon">' +
             '<img src="{{"/common/svg/fillFavourites.svg"}}" alt="favourites" width="16px" height="15px"/>' +
             '</div>' +
