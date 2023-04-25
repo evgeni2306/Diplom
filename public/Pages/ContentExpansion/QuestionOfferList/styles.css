@@ -1,54 +1,144 @@
-html,
-body {
-    background-color: #f3f5f9;
-}
-
 .container {
-    overflow-y: hidden;
+    text-align: center;
 }
 
-
-.grid {
-    display: grid;
-    grid-template-columns: repeat(4, 1fr);
+.container__title {
+    margin: 77px 0 40px 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
 }
-
-.gridItem {
-    border: 1px solid #989a9b;
+.container-subtitle {
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: #66676c;
 }
-.viewButton {
-    background: green;
-    text-decoration: none;
-    color: #d4d3d3;
+.container-link{
+    font-weight: 600;
+    color: #345ceb;
+    cursor: pointer;
 }
-.viewButton:hover {
-    color: #ffffff;
-    text-decoration: none;
+.container-link:hover{
+    color: #1936a6;
 }
-.hideButton {
-    background: red;
-    text-decoration: none;
-    color: #d4d3d3;
+.voidMenu{
+    width:40%;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 0.5%;
+    height:100%;
 }
-.hideButton:hover {
-    color: #ffffff;
-    text-decoration: none;
+.voidTextMain{
+    padding-top: 2%;
+    font-weight: 600;
+    font-size: 17px;
+    margin-top: 2%;
+    margin-bottom:2% ;
 }
-.form {
-    width: 100%;
+.voidTextSecond{
+    padding-bottom: 2%;
 }
-.form__container {
-    width: 600px;
-    margin: 45px auto 110px;
-    padding: 40px;
+.questionBlock {
+    background-color: white;
     display: flex;
     flex-direction: column;
-    align-items: center;
-    background-color: #fff;
-    border-radius: 8px;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 0.5%;
 }
 
+.questionBlockTop {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+}
 
+.categoryBlock {
+    width: 33%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.category {
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
+}
+
+.questionStatusBlock {
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.status {
+    font-weight: 600;
+    width: 80%;
+}
+
+.Green {
+    background-color: #7cc77c;
+    border: 2px solid green;
+}
+
+.Red {
+    background-color: #ec7171;
+    border: 2px solid red;
+}
+
+.Yellow {
+    background-color: #fdfd8d;
+    border: 2px solid yellow;
+}
+
+.questionActionsBlock {
+    width: 34%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.actionButton {
+    cursor: pointer;
+}
+
+.questionBlockBody {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.questionBlock:last-child {
+    margin-bottom: 2%;
+}
+
+@media (max-width: 767px) {
+.questionBlock{
+    width:100%;
+    margin-top: 2%;
+}
+    .categoryBlock{
+        width:30%;
+    }
+    .questionStatusBlock{
+        width:50%;
+    }
+  .questionActionsBlock{
+      width:20%;
+  }
+    .voidMenu{
+        width:90%;
+    }
+}
 
 
 
