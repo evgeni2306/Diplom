@@ -7,7 +7,7 @@
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/Statistic/StatisticGeneral/styles.css"}}"/>
-    <title>Статистика  {{$professionName}}</title>
+    <title>Статистика {{$professionName}}</title>
 </head>
 <body onLoad="load()">
 <!--------------HEADER-------------------->
@@ -19,8 +19,8 @@
         <div class="progressSector">
             <div class="progressBlock">
                 <div class="progressBlock-string">
-                <div>Верно пройденных от общего количества вопросов</div>
-                <div hidden class="points">{{$generalData}}%</div>
+                    <div>Верно пройденных от общего количества вопросов</div>
+                    <div hidden class="points">{{$generalData}}%</div>
                 </div>
                 <div class="progress">
                     <div class="progressBar">
@@ -61,7 +61,7 @@
             <div class="categoryTitle">Прогресс по темам</div>
             <div class="categoryDiagramZone">
                 @foreach($categoryData as $item)
-                    <div class="categoryBlock" >
+                    <div class="categoryBlock">
                         <div class="categoryName">{{$item->name}}</div>
                         <div class="categoryDiagramBlock">
                             <div class="categoryDiagram progress" data-percent={{$item->correctCount}}>
@@ -85,7 +85,9 @@
 </div>
 </body>
 <script>
-
+    function test(route) {
+        window.location = route
+    }
 
     function load() {
         generalDiagram()

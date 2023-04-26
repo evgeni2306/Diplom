@@ -33,8 +33,8 @@ return [
     'vkontakte' => [
         'client_id' => env('VKONTAKTE_CLIENT_ID'),
         'client_secret' => env('VKONTAKTE_CLIENT_SECRET'),
-        'redirect' => 'http://diplom/auth/vkontakte/callback',
-//        'redirect' => 'http://evgeni2306.ru/auth/vkontakte/callback'
+//        'redirect' => 'http://diplom/auth/vkontakte/callback',
+        'redirect' => 'http://evgeni2306.ru/auth/vkontakte/callback'
     ],
 
 ];

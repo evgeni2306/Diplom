@@ -48,16 +48,6 @@ class QuestionOfferController extends Controller
         return redirect(route('expansionContent'));
     }
 
-    public function view(int $id): \Illuminate\Http\RedirectResponse|\Illuminate\Contracts\View\View
-    {
-        $questionOffer = QuestionOffer::query()->find($id);
-        $questionOffer = $this->getStatus($questionOffer);
-        if ($questionOffer === null) {
-            return redirect()->back();
-        }
-        return view('ContentExpansion.QuestionOfferView.QuestionOfferView', ['questionOffer' => $questionOffer]);
-    }
-
     public function delete(int $id): \Illuminate\Http\RedirectResponse
     {
         $userId = Auth::user()->getAuthIdentifier();
