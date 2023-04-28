@@ -2,20 +2,27 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title></title>
-    <link rel="stylesheet" href="{{"style.css"}}"/>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/ContentExpansion/QuestionOfferForm/styles.css"}}"/>
+    @if($questionOffer===null)
+        <title>Добавление вопроса</title>
+    @endif
+    @if($questionOffer!==null)
+        <title>Изменение вопроса</title>
+    @endif
 </head>
 <body>
 <!--------------HEADER-------------------->
 @include('Components.Header.Header')
 <!--------------/HEADER-------------------->
 <div class="container">
-    <div class="form__container">
-        @if($questionOffer===null)
-            Добавление вопроса
+
+    @if($questionOffer===null)
+        <h1 class="container__title">Добавление вопроса</h1>
+        <div class="form__container">
             <form class="form" action="{{route("questionOfferForm")}}" method="post">
                 <input class="form__input" required list="brow" name="category_id"
                        placeholder="Выберите категорию">
@@ -30,9 +37,13 @@
                 <input type="submit" class="primary-button" value="Отправить">
                 @csrf
             </form>
-        @endif
-        @if($questionOffer!==null)
-            Изменение вопроса
+        </div>
+    @endif
+
+
+    @if($questionOffer!==null)
+        <h1 class="container__title">Изменение вопроса</h1>
+        <div class="form__container">
             <form class="form" action="{{route("questionOfferUpdate",$questionOffer->id)}}" method="post">
                 <input class="form__input" required list="brow" value="{{$questionOffer->category->name}}" id="test"
                        name="category_id"
@@ -50,8 +61,9 @@
                 <input type="submit" class="primary-button" value="Отправить">
                 @csrf
             </form>
-        @endif
-    </div>
+        </div>
+    @endif
+
 </div>
 </body>
 </html>

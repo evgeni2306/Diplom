@@ -4,7 +4,13 @@ body {
 }
 
 .container {
-    overflow-y: hidden;
+    text-align: center;
+}
+.container__title {
+    margin: 77px 0 40px 0;
+    font-weight: 700;
+    font-size: 28px;
+    line-height: 32px;
 }
 
 .form {
@@ -22,6 +28,7 @@ body {
 }
 
 
+
 .form__input {
     height: 44px;
     width: 100%;
@@ -32,6 +39,25 @@ body {
 }
 .form__input:focus {
     border: 1px solid #345ceb;
+}
+
+.primary-button {
+    cursor: pointer;
+    width: 100%;
+    padding: 15px;
+    color: #fff;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 110%;
+    background: #345ceb;
+    border-radius: 3px;
+    border: none;
+    transition: all 0.3s ease;
+}
+@media (max-width: 767px) {
+    .form__container{
+        width:100%;
+    }
 }
 
 
