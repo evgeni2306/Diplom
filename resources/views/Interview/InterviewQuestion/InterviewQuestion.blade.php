@@ -2,134 +2,136 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Interview Question</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/Interview/InterviewQuestion/styles.css"}}"/>
+    <title> {{$question->question}}</title>
 </head>
 <body onLoad="load()">
 <div className="question-page">
     <!--------------HEADER-------------------->
-@include('Components.Header.Header')
-<!--------------/HEADER-------------------->
-
-    <div class="question-page__header">
-        <div class="question-page__header-title">
-            {{$question->profName}}
-        </div>
-        <div class="question-page__header-progress"></div>
-        <a href={{route('interviewInterrupt')}}>
-            <div class="question-page__header-btn">
-                <a href="{{route('interviewInterrupt')}}" class="secondary-button">
+    @include('Components.Header.Header')
+    <!--------------/HEADER-------------------->
+    <div class="container">
+        <div class="questionHeader">
+            <div class="questionHeaderTitle">
+                {{$question->profName}}
+            </div>
+                <a href="{{route('interviewInterrupt')}}" class="interruptButton">
                     Завершить
                 </a>
-            </div>
-        </a>
+        </div>
+        <div class="questionContainer">
+            <div class="questionTop">
+                <div class="questionTopTag">
+                    <div class="questionTag">
+                        {{$question->category}}
+                    </div>
+                </div>
+                <div class="questionTopNumber">
+                    <div class="questionNumber">
+                        {{{$question->current}}}/{{$question->amount}}
+                    </div>
 
-    </div>
-    <div id="startQuestion">
-        <div class="question-page__container">
-            <div class="question__container">
-                <div class="question__top">
-                    <div class="question__top-tags">
-                        <div class="question__top-tag">
-                            {{$question->category}}
+                </div>
+                <div class="questionFavoriteZone">
+                    <div id="nonFavorite" class="hidden">
+                        <div class="questionFavorite">
+                            <div class="questionFavoriteIcon">
+                                <img src="{{"/common/svg/emptyFavourites.svg"}}" alt="">
+                            </div>
+                            <button class="questionFavoriteButton" onclick="addFavorite()">
+                                Добавить в избранное
+                            </button>
                         </div>
                     </div>
-                    <div>
-                        {{{$question->current}}}/{{$question->amount}}
-                        <div id="nonFavorite" class="hidden">
-                            <div class="question__top-favourites">
-                                <div class="question__top-favourites__icon">
-                                    <img src="{{"/common/svg/emptyFavourites.svg"}}" alt="">
-                                </div>
-                                <button class="question__top-favourites__btn" onclick="addFavorite()">
-                                    Добавить в избранное
-                                </button>
+                    <div id="Favorite" class="hidden">
+                        <div class="questionFavorite">
+                            <div class="questionFavoriteIcon">
+                                <img src="{{"/common/svg/fillFavourites.svg"}}" alt="">
                             </div>
-                        </div>
-                        <div id="Favorite" class="hidden">
-                            <div class="question__top-favourites">
-                                <div class="question__top-favourites__icon">
-                                    <img src="{{"/common/svg/fillFavourites.svg"}}" alt="">
-                                </div>
-                                <button class="question__top-favourites__btn" onclick="deleteFavorite()">
-                                    Добавлено в избранное
-                                </button>
-                            </div>
+                            <button class="questionFavoriteButton" onclick="deleteFavorite()">
+                                Добавлено в избранное
+                            </button>
                         </div>
                     </div>
                 </div>
-                <div class="question__body" id="questionText">
+            </div>
+            <div class="questionBody">
+                <div class="questionText" id="questionText">
                     {{$question->question}}
                 </div>
-                <div>
+                <div class="questionAnswerButtons">
                     <button class="recordAnswer" id="startRecording" onclick="startRecording()">Ответить</button>
                     <button class="recordAnswer hidden" id="stopRecording" onclick="stopRecording()">Смотреть ответ
                     </button>
                 </div>
-                <div class="userAnswerField__block hidden">
-                    <textarea class="userAnswerField" id="userAnswerField"  readonly></textarea>
+                <div class="questionUserAnswerField hidden" id="questionUserAnswerField" >
+                    <textarea class="userAnswerField" id="userAnswerField" readonly></textarea>
                 </div>
+
                 <div id='showRightAnswer' class="hidden">
-                    <div class="rightAnswer">
+                    <div class="questionAnswerField">
                         {{$question->answer}}
                     </div>
-                    <div class="nextQuestionButton">
-                        <button class='primary-button' onclick="openAnswerPopup()">
-                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/arrow.svg"}}" alt=""/>
-                            Перейти далее
-                        </button>
-                    </div>
+                    <button class='nextQuestionButton' onclick="openAnswerPopup()">
+                        <img src="{{"/Pages/Interview/InterviewQuestion/svg/arrow.svg"}}" alt=""/>
+                        Перейти далее
+                    </button>
                 </div>
 
             </div>
 
+        </div>
 
-            <div class="modal">
-                <div class="edit-popup">
-                    <div class="edit-popup__close">
-                        <button onclick="closeAnswerPopup()">Закрыть</button>
-                    </div>
-                    Совпал ли ваш ответ?
-                    <div class="show-answer__correct-block__buttons">
-                        <a href={{route("interviewAnswerTask","false")}}>
-                            <button class="btn-answer">
-                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerNo.svg"}}" alt="sad"/>
-                                <span class="btn-answer__text">Нет</span>
-                            </button>
-                        </a>
-                        <a href={{route("interviewAnswerTask","true")}}>
-                            <button class="btn-answer">
-                                <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerYes.svg"}}" alt="sad"/>
-                                <span class="btn-answer__text">Да</span>
-                            </button>
-                        </a>
-                    </div>
+
+        <div class="modal">
+            <div class="edit-popup">
+                <div class="edit-popup__close">
+                    <button onclick="closeAnswerPopup()">Закрыть</button>
+                </div>
+                Совпал ли ваш ответ?
+                <div class="show-answer__correct-block__buttons">
+                    <a href={{route("interviewAnswerTask","false")}}>
+                        <button class="btn-answer">
+                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerNo.svg"}}" alt="sad"/>
+                            <span class="btn-answer__text">Нет</span>
+                        </button>
+                    </a>
+                    <a href={{route("interviewAnswerTask","true")}}>
+                        <button class="btn-answer">
+                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerYes.svg"}}" alt="sad"/>
+                            <span class="btn-answer__text">Да</span>
+                        </button>
+                    </a>
                 </div>
             </div>
         </div>
+
     </div>
 </div>
 </body>
 
 <script>
     favoriteId = {{$question->favoriteId}};
-        function load() {
-            changeFavorite({{$question->isFavorite}})
-            speak()
-        }
 
-        function speak() {
-            setTimeout(function () {
-                const text = document.getElementById('questionText').textContent;
-                const message = new SpeechSynthesisUtterance();
-                message.lang = "ru-RU";
-                message.text = text;
-                window.speechSynthesis.speak(message);
-            }, 1500)
+    function load() {
+        changeFavorite({{$question->isFavorite}})
+        speak()
+    }
 
-        }
+    function speak() {
+        setTimeout(function () {
+            const text = document.getElementById('questionText').textContent;
+            const message = new SpeechSynthesisUtterance();
+            message.lang = "ru-RU";
+            message.text = text;
+            window.speechSynthesis.speak(message);
+        }, 1500)
+
+    }
 
     const speechRecognition = window.SpeechRecognition || window.webkitSpeechRecognition
     const recognition = new speechRecognition()
@@ -152,7 +154,7 @@
     function startRecording() {
         document.getElementById('startRecording').classList.add('hidden')
         document.getElementById('stopRecording').classList.remove('hidden')
-        document.querySelector('.userAnswerField__block').classList.remove('hidden')
+        document.querySelector('#questionUserAnswerField').classList.remove('hidden')
         recognition.start()
     }
 
@@ -169,9 +171,6 @@
         const data = 'answer=' + answer + '&_token=' + "{{@csrf_token()}}";
         requestSaveAnswer(route, data);
     }
-
-
-
 
 
     function addFavorite() {

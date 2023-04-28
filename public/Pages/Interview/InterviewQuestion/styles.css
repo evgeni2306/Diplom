@@ -1,10 +1,5 @@
 
-html,
-body {
-    background-color: #f3f5f9;
-}
-
-.question-page__header {
+.questionHeader {
     padding: 14px 100px;
     display: flex;
     justify-content: space-between;
@@ -12,25 +7,34 @@ body {
     background: #ffffff;
     box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
 }
-.question-page__header-title {
+
+.questionHeaderTitle {
     font-weight: 600;
     font-size: 16px;
     line-height: 19px;
 }
-.question-page__container {
-    margin: 40px 260px;
+.interruptButton {
+    padding: 10px 20px;
+    color: #345ceb;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #345ceb;
+    transition: all 0.3s ease;
+}
+.interruptButton:hover {
+    color: #ffffff;
+    background: #345ceb;
+    border: 1px solid #345ceb;
 }
 
 
-.question {
-    display: flex;
-    align-items: center;
-    transform: scale(1);
-    transition: 0.4s all;
-}
-
-.question__container {
-    width: 100%;
+.questionContainer {
+    margin: 0 auto;
+    margin-top: 4%;
+    width: 60%;
     position: relative;
     padding: 30px;
     background: #ffffff;
@@ -38,16 +42,19 @@ body {
     box-shadow: 0 8px 40px rgba(4, 17, 63, 0.05);
 }
 
-.question__top {
+.questionTop {
     display: flex;
-    justify-content: space-between;
+    flex-direction: row;
+}
+
+.questionTopTag {
+    width: 20%;
+    display: flex;
+    justify-content: center;
     align-items: center;
-    margin-bottom: 12px;
 }
-.question__top-tags {
-    display: flex;
-}
-.question__top-tag {
+
+.questionTag {
     padding: 5px 10px;
     font-weight: 600;
     font-size: 15px;
@@ -56,22 +63,48 @@ body {
     background: #f3f5f9;
     border-radius: 3px;
 }
-.question__top-tag:not(:last-child) {
-    margin-right: 12px;
-}
-.question__top-favourites {
-    display: flex;
-}
-.question__top-favourites__icon {
+
+.questionTopNumber {
+    width: 43%;
     display: flex;
     justify-content: center;
     align-items: center;
+}
+
+.questionNumber {
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
+}
+
+.questionFavoriteZone {
+    width: 37%;
+}
+
+.questionFavorite {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    padding: 5px 10px;
+
+}
+
+.questionFavoriteIcon {
     height: 32px;
     width: 32px;
+    background: #f3f5f9;
     border-radius: 50%;
-    background: #e4e9ff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
 }
-.question__top-favourites__btn {
+
+.questionFavoriteButton {
     padding: 0;
     margin-left: 8px;
     font-weight: 700;
@@ -81,54 +114,23 @@ body {
     background: none;
     border: none;
 }
-.question__body {
+
+.questionBody {
+    margin-top: 2%;
+}
+
+.questionText {
     font-weight: 600;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 140%;
 }
 
-
-.show-answer {
-    padding: 32px;
-    background: #ffffff;
-    border-radius: 8px;
-    transform: scale(1);
-    transition: 0.4s all;
-}
-
-.show-answer__correct-block__buttons {
+.questionAnswerButtons {
+    margin-top: 2%;
     display: flex;
     justify-content: center;
-    gap: 12px;
 }
-
-.btn-answer {
-    padding: 15px 28px;
-    display: flex;
-    align-items: center;
-    background: #ffffff;
-    color: #04113f;
-    border-radius: 3px;
-    border: none;
-    transition: all 0.3s ease;
-}
-
-.btn-answer:hover {
-    color: #ffffff;
-    background: #345ceb;
-    border: 1px solid #345ceb;
-}
-.btn-answer:active {
-    color: #ffffff;
-    background: #254bd1;
-}
-.btn-answer__text {
-    margin-left: 8px;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 120%;
-}
-.secondary-button {
+.recordAnswer {
     padding: 10px 20px;
     color: #345ceb;
     font-weight: 700;
@@ -139,18 +141,35 @@ body {
     border: 1px solid #345ceb;
     transition: all 0.3s ease;
 }
-.secondary-button:hover {
-     color: #ffffff;
-     background: #345ceb;
-     border: 1px solid #345ceb;
- }
 
-.secondary-button:active {
-     color: #ffffff;
-     background: #254bd1;
- }
+.recordAnswer:hover {
+    color: #ffffff;
+    background: #345ceb;
+    border: 1px solid #345ceb;
+}
 
-.primary-button {
+
+.questionUserAnswerField {
+    margin-top: 2%;
+}
+
+.userAnswerField {
+    width: 100%;
+    height: 75px;
+    resize: none;
+    font-weight: 600;
+    font-size: 17px;
+}
+
+
+.questionAnswerField {
+    margin-top:2%;
+    font-weight: 600;
+    font-size: 20px;
+    line-height: 140%;
+}
+
+.nextQuestionButton {
     padding: 15px;
     color: #fff;
     font-weight: 700;
@@ -160,63 +179,26 @@ body {
     border-radius: 3px;
     border: none;
     transition: all 0.3s ease;
-}
-.primary-button:hover {
-     background: #2a51db;
- }
+    margin: 0 auto;
+    margin-top:2%;
+    display: flex;
+    align-items: center;
+    gap:5px;
 
-.primary-button:active {
-     background: #254bd1;
- }
-.primary-button svg,img {
-    margin-right: 10px;
-    vertical-align: middle;
 }
-.hidden{
+
+.hidden {
     display: none;
 }
-.recordAnswer{
-    padding: 10px 20px;
-    color: #345ceb;
-    font-weight: 700;
-    font-size: 15px;
-    line-height: 120%;
-    background: none;
-    border-radius: 3px;
-    border: 1px solid #345ceb;
-    transition: all 0.3s ease;
-}
-.recordAnswer:hover {
-    color: #ffffff;
-    background: #345ceb;
-    border: 1px solid #345ceb;
-}
 
-.recordAnswer:active {
-    color: #ffffff;
-    background: #254bd1;
-}
-.userAnswerField__block{
-margin-top: 15px;
-    resize: none;
-}
-.userAnswerField{
-    width:100%;
-    height:75px;
-    resize: none;
-    font-weight: 600;
-    font-size: 17px;
-}
-.rightAnswer{
-    font-weight: 600;
-    font-size: 20px;
-    line-height: 140%;
-}
-.nextQuestionButton{
-    display: flex;
-    justify-content: center;
-    gap: 12px;
-}
+
+
+
+
+
+
+
+
 
 .modal {
     position: fixed;
@@ -233,6 +215,7 @@ margin-top: 15px;
     transform: scale(0);
     transition: all 0.2s;
 }
+
 .edit-popup {
     position: relative;
     width: 640px;
@@ -245,15 +228,18 @@ margin-top: 15px;
     transform: scale(0);
     transition: all 0.2s;
 }
+
 .is-open {
     opacity: 1;
     transform: scale(1);
 }
+
 .edit-popup__close {
     position: absolute;
     top: 2%;
     right: 2%;
 }
+
 .edit-popup__close:hover {
     cursor: pointer;
 }
