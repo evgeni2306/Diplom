@@ -364,4 +364,26 @@
 }
 
 
+@media (max-width: 567px) {
+    .questionHeader {
+        padding: 14px;
+        gap: 10px;
+    }
+
+    .questionHeaderTitle {
+        width: 100%;
+    }
+
+    .interruptButton {
+        width: 50%;
+    }
+    .questionContainer{
+        width:100%;
+    }
+    .questionFavoriteZone{
+        width:90%;
+    }
+}
+
+
 
