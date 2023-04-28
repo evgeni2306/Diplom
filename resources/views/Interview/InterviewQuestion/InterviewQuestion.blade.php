@@ -19,9 +19,9 @@
             <div class="questionHeaderTitle">
                 {{$question->profName}}
             </div>
-                <a href="{{route('interviewInterrupt')}}" class="interruptButton">
-                    Завершить
-                </a>
+            <a class="interruptButton" onclick="openInterruptPopup()">
+                Завершить досрочно
+            </a>
         </div>
         <div class="questionContainer">
             <div class="questionTop">
@@ -68,7 +68,7 @@
                     <button class="recordAnswer hidden" id="stopRecording" onclick="stopRecording()">Смотреть ответ
                     </button>
                 </div>
-                <div class="questionUserAnswerField hidden" id="questionUserAnswerField" >
+                <div class="questionUserAnswerField hidden" id="questionUserAnswerField">
                     <textarea class="userAnswerField" id="userAnswerField" readonly></textarea>
                 </div>
 
@@ -87,23 +87,50 @@
         </div>
 
 
-        <div class="modal">
-            <div class="edit-popup">
-                <div class="edit-popup__close">
-                    <button onclick="closeAnswerPopup()">Закрыть</button>
+        <div class="modalAnswer">
+            <div class="popupAnswer">
+                <div class="popupAnswerClose">
+                    <button class="popupAnswerCloseButton" onclick="closeAnswerPopup()"><img
+                            src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
                 </div>
-                Совпал ли ваш ответ?
-                <div class="show-answer__correct-block__buttons">
-                    <a href={{route("interviewAnswerTask","false")}}>
-                        <button class="btn-answer">
-                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerNo.svg"}}" alt="sad"/>
-                            <span class="btn-answer__text">Нет</span>
+                <div class="popupAnswerText">
+                    Совпал ли ваш ответ?
+                </div>
+                <div class="popupAnswerButtons">
+                    <a href={{route("interviewAnswerTask","true")}}>
+                        <button class="popupAnswerButton">
+                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/fingerUp.svg"}}" alt="sad"/>
+                            <span>Да</span>
                         </button>
                     </a>
-                    <a href={{route("interviewAnswerTask","true")}}>
-                        <button class="btn-answer">
-                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/answerYes.svg"}}" alt="sad"/>
-                            <span class="btn-answer__text">Да</span>
+                    <a href={{route("interviewAnswerTask","false")}}>
+                        <button class="popupAnswerButton">
+                            <img src="{{"/Pages/Interview/InterviewQuestion/svg/fingerDown.svg"}}" alt="sad"/>
+                            <span>Нет</span>
+                        </button>
+                    </a>
+                </div>
+            </div>
+        </div>
+
+        <div class="modalInterrupt">
+            <div class="popupInterrupt">
+                <div class="popupInterruptClose">
+                    <button class="popupInterruptCloseButton" onclick="closeInterruptPopup()"><img
+                            src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
+                </div>
+                <div class="popupInterruptText">
+                    При досрочном завершении симуляции ваш прогресс будет потерян, вы уверены, что хотите это сделать?
+                </div>
+                <div class="popupInterruptButtons">
+                    <a href="{{route('interviewInterrupt')}}">
+                        <button class="popupInterruptButton">
+                            <span>Да</span>
+                        </button>
+                    </a>
+                    <a onclick="closeInterruptPopup()">
+                        <button class="popupInterruptButton">
+                            <span>Нет</span>
                         </button>
                     </a>
                 </div>
@@ -216,17 +243,30 @@
     }
 
 
-    let modal = document.querySelector('.modal');
-    let editPopup = document.querySelector('.edit-popup');
+    let modalAnswer = document.querySelector('.modalAnswer');
+    let popupAnswer = document.querySelector('.popupAnswer');
 
     function closeAnswerPopup() {
-        modal.classList.toggle('is-open');
-        editPopup.classList.toggle('is-open');
+        modalAnswer.classList.toggle('popupAnswerOpen');
+        popupAnswer.classList.toggle('popupAnswerOpen');
     }
 
     function openAnswerPopup() {
-        modal.classList.toggle('is-open');
-        editPopup.classList.toggle('is-open');
+        modalAnswer.classList.toggle('popupAnswerOpen');
+        popupAnswer.classList.toggle('popupAnswerOpen');
+    }
+
+    let modalInterrupt = document.querySelector('.modalInterrupt');
+    let popupInterrupt = document.querySelector('.popupInterrupt');
+
+    function closeInterruptPopup() {
+        modalInterrupt.classList.toggle('popupInterruptOpen');
+        popupInterrupt.classList.toggle('popupInterruptOpen');
+    }
+
+    function openInterruptPopup() {
+        modalInterrupt.classList.toggle('popupInterruptOpen');
+        popupInterrupt.classList.toggle('popupInterruptOpen');
     }
 
 </script>
