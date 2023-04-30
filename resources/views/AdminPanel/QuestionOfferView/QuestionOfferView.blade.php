@@ -2,16 +2,17 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
     <link rel="stylesheet" href="{{"/Pages/AdminPanel/QuestionOfferView/styles.css"}}">
+    <title>Админ панель</title>
 </head>
 <body>
 <div class="container">
-
+    <h1 class="container__title">Просмотр вопроса</h1>
     <div class="form__container">
-        <h1 class="register__title">Просмотр вопроса</h1>
-        <form class="form" action="{{route("admin.questionOfferForm")}}" method="post">
+        <form id="form" class="form" action="{{route("admin.questionOfferForm")}}" method="post">
             <input type="text" hidden name='id' value="{{$questionOffer->id}}">
             <input readonly class="form__input" required value="{{$questionOffer->category->name}}" list="brow"
 
@@ -25,36 +26,46 @@
             <input readonly id='answerInput' class="form__input" required type="text"
                    value="{{$questionOffer->answer}}"
                    name="answer" placeholder="Ответ">
-
-            <input type="submit" class="" value="Принять">
-
             @csrf
         </form>
 
-        Редактировать <input id="changeable" type="checkbox" onchange="change()">
-        <button class="comment-edit" onclick="openPopup()">Отклонить</button>
-        <button class="" onclick="checkSimiliar()">Проверить на дубликаты</button>
-        <div id="similiar">
-
-        </div>
-        <div class="modal">
-            <div class="edit-popup">
-                <div class="edit-popup__close">
-                    <button onclick="closePopup()">Закрыть</button>
-                </div>
-                <div class="edit-popup__title title">Опишите причину, по которой вы решили отказать в добавлении
-                    вопроса
-                </div>
-                <form method="post" action="{{route('admin.questionOfferRefuse')}}">
-                    <div class="feedback__comment__subtitle block__subtitle">Комментарий</div>
-                    <input type="text" hidden class="comment__id__edit" name='id' value="{{$questionOffer->id}}">
-                    <textarea required class="comment__text-edit" contenteditable="true"
-                              name="comment"></textarea> @csrf
-                    <div class="edit-buttons">
-                        <input type="submit" class="edit__save" value="Отправить">
-                    </div>
-                </form>
+        <div class="actionsZone">
+            <div class="solutionButtons">
+                <input type="submit" form="form" class="acceptButton" value="Принять">
+                <button class="refuseButton" onclick="openPopup();event.stopPropagation()">Отклонить</button>
             </div>
+            <div>
+                <div class="changeButton"> Редактировать</div>
+                <input id="changeable" type="checkbox" class="changeField" onchange="change();event.stopPropagation()">
+            </div>
+
+            <button class="checkButton" onclick="checkSimiliar();event.stopPropagation()">Проверить на дубликаты
+            </button>
+        </div>
+
+    </div>
+    <div id="similiar" class="similiar">
+
+    </div>
+
+    <div class="modal">
+        <div class="edit-popup">
+            <div class="edit-popup-close">
+                <button class="modal-close-button" onclick="closeAnswerPopup()"><img
+                        src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
+            </div>
+            <div class="edit-popup__title">Опишите причину, по которой вы решили отказать в добавлении
+                вопроса
+            </div>
+            <form method="post" action="{{route('admin.questionOfferRefuse')}}">
+                <div class="feedback__comment__subtitle block__subtitle">Комментарий</div>
+                <input type="text" hidden class="comment__id__edit" name='id' value="{{$questionOffer->id}}">
+                <textarea required class="comment__text-edit" contenteditable="true"
+                          name="comment"></textarea> @csrf
+                <div class="edit-buttons">
+                    <input type="submit" class="refuseButton" value="Отправить">
+                </div>
+            </form>
         </div>
     </div>
 </div>
@@ -94,10 +105,10 @@
         if (vars.length > 0) {
             let i;
             for (i = 0; i < vars.length; i++) {
-                let elem = '<div><h1>' + vars[i].name + '</h1><div>' + vars[i].question + '</div></div>';
                 op = document.createElement('div')
-                op.innerHTML = elem
+                op.innerHTML = divBuilder(vars[i])
                 arr.push(op)
+
             }
             const div = document.getElementById('similiar')
             for (i = 0; i < arr.length; i++) {
@@ -106,6 +117,21 @@
         }
 
 
+    }
+
+    function divBuilder(object) {
+        return '<div class="question">' +
+            '<div class="questionTop">' +
+            '<div class="questionCategory">' +
+            object.name +
+            '</div>' +
+            '</div>' +
+            '<div class="questionBody">' +
+            '<div class="questionText">' +
+            object.question +
+            '</div>' +
+            '</div>' +
+            '</div>'
     }
 
     function request(route) {

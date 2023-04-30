@@ -81,7 +81,8 @@ class Interview extends Model
             ->get()->take(10)->reverse();
         foreach ($diagramData as $item) {
             $item->created_at = $item->created_at->toFormattedDateString();
-            $count = CatQuestCount::getSumCountQuestsForProf($item->profId);
+            $count = Task::query()->where('interview_id', $item->id)->count();
+//            $count = CatQuestCount::getSumCountQuestsForProf($item->profId);
             $countRight = Task::query()->where('interview_id', $item->id)->where('status', '=', 1)->count();
             $item->count = $countRight * 100 / $count;
         }

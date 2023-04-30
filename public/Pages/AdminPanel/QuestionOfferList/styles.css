@@ -1,72 +1,301 @@
-html,
-body {
-    background-color: #f3f5f9;
-}
-
 .container {
-    overflow-y: hidden;
+    text-align: center;
 }
 
-.logo-register {
-    margin-top: 130px;
-    font-weight: 900;
+.container__title {
+    margin: 77px 0 40px 0;
+    font-weight: 700;
     font-size: 28px;
     line-height: 32px;
 }
-.logo-register__wrapper {
+.container-subtitle {
+    margin-bottom: 20px;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 140%;
+    color: #66676c;
+}
+.container-link{
+    font-weight: 600;
+    color: #345ceb;
+    cursor: pointer;
+}
+.container-link:hover{
+    color: #1936a6;
+}
+.voidMenu{
+    width:40%;
+    background-color: white;
+    margin: 0 auto;
+    margin-top: 0.5%;
+    height:100%;
+}
+.voidTextMain{
+    padding-top: 2%;
+    font-weight: 600;
+    font-size: 17px;
+    margin-top: 2%;
+    margin-bottom:2% ;
+}
+.voidTextSecond{
+    padding-bottom: 2%;
+}
+.questionBlock {
+    background-color: white;
+    display: flex;
+    flex-direction: column;
+    width: 40%;
+    margin: 0 auto;
+    margin-top: 0.5%;
+}
+
+.questionBlockTop {
+    margin-top: 2%;
+    width: 100%;
+    display: flex;
+    flex-direction: row;
+
+}
+
+.categoryBlock {
+    width: 33%;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.logo-register__icon {
-    margin-right: 7px;
+
+.category {
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
 }
-.logo-register__name{
-    background: linear-gradient(90.15deg, #5f82ff 0.13%, #00e6e6 99.89%);
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+
+.questionStatusBlock {
+    width: 33%;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+}
+
+.status {
+    font-weight: 600;
+    width: 80%;
+}
+
+.Green {
+    background-color: #7cc77c;
+    border: 2px solid green;
+}
+
+.Red {
+    background-color: #ec7171;
+    border: 2px solid red;
+}
+
+.Yellow {
+    background-color: #fdfd8d;
+    border: 2px solid yellow;
+}
+
+.questionActionsBlock {
+    width: 60%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+}
+
+.actionButton {
+    cursor: pointer;
+}
+
+.questionBlockBody {
+    margin-top: 2%;
+    margin-bottom: 2%;
+}
+
+.questionBlock:last-child {
+    margin-bottom: 4%;
 }
 
 
-.register__title {
-    font-weight: 700;
-    font-size: 28px;
-    line-height: 32px;
-    margin-bottom: 32px;
+.modal {
+    position: fixed;
+    z-index: 8;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s;
 }
 
-.form__container {
-    width: 600px;
-    margin: 45px auto 110px;
-    padding: 40px;
+.edit-popup {
+    position: relative;
+    width: 640px;
+    background: #ffffff;
+    box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
+    border-radius: 10px;
+    margin: auto;
+    opacity: 0;
+    transform: scale(0);
+    transition: all 0.2s;
     display: flex;
     flex-direction: column;
+}
+
+.is-open {
+    opacity: 1;
+    transform: scale(1);
+}
+
+.edit-popup-close {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: flex-end;
     align-items: center;
-    background-color: #fff;
-    border-radius: 8px;
+
 }
 
-svg,img{
-    margin-right: 10px;
-    vertical-align: middle;
-}
-.grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
+.edit-popup__close:hover {
+    cursor: pointer;
 }
 
-.gridItem {
-    border: 1px solid #989a9b;
+.modal-question {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    height: 100%;
 }
-.viewButton {
-    background: green;
-    text-decoration: none;
-    color: #d4d3d3;
+
+.modal-close-button {
+    border: none;
+    background: none;
+    margin-top: 5px;
+    margin-right: 5px;
 }
-.viewButton:hover {
-    color: #ffffff;
-    text-decoration: none;
+.modal-question-top{
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
 }
+
+.modal-question-category {
+    width: 100%;
+    height: 40px;
+    margin-left: 20px;
+    display: flex;
+    justify-content: flex-start;
+    align-items: center;
+}
+.modal-question-status{
+    margin-right:35%;
+    width:80%;
+    text-align: center;
+    font-weight: 600;
+    font-size: 15px;
+}
+
+.modal-question-category-text {
+    padding: 5px 10px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+}
+
+.modal-question-question {
+    margin-top:1%;
+    margin-bottom:2%;
+    width: 100%;
+    margin-left:2%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.modal-question-question-text {
+    font-size: 16px;
+    font-weight: 600;
+    word-wrap: break-word;
+}
+
+
+.modal-question-answer-text {
+    font-size: 15px;
+    line-height: 17px;
+    word-wrap: break-word;
+
+}
+
+.modal-question-answer {
+    margin: 0 auto;
+    margin-left:2%;
+    margin-bottom:2%;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+.modal-comment-title{
+    width:20%;
+    display: flex;
+    justify-content: center;
+    padding: 5px 10px;
+    background: #f3f5f9;
+    border-radius: 3px;
+    font-weight: 600;
+    font-size: 15px;
+    /*line-height: 17px;*/
+    margin: 0 auto;
+    margin-bottom:2%;
+}
+.modal-comment{
+    display: flex;
+    justify-content: center;
+    margin-bottom:2%;
+}
+
+.hidden{
+    display: none;
+}
+@media (max-width: 767px) {
+    .questionBlock{
+        width:100%;
+        margin-top: 2%;
+    }
+    .categoryBlock{
+        width:30%;
+    }
+    .questionStatusBlock{
+        width:50%;
+    }
+    .questionActionsBlock{
+        width:20%;
+    }
+    .voidMenu{
+        width:90%;
+    }
+    .modal-question-status{
+        margin-right: 20px;
+    }
+    .modal-comment-title{
+        width:34%;
+    }
+}
+
 
 
 

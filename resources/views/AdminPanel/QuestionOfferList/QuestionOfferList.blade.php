@@ -2,35 +2,37 @@
 <html lang="ru">
 <head>
     <meta charset="utf-8"/>
-    <title>Login</title>
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <link rel="stylesheet" href="{{"/common/css/base.css"}}">
+    <link rel="stylesheet" href="{{"/Pages/Components/Header/styles.css"}}"/>
     <link rel="stylesheet" href="{{"/Pages/AdminPanel/QuestionOfferList/styles.css"}}">
+    <title>Админ-панель</title>
 </head>
 <body>
 <div class="container">
-    <div class="logo-register">
-        <div class="logo-register__wrapper">
-            <img class="logo-register__icon" src="{{"/common/svg/logo.svg"}}" alt="logo"/>
-            <span class="logo-register__name">JobInterview</span>
-        </div>
-    </div>
+    <h1 class="container__title">Заявки на добавление вопросов</h1>
     <div class="form__container">
-        <h1 class="register__title">Заявки на добавление вопросов</h1>
-        <div class="grid">
-            <div class="gridItem">Категория</div>
-            <div class="gridItem">Вопрос</div>
-            <div class="gridItem">Действия</div>
-        </div>
         @foreach($offers as $item)
-            <div class="grid">
-                <div class="gridItem">{{$item->category->name}}</div>
-                <div class="gridItem">{{$item->question}}</div>
-                <div class="gridItem">
-                    <a class="viewButton" href="{{route('admin.QuestionOfferView',$item->id)}}">См</a>
+            <div class="questionBlock">
+                <div class="questionBlockTop">
+                    <div class="categoryBlock">
+                        <div class="category" id="category">{{$item->category->name}}</div>
+                    </div>
+                    <div class="questionActionsBlock">
+                        <div class="actions">
+                            <a class="actionButton" onclick="event.stopPropagation()"
+                               href="{{route('admin.QuestionOfferView',$item->id)}}"><img
+                                    src="{{"/Pages/ContentExpansion/QuestionOfferList/svg/openEye.svg"}}"
+                                    alt=""></a>
+                        </div>
+                    </div>
                 </div>
-                @endforeach
-
+                <div class="questionBlockBody">
+                    <div class="question" id="question">{{$item->question}}</div>
+                </div>
             </div>
+        @endforeach
     </div>
 </div>
 </body>

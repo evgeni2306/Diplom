@@ -1,17 +1,12 @@
-html,
-body {
-    background-color: #f3f5f9;
-}
-
 .container {
-    overflow-y: hidden;
+    text-align: center;
 }
 
-.register__title {
+.container__title {
+    margin: 77px 0 40px 0;
     font-weight: 700;
     font-size: 28px;
     line-height: 32px;
-    margin-bottom: 32px;
 }
 
 .form {
@@ -20,7 +15,7 @@ body {
 
 .form__container {
     width: 600px;
-    margin: 45px auto 110px;
+    margin: 45px auto;
     padding: 40px;
     display: flex;
     flex-direction: column;
@@ -72,7 +67,7 @@ svg, img {
     background: #ffffff;
     box-shadow: 0 3px 10px rgba(0, 0, 0, 0.1);
     border-radius: 10px;
-    padding: 40px;
+
     margin: auto;
     opacity: 0;
     transform: scale(0);
@@ -84,35 +79,39 @@ svg, img {
     transform: scale(1);
 }
 
-.edit-popup__close {
-    position: absolute;
-    top: 2%;
-    right: 2%;
+.edit-popup-close {
+    width: 100%;
+    height: 15%;
+    display: flex;
+    justify-content: flex-end;
+    align-items: center;
+
 }
 
 .edit-popup__close:hover {
     cursor: pointer;
 }
 
-.edit-popup__title {
-    width: 100%;
-    text-align: center;
-    margin-bottom: 32px;
-}
 
 .comment__text-edit {
     border: 1px solid #d3d5da;
     border-radius: 7px;
     padding: 15px;
-    height: 200px;
     color: #000;
+    width: 80%;
+    height: 75px;
+    resize: none;
+    font-weight: 600;
+    font-size: 17px;
 }
 
 .edit-buttons {
     display: flex;
+    justify-content: center;
     width: 50%;
-    margin-left: auto;
+    margin: 0 auto;
     margin-top: 40px;
+    margin-bottom:40px;
 }
 
 .edit__save {
@@ -121,7 +120,6 @@ svg, img {
     color: #fff;
     font-size: 16px;
     font-weight: 500;
-    margin-left: 20px;
 }
 
 .edit__save:hover {
@@ -129,6 +127,145 @@ svg, img {
     background: #239452;
     border: 1px solid #239452;
 }
+
+.acceptButton {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #345ceb;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #345ceb;
+    transition: all 0.3s ease;
+}
+
+.acceptButton:hover {
+    color: #ffffff;
+    background: #345ceb;
+    border: 1px solid #345ceb;
+}
+
+.refuseButton {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #bd0d0d;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #bd0d0d;
+    transition: all 0.3s ease;
+}
+
+.refuseButton:hover {
+    color: #ffffff;
+    background: #bd0d0d;
+    border: 1px solid #bd0d0d;
+}
+
+
+.checkButton {
+    cursor: pointer;
+    padding: 10px 20px;
+    color: #ee9a00;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 120%;
+    background: none;
+    border-radius: 3px;
+    border: 1px solid #ee9a00;
+    transition: all 0.3s ease;
+}
+
+.checkButton:hover {
+    color: #ffffff;
+    background: #ee9a00;
+    border: 1px solid #ee9a00;
+}
+
+.actionsZone {
+    display: flex;
+    flex-direction: column;
+    gap: 15px;
+    align-items: center;
+}
+
+.solutionButtons {
+    display: flex;
+    flex-direction: row;
+    gap: 10px;
+    justify-content: center;
+}
+
+.similiar {
+    width: 600px;
+    margin: 0 auto;
+    display: grid;
+    grid-template-columns: repeat(1, 1fr);
+    gap: 10px;
+
+}
+
+.question {
+    background-color: white;
+    width: 600px;
+    margin: 0 auto;
+    height: 100px;
+    padding-top: 0.5%;
+}
+
+.questionTop {
+    display: flex;
+    width: 15%;
+    justify-content: center;
+}
+
+.questionCategory {
+    padding: 5px 10px;
+    font-weight: 600;
+    font-size: 15px;
+    line-height: 17px;
+    color: #6f00ff;
+    background: #f3f5f9;
+    border-radius: 3px;
+}
+
+.questionText {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.changeButton {
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+}
+
+.changeField {
+    width: 30px;
+    height: 30px;
+}
+
+.modal-close-button {
+    border: none;
+    background: none;
+    margin-top: 5px;
+    margin-right: 5px;
+}
+
+.edit-popup__title {
+    margin-top: 2%;
+    font-weight: 600;
+    font-size: 16px;
+    line-height: 140%;
+    text-align: center;
+    margin-bottom: 2%;
+}
+
 
 
 
