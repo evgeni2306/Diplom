@@ -37,6 +37,7 @@ class RegistrationController extends Controller
         $fields['key'] = time();
         $user = User::query()->create($fields);
         if ($user) {
+            $_SESSION['userName'] = $user->name;
             Auth::login($user);
             return redirect(route(RouteServiceProvider::USERHOME));
         }

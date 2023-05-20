@@ -40,4 +40,7 @@ class User extends Authenticatable
     {
         return self::query()->where('key', $key)->select('id')->get()[0]->id;
     }
+    static function getNameByLogin(string $login):object{
+        return self::query()->where('login',$login)->select('name')->first();
+    }
 }

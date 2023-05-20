@@ -3,6 +3,7 @@ declare(strict_types=1);
 
 namespace App\Http\Controllers\Site\Authentication;
 
+use App\Models\User;
 use App\Providers\RouteServiceProvider;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
@@ -30,6 +31,7 @@ class AuthorizationController extends Controller
             ])->withInput();
         }
         if (Auth::guard('web')->attempt($fields)) {
+            $_SESSION['userName'] = User::getNameByLogin($fields['login'])->name;
             return redirect(\route(RouteServiceProvider::USERHOME));
         }
         return redirect(route('login'))->withErrors([

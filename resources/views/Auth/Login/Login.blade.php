@@ -31,7 +31,8 @@
         </div>
         <div class="divider">или</div>
         <a href={{route("vkontakte")}}>
-            <a href="" class="form-button__vk"><img src="{{"/Pages/Auth/common/svg/VKLogo.svg"}}" alt="vk">Войти с
+            <a href={{route("vkontakte")}} class="form-button__vk"><img src="{{"/Pages/Auth/common/svg/VKLogo.svg"}}"
+                                                                        alt="vk">Войти с
                 помощью ВКонтакте</a>
         </a>
     </div>

@@ -21,6 +21,7 @@ class VkAuthController extends Controller
         $socialUser = Socialite::driver('vkontakte')->user();
         $isUser = User::query()->where('social_id', $socialUser->id)->first();
         if ($isUser) {
+            $_SESSION['userName'] = $isUser->name;
             Auth::login($isUser);
         } else {
             $nameAndSurname = explode(' ', $socialUser->name);
@@ -32,6 +33,7 @@ class VkAuthController extends Controller
                 'password' => encrypt('socialUser'),
                 'social_id' => $socialUser->id,
             ]);
+            $_SESSION['userName'] = $createUser->name;
             Auth::login($createUser);
 
         }

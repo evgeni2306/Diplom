@@ -47,7 +47,7 @@
             <ul class="user-menu__list">
                 <li class="user-name">
                     <img class="avatar" src="{{"/Pages/Components/Header/svg/avatarWhite.svg"}}" alt="user">
-                    <a href="#" class="user-menu__link" tabindex="1">UserName</a><span class="menu__arrow"></span>
+                    <a href="#" class="user-menu__link" tabindex="1">{{$_SESSION['userName']}}</a><span class="menu__arrow"></span>
                     <div class="sub-menu__list">
                         <div class="sub-menu__link">
                             <a class="menuHref" href="{{route('expansionContent')}}"><img
@@ -82,7 +82,7 @@
                         <div class="mobile-avatar">
                             <img class="avatar" src="{{"/Pages/Components/Header/svg/avatarBlack.svg"}}" alt="user">
                         </div>
-                        <div class="mobile-name">userName</div>
+                        <div class="mobile-name">{{$_SESSION['userName']}}</div>
                     </div>
                 </div>
                 <div class="mobile-low-menu">
