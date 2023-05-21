@@ -51,7 +51,7 @@
     <div class="modal">
         <div class="edit-popup">
             <div class="edit-popup-close">
-                <button class="modal-close-button" onclick="closeAnswerPopup()"><img
+                <button class="modal-close-button" onclick="closePopup()"><img
                         src="{{"/Pages/KnowledgeBase/svg/cross.svg"}}" alt=""></button>
             </div>
             <div class="edit-popup__title">Опишите причину, по которой вы решили отказать в добавлении
@@ -99,6 +99,10 @@
     }
 
     function checkSimiliar() {
+        const similiarList = document.getElementById('similiar');
+        while (similiarList.hasChildNodes()) {
+            similiarList.removeChild(similiarList.lastChild)
+        }
         const route = "{{route('admin.QuestionOfferSimiliar',$questionOffer->id)}}";
         const vars = request(route);
         const arr = [];
